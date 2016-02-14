@@ -9,23 +9,31 @@
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="account" property="account" jdbcType="VARCHAR" />
 		<result column="pwd" property="pwd" jdbcType="VARCHAR" />
-		<result column="dept" property="dept" jdbcType="INTEGER" />
-	</resultMap> 
-	
-	<sql id="Base_Column_List">
-		userId, name, account, pwd,dept
-	</sql>
-	
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer"> 
-		select * from user where userId=#{userId}
-	</select> 
+		<result column="deptid" property="deptid" jdbcType="INTEGER" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="tel" property="tel" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
 
- 	<delete id="deleteUser" parameterType="int"> delete from user where 
-		id=#{userId} </delete> 
-		
-	<insert id="insertUser" parameterType="com.budgetms.pojo.User" > insert 
-		into user values(#{name}, #{account},#{pwd},#{dept}) </insert> <update id="updateUser" 
-		parameterType="com.budgetms.pojo.User"> update user set name=#{name} where id=#{userId} 
+	<sql id="Base_Column_List">
+		userId, name, account, pwd,deptid,email,tel,remark
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select * from user where userId=#{userId}
+	</select>
+
+	<delete id="deleteUser" parameterType="int"> delete from user where
+		id=#{userId}
+	</delete>
+
+	<insert id="insertUser" parameterType="com.budgetms.pojo.User" useGeneratedKeys="true" keyProperty="userId">
+		insert into user(name,account,pwd,deptid,email,tel,remark)
+		values( #{name},#{account},#{pwd},#{deptid},#{email},#{tel},#{remark})
+	</insert>
+	<update id="updateUser" parameterType="com.budgetms.pojo.User">
+		update user set name=#{name} where id=#{userId}
 	</update>
-		
+
 </mapper>  

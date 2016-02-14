@@ -29,9 +29,11 @@ public class TestMyBatis {
 //		ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 //		userService = (IUserService) ac.getBean("userService");
 //	}
-
+	
 	@Test
 	public void test1() {
+		User u = new User("张三","zhangsan","123456",1,"15358824625","liubin@csrcbank.com","");
+		userService.addUser(u);
 		User user = userService.getUserById(1);
 		// System.out.println(user.getUserName());
 		// logger.info("值："+user.getUserName());
