@@ -764,3 +764,20 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 [INFO] [2016-02-14 14:34:26][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 [INFO] [2016-02-14 14:34:34][org.zsl.testmybatis.TestMyBatis]{"account":"zhangsan","deptid":1,"email":"liubin@csrcbank.com","name":"张三","pwd":"123456","remark":"","tel":"15358824625","userId":1}
 [INFO] [2016-02-14 14:34:46][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@65a7a525: startup date [Sun Feb 14 14:34:26 CST 2016]; root of context hierarchy
+[INFO] [2016-02-14 15:02:52][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2016-02-14 15:02:53][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@3bc56049: startup date [Sun Feb 14 15:02:53 CST 2016]; root of context hierarchy
+[INFO] [2016-02-14 15:02:53][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2016-02-14 15:02:53][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2016-02-14 15:02:54][org.zsl.testmybatis.TestMyBatis]{"account":"zhangsan1","deptid":1,"email":"liubin@csrcbank.com","name":"张三1","pwd":"123456","remark":"","tel":"15358824625","userId":2}
+[INFO] [2016-02-14 15:02:54][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@3bc56049: startup date [Sun Feb 14 15:02:53 CST 2016]; root of context hierarchy
+[INFO] [2016-02-14 15:19:23][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2016-02-14 15:19:23][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@614b5446: startup date [Sun Feb 14 15:19:23 CST 2016]; root of context hierarchy
+[INFO] [2016-02-14 15:19:24][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2016-02-14 15:19:24][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2016-02-14 15:20:17][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2016-02-14 15:20:17][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@65a7a525: startup date [Sun Feb 14 15:20:17 CST 2016]; root of context hierarchy
+[INFO] [2016-02-14 15:20:17][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2016-02-14 15:20:17][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2016-02-14 15:20:26][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+[INFO] [2016-02-14 15:20:26][org.springframework.jdbc.support.SQLErrorCodesFactory]SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+[INFO] [2016-02-14 15:20:26][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@65a7a525: startup date [Sun Feb 14 15:20:17 CST 2016]; root of context hierarchy

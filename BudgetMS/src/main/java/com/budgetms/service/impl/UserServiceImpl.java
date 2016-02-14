@@ -20,4 +20,10 @@ public class UserServiceImpl implements IUserService {
 	public int addUser(User user){
 		return this.userDao.insertUser(user);
 	}
+
+	@Override
+	public User getUserByActPwd(String account, String pwd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
