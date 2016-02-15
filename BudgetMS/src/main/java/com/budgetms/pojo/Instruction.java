@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Instruction {
 	private String instId;
+	private String instTitle;
 	private String instContent;
 	private int instType;
 	private int applyDept;
@@ -20,6 +21,12 @@ public class Instruction {
 	}
 	public void setInstId(String instId) {
 		this.instId = instId;
+	}
+	public String getInstTitle() {
+		return instTitle;
+	}
+	public void setInstTitle(String instTitle) {
+		this.instTitle = instTitle;
 	}
 	public String getInstContent() {
 		return instContent;

@@ -7,8 +7,6 @@ public interface IUserDao {
 
     int insertUser(User record);
 
-    
-
     User selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(User record);

@@ -29,7 +29,7 @@
 	</delete>
 
 	<insert id="insertUser" parameterType="com.budgetms.pojo.User" useGeneratedKeys="true" keyProperty="userId">
-		insert into user(name,account,pwd,deptid,email,tel,remark)
+		insert into user(name,account,pwd,deptid,email,tel,remark)  
 		values( #{name},#{account},#{pwd},#{deptid},#{email},#{tel},#{remark})
 	</insert>
 	<update id="updateUser" parameterType="com.budgetms.pojo.User">
