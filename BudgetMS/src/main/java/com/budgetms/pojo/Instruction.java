@@ -22,6 +22,7 @@ public class Instruction {
 	public void setInstId(String instId) {
 		this.instId = instId;
 	}
+	
 	public String getInstTitle() {
 		return instTitle;
 	}
