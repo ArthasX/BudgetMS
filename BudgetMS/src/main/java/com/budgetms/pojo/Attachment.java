@@ -1,6 +1,6 @@
 package com.budgetms.pojo;
 
-public class Attachment {
+public class Attachment extends BasePOJO{
 	private int atchid;
 	private String atchName;
 	private String recordId;

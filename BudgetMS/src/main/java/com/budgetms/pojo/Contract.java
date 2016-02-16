@@ -2,7 +2,7 @@ package com.budgetms.pojo;
 
 import java.sql.Date;
 
-public class Contract {
+public class Contract extends BasePOJO{
 	private String contId;
 	private String instDivideId;
 	private String contName;

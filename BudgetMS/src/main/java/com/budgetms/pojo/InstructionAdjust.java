@@ -1,6 +1,6 @@
 package com.budgetms.pojo;
 
-public class InstructionAdjust {
+public class InstructionAdjust extends BasePOJO{
 	private int instAdjId;
 	private String instId;
 	private int instDivideId;

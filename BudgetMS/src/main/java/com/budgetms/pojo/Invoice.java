@@ -2,7 +2,7 @@ package com.budgetms.pojo;
 
 import java.sql.Date;
 
-public class Invoice {
+public class Invoice extends BasePOJO{
 	private String invoId;
 	private int contPaymentId;
 	private double invoAmt;

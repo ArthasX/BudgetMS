@@ -1,6 +1,8 @@
 package com.budgetms.test;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -33,9 +35,15 @@ public class TestInst extends AbsTest {
 
 	public void t1() {
 		Instruction inst = new Instruction();
-		inst.setInstId("QSBH201602150001");
-		Instruction i = instService.getInstByProperty(inst);
-		logger.info(JSON.toJSONString(i));
+		inst.setInstTitle("测试");
+		List<Instruction> l = instService.getInstByProperty(inst);
+		
+		logger.info(JSON.toJSONString(l));
+		JSON json=(JSON) JSON.toJSON(l.get(0));
+		Instruction i=JSON.toJavaObject(json,Instruction.class);
+		logger.info(JSON.toJSONString(l.get(0)));
+		logger.info(i.toString());
+		
 	}
 
 }

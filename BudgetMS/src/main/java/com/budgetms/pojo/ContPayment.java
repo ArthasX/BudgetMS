@@ -2,7 +2,7 @@ package com.budgetms.pojo;
 
 import java.sql.Date;
 
-public class ContPayment {
+public class ContPayment extends BasePOJO{
 	private int contPaymentId;
 	private int period;
 	private String contId;

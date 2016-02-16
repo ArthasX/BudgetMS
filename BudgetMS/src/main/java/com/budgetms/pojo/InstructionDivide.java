@@ -1,6 +1,6 @@
 package com.budgetms.pojo;
 
-public class InstructionDivide {
+public class InstructionDivide extends BasePOJO{
 	private int instDivideId;
 	private String instId;
 	private int divideNO;

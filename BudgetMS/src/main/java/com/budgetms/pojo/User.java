@@ -1,6 +1,6 @@
 package com.budgetms.pojo;
 
-public class User {
+public class User extends BasePOJO{
 	private int userId;
 	private String name;
 	private String account;

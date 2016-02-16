@@ -30,8 +30,8 @@
 		hard_amt,apply_user,apply_user_name,opt_date,opt_user,remark
 	</sql>
 
-	<select id="getInstByProperty" resultMap="BaseResultMap"
-		parameterType="inst">
+	<select id="getInstByProperty" resultMap="BaseResultMap" resultType="java.util.HashMap"
+		parameterType="inst" >
 		select * from instruction
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
@@ -41,16 +41,16 @@
 				<otherwise>
 					<trim prefix="(" suffix=")" suffixOverrides=",">
 						<if test="instTitle !=null and instTitle !='' ">
-							inst_title like '%{instTitle}',
+							inst_title like '%${instTitle}%',
 						</if>
 						<if test="instContent !=null and instContent !='' ">
-							inst_content like '%{instContent}',
+							inst_content like '%${instContent}%',
 						</if>
 						<if test="instType !=null and instType !='' ">
-							inst_type=#{instType},
+							inst_type like '%${instType}%',
 						</if>
 						<if test="instAmt !=null and instAmt !='' ">
-							inst_amt like '%{instAmt}',
+							inst_amt like '%${instAmt}%',
 						</if>
 					</trim>
 				</otherwise>

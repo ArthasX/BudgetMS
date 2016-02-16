@@ -1,6 +1,6 @@
 package com.budgetms.pojo;
 
-public class ProInfoAdjust {
+public class ProInfoAdjust extends BasePOJO{
 	private int proInfoAdjId;
 	private int adjType;
 	private double adjAmt;

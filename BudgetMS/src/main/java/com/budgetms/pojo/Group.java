@@ -1,6 +1,6 @@
 package com.budgetms.pojo;
 
-public class Group {
+public class Group extends BasePOJO{
 	private int groupid;
 	private String name;
 	private String remark;

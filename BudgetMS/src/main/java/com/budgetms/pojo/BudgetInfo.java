@@ -1,6 +1,6 @@
 package com.budgetms.pojo;
 
-public class BudgetInfo {
+public class BudgetInfo extends BasePOJO{
 	private int budgetInfoId;
 	private String budgetType;
 	private double budgetAmt;

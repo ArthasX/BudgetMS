@@ -1,5 +1,8 @@
 package com.budgetms.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -14,8 +17,8 @@ public class InstServiceImpl implements IInstService {
 
 	@Override
 	public Instruction getInstById(String getInstById) {
-		Instruction inst = instdao.getInstById("QSBH201602150001");
-		return inst;
+		//Instruction inst = instdao.getInstById("QSBH201602150001");
+		return null;
 	}
 
 	@Override
@@ -30,7 +33,7 @@ public class InstServiceImpl implements IInstService {
 	}
 
 	@Override
-	public Instruction getInstByProperty(Instruction inst) {
+	public List<Instruction> getInstByProperty(Instruction inst) {
 		return instdao.getInstByProperty(inst);
 	}
 	

@@ -1,6 +1,6 @@
 package com.budgetms.pojo;
 
-public class TypeInfo {
+public class TypeInfo extends BasePOJO{
 	private int typeId;
 	private String typeName;
 	private String typeCategory;
