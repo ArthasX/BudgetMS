@@ -13,5 +13,6 @@ public interface IInstService {
 
 	int updateInst(Instruction inst);
 
+	int deleteInst(String instId);
 	Instruction getInstById(String getInstById);
 }

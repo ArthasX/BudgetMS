@@ -8,7 +8,7 @@ public class Invoice extends BasePOJO{
 	private double invoAmt;
 	private String invoCompany;
 	private Date transDate;
-	private int isTransfered;
+	private int transfered;
 	private Date optDate;
 	private int optUser;
 	private String remark;
@@ -44,11 +44,12 @@ public class Invoice extends BasePOJO{
 	public void setTransDate(Date transDate) {
 		this.transDate = transDate;
 	}
-	public int getIsTransfered() {
-		return isTransfered;
+ 
+	public int getTransfered() {
+		return transfered;
 	}
-	public void setIsTransfered(int isTransfered) {
-		this.isTransfered = isTransfered;
+	public void setTransfered(int transfered) {
+		this.transfered = transfered;
 	}
 	public Date getOptDate() {
 		return optDate;

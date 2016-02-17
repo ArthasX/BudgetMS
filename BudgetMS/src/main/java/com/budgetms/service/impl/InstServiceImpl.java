@@ -1,6 +1,5 @@
 package com.budgetms.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,7 +12,7 @@ import com.budgetms.service.IInstService;
 @Service("instService")
 public class InstServiceImpl implements IInstService {
 	@Resource
-	private IInstructionDao instdao;
+	private IInstructionDao instDao;
 
 	@Override
 	public Instruction getInstById(String getInstById) {
@@ -23,18 +22,23 @@ public class InstServiceImpl implements IInstService {
 
 	@Override
 	public int insertInst(Instruction inst) {
-		return  instdao.insertInst(inst);
+		return  instDao.insertInst(inst);
 		
 	}
 
 	@Override
 	public int updateInst(Instruction inst) {
-		return instdao.updateInst(inst);
+		return instDao.updateInst(inst);
 	}
 
 	@Override
 	public List<Instruction> getInstByProperty(Instruction inst) {
-		return instdao.getInstByProperty(inst);
+		return instDao.getInstByProperty(inst);
+	}
+
+	@Override
+	public int deleteInst(String instId) {
+		return instDao.deleteInst(instId);
 	}
 	
 	 

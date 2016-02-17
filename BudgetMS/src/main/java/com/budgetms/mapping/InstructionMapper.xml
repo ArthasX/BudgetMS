@@ -111,34 +111,34 @@
 		update instruction
 		<set>
 			<if test="instTitle !=null and instTitle !='' ">
-				#{instTitle},
+				inst_title=#{instTitle},
 			</if>
 			<if test="instContent !=null and instContent !='' ">
-				#{instContent},
+				inst_content=#{instContent},
 			</if>
 			<if test="instType !=null and instType !='' ">
-				#{instType},
+				inst_type=#{instType},
 			</if>
 			<if test="applyDept !=null and applyDept !='' ">
-				#{applyDept},
+				apply_dept=#{applyDept},
 			</if>
 			<if test="instAmt !=null and instAmt !='' ">
-				#{instAmt},
+				inst_amt=#{instAmt},
 			</if>
 			<if test="softAmt !=null and softAmt !='' ">
-				#{softAmt},
-			</if>
-			<if test="softAmt !=null and softAmt !='' ">
-				#{softAmt},
+				soft_amt=#{softAmt},
 			</if>
 			<if test="hardAmt !=null and hardAmt !='' ">
-				#{hardAmt},
+				hard_amt=#{hardAmt},
 			</if>
 			<if test="applyUser !=null and applyUser !='' ">
-				#{applyUser},
+				apply_user=#{applyUser},
 			</if>
 			<if test="applyUserName !=null and applyUserName !='' ">
-				#{applyUserName},
+				apply_user_name=#{applyUserName},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark=#{remark},
 			</if>
 		</set>
 		where inst_id=#{instId}

@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = { "classpath:spring-mybatis.xml" })
 public abstract class AbsTest implements BaseTest {
 	@Test
-	public void doTest(){
+	public void doTest() throws Exception{
 		test();
 	};
 }

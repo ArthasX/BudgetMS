@@ -4,5 +4,8 @@
     <!-- 别名 -->
     <typeAliases>
         <typeAlias type="com.budgetms.pojo.Instruction" alias="inst"/>
+        <typeAlias type="com.budgetms.pojo.Contract" alias="cont"/>
+        <typeAlias type="com.budgetms.pojo.Invoice" alias="invo"/>
+        
     </typeAliases>
 </configuration>

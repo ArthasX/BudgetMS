@@ -28,7 +28,7 @@ public interface BaseTest {
 	// userService = (IUserService) ac.getBean("userService");
 	// }
 
-	public void test();
+	public void test()throws Exception;
 
 	
 }

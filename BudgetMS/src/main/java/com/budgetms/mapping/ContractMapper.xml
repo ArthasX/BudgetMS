@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IContractDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.Contract">
+		<id column="cont_Id" property="contId" jdbcType="VARCHAR" />
+		<result column="inst_divide_Id" property="instDivideId" jdbcType="VARCHAR" />
+		<result column="cont_name" property="contName" jdbcType="VARCHAR" />
+		<result column="cont_amt" property="contAmt" jdbcType="DECIMAL" />
+		<result column="cont_type" property="contType" jdbcType="INTEGER" />
+		<result column="signed_date" property="signedDate" jdbcType="DATE" />
+		<result column="signed_person" property="signedPerson" jdbcType="VARCHAR" />
+ 
+		<result column="opt_date" property="optDate" jdbcType="DATE" />
+		<result column="opt_user" property="optUser" jdbcType="INTEGER" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+ 
+	<select id="getContByProperty" resultMap="BaseResultMap" resultType="java.util.HashMap"
+		parameterType="cont" >
+		select * from contract
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="contId !=null and contId !=''">
+					cont_Id like '%${contId}%'
+				</when>
+				<otherwise>
+					<trim prefix="(" suffix=")" suffixOverrides=",">
+						<if test="contName !=null and contName !='' ">
+							cont_name like '%${contName}%',
+						</if>
+						<if test="contType !=null and contType !='' ">
+							cont_type like '%${contType}%',
+						</if>
+						<if test="contAmt !=null and contAmt !='' ">
+							cont_amt like '%${contAmt}%',
+						</if>
+					</trim>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<delete id="deleteCont" parameterType="java.lang.String"> delete from contract
+		where
+		cont_Id=#{contId}
+	</delete>
+
+	<insert id="insertCont" parameterType="cont">
+		insert into contract
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			cont_id,inst_divide_Id, cont_name ,cont_amt,cont_type,opt_date,opt_user,
+			<if test="signedDate !=null and signedDate !='' ">
+				signed_date,
+			</if>
+			<if test="signedPerson !=null and signedPerson !='' ">
+				signed_person,
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			#{contId},#{instDivideId},#{contName},#{contAmt},#{contType},#{optDate},#{optUser},
+			<if test="signedDate !=null and signedDate !='' ">
+				#{signedDate},
+			</if>
+			<if test="signedPerson !=null and signedPerson !='' ">
+				#{signedPerson},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				#{remark},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateCont" parameterType="cont">
+		update contract
+		<set>
+			<if test="contTitle !=null and contTitle !='' ">
+				cont_title=#{contTitle},
+			</if>
+			<if test="contContent !=null and contContent !='' ">
+				cont_content=#{contContent},
+			</if>
+			<if test="contType !=null and contType !='' ">
+				cont_type=#{contType},
+			</if>
+			<if test="contAmt !=null and contAmt !='' ">
+				cont_amt=#{contAmt},
+			</if>
+			<if test="signedDate !=null and signedDate !='' ">
+				signed_date=#{signedDate},
+			</if>
+			<if test="signedPerson !=null and signedPerson !='' ">
+				signed_person#{signedPerson},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark=#{remark},
+			</if>
+		</set>
+		where cont_id=#{contId}
+	</update>
+
+</mapper>  
