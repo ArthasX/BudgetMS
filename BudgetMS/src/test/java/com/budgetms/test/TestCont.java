@@ -11,13 +11,14 @@ import com.budgetms.service.IContService;
 
 public class TestCont extends AbsTest {
 	@Resource
-	private IContService iContService=null;
+	private IContService iContService = null;
+
 	@Override
-	public void test() throws Exception{
+	public void test() throws Exception {
 		t1();
 	}
-	
-	public void t1() throws Exception{
+
+	public void t1() throws Exception {
 		Contract cont = new Contract();
 		cont.setContId("HTBH201602170001");
 		cont.setInstDivideId(1);
@@ -28,10 +29,9 @@ public class TestCont extends AbsTest {
 		cont.setContType(1);
 		cont.setSignedDate(Date.valueOf("2016-01-01"));
 		cont.setSignedPerson("张三");
-		 
-		//iContService.insertCont(cont);
-		 
-		 
+
+		// iContService.insertCont(cont);
+
 		List<Contract> l = iContService.getContByProperty(cont);
 		logger.info(JSON.toJSONString(l));
 	}

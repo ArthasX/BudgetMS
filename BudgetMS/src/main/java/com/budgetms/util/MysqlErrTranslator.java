@@ -1,5 +1,7 @@
 package com.budgetms.util;
 
+import com.alibaba.fastjson.util.Base64;
+
 /***
  * 1005：创建表失败 1006：创建数据库失败 1007：数据库已存在，创建数据库失败 1008：数据库不存在，删除数据库失败
  * 1009：不能删除数据库文件导致删除数据库失败 1010：不能删除数据目录导致删除数据库失败 1011：删除数据库文件失败
@@ -171,9 +173,12 @@ public class MysqlErrTranslator {
 	}
 
 	public static void main(String[] args) {
-		for (int i = 0; i < errormap.length; i++) {
-			System.out.println(errormap[i].getErrorNo() + "："
-					+ errormap[i].getErrorDesc());
-		}
+//		for (int i = 0; i < errormap.length; i++) {
+//			System.out.println(errormap[i].getErrorNo() + "："
+//					+ errormap[i].getErrorDesc());
+//		}
+		
+		String s="SDnFeA83KA25c1JgQxIgiORkg3UdBWgRZoEhCBJI1vTdtkzV4qhXIw/SDn4c";
+ 
 	}
 }
