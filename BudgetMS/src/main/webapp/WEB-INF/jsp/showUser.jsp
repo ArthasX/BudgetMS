@@ -6,6 +6,4 @@
   </head>
   
   <body>
-    ${user.getName()}
-  </body>
-</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
