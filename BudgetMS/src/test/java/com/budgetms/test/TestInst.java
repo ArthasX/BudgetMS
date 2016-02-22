@@ -16,7 +16,7 @@ public class TestInst extends AbsTest {
 
 	@Override
 	public void test() {
-		t1();
+		t2();
 	}
 
 	public void t() {
@@ -37,13 +37,18 @@ public class TestInst extends AbsTest {
 		Instruction inst = new Instruction();
 		inst.setInstTitle("测试");
 		List<Instruction> l = instService.getInstByProperty(inst);
-		
+
 		logger.info(JSON.toJSONString(l));
-		JSON json=(JSON) JSON.toJSON(l.get(0));
-		Instruction i=JSON.toJavaObject(json,Instruction.class);
+		JSON json = (JSON) JSON.toJSON(l.get(0));
+		Instruction i = JSON.toJavaObject(json, Instruction.class);
 		logger.info(JSON.toJSONString(l.get(0)));
 		logger.info(i.toString());
-		
+
+	}
+
+	public void t2() {
+		List<Instruction> l = instService.getAllInst();
+		logger.info(JSON.toJSONString(l));
 	}
 
 }

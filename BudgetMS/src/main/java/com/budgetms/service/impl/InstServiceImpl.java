@@ -40,6 +40,13 @@ public class InstServiceImpl implements IInstService {
 	public int deleteInst(String instId) {
 		return instDao.deleteInst(instId);
 	}
+
+	@Override
+	public List<Instruction> getAllInst() {
+		Instruction inst = new Instruction();
+		//传入一个空的inst对象   根据mapping里面的配置  相当于select * from instruction ...
+		return instDao.getInstByProperty(inst);
+	}
 	
 	 
 }

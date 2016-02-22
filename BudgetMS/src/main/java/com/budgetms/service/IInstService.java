@@ -8,7 +8,7 @@ import com.budgetms.pojo.Instruction;
 public interface IInstService {
 	List<Instruction> getInstByProperty(Instruction inst);
 	
- 
+	List<Instruction> getAllInst();
 	int insertInst(Instruction inst);
 
 	int updateInst(Instruction inst);
