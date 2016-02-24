@@ -47,7 +47,7 @@ public class TestInst extends AbsTest {
 	}
 
 	public void t2() {
-		List<Instruction> l = instService.getAllInst();
+		List<Instruction> l = instService.getInstByMap("0","25");
 		logger.info(JSON.toJSONString(l));
 	}
 

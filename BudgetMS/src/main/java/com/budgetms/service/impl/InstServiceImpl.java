@@ -1,6 +1,8 @@
 package com.budgetms.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.budgetms.dao.IInstructionDao;
 import com.budgetms.pojo.Instruction;
 import com.budgetms.service.IInstService;
+
 @Service("instService")
 public class InstServiceImpl implements IInstService {
 	@Resource
@@ -16,14 +19,14 @@ public class InstServiceImpl implements IInstService {
 
 	@Override
 	public Instruction getInstById(String getInstById) {
-		//Instruction inst = instdao.getInstById("QSBH201602150001");
+		// Instruction inst = instdao.getInstById("QSBH201602150001");
 		return null;
 	}
 
 	@Override
 	public int insertInst(Instruction inst) {
-		return  instDao.insertInst(inst);
-		
+		return instDao.insertInst(inst);
+
 	}
 
 	@Override
@@ -42,11 +45,23 @@ public class InstServiceImpl implements IInstService {
 	}
 
 	@Override
+	public List<Instruction> getInstByMap(String start, String limit) {
+		Instruction inst = new Instruction();
+		inst.setInstId("QSBH201602150001");
+
+		Map map = new HashMap();
+		map.put("isnt", inst);
+		map.put("start", start);
+		map.put("limit", limit);
+
+		return instDao.getInstByMap(map);
+	}
+
+	@Override
 	public List<Instruction> getAllInst() {
 		Instruction inst = new Instruction();
-		//传入一个空的inst对象   根据mapping里面的配置  相当于select * from instruction ...
+		// 传入一个空的inst对象 根据mapping里面的配置 相当于select * from instruction ...
 		return instDao.getInstByProperty(inst);
 	}
-	
-	 
+
 }

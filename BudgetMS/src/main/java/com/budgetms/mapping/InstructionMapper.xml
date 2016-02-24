@@ -56,6 +56,7 @@
 				</otherwise>
 			</choose>
 		</trim>
+		 
 	</select>
 
 	<delete id="deleteInst" parameterType="java.lang.String"> delete from instruction
@@ -84,7 +85,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			#{instId},#{instTitle},#{instContent},#{instType},#{applyDept},#{instAmt},
+			#{instId},#{instTitle},#{instContent},#{instType},#{applyDept},#{instAmt},sysdate(),#{optUser},
 			<if test="softAmt !=null and softAmt !='' ">
 				#{softAmt},
 			</if>
@@ -97,9 +98,6 @@
 			<if test="applyUserName !=null and applyUserName !='' ">
 				#{applyUserName},
 			</if>
-
-			#{optDate},#{optUser},
-
 			<if test="remark !=null and remark!= '' ">
 				#{remark},
 			</if>
@@ -144,4 +142,33 @@
 		where inst_id=#{instId}
 	</update>
 
+<select id="getInstByMap" resultMap="BaseResultMap" resultType="java.util.HashMap"
+		  >
+		select * from instruction 
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="instId !=null and instId !=''">
+					inst_Id like '%${instId}%'
+				</when>
+				<otherwise>
+					<trim prefix="(" suffix=")" suffixOverrides=",">
+						<if test="instTitle !=null and instTitle !='' ">
+							inst_title like '%${instTitle}%',
+						</if>
+						<if test="instContent !=null and instContent !='' ">
+							inst_content like '%${instContent}%',
+						</if>
+						<if test="instType !=null and instType !='' ">
+							inst_type like '%${instType}%',
+						</if>
+						<if test="instAmt !=null and instAmt !='' ">
+							inst_amt like '%${instAmt}%',
+						</if>
+					</trim>
+				</otherwise>
+			</choose>
+		</trim>
+		limit #{start},#{limit} order by inst_id desc
+	</select>
+	
 </mapper>  

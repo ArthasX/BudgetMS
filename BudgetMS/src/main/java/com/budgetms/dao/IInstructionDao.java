@@ -1,6 +1,7 @@
 package com.budgetms.dao;
  
 import java.util.List;
+import java.util.Map;
 
 import com.budgetms.pojo.Instruction;
 
@@ -13,4 +14,6 @@ public interface IInstructionDao {
 
 	int deleteInst(String instId);
 	List<Instruction> getInstByProperty(Instruction inst);
+	List<Instruction> getInstByMap(Map paraMap);
+	 
 }
