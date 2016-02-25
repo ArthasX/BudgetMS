@@ -10,6 +10,7 @@
 		<result column="inst_title" property="instTitle" jdbcType="VARCHAR" />
 		<result column="inst_content" property="instContent" jdbcType="VARCHAR" />
 		<result column="inst_type" property="instType" jdbcType="INTEGER" />
+		<result column="inst_status" property="instStatus" jdbcType="VARCHAR" />
 		<result column="apply_dept" property="applyDept" jdbcType="VARCHAR" />
 		<result column="inst_amt" property="instAmt" jdbcType="DECIMAL" />
 		<result column="soft_amt" property="softAmt" jdbcType="DECIMAL" />
@@ -30,8 +31,8 @@
 		hard_amt,apply_user,apply_user_name,opt_date,opt_user,remark
 	</sql>
 
-	<select id="getInstByProperty" resultMap="BaseResultMap" resultType="java.util.HashMap"
-		parameterType="inst" >
+	<select id="getInstByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="inst">
 		select * from instruction
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
@@ -52,11 +53,14 @@
 						<if test="instAmt !=null and instAmt !='' ">
 							inst_amt like '%${instAmt}%',
 						</if>
+						<if test="instStatus !=null and instStatus !='' ">
+							inst_status like '%${instStatus}%',
+						</if>
 					</trim>
 				</otherwise>
 			</choose>
 		</trim>
-		 
+
 	</select>
 
 	<delete id="deleteInst" parameterType="java.lang.String"> delete from instruction
@@ -67,7 +71,7 @@
 	<insert id="insertInst" parameterType="inst">
 		insert into instruction
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			inst_id,inst_title,inst_content,inst_type,apply_dept,inst_amt,opt_date,opt_user,
+			inst_id,inst_title,inst_content,inst_type,apply_dept,inst_amt,opt_date,opt_user,inst_status
 			<if test="softAmt !=null and softAmt !='' ">
 				soft_amt,
 			</if>
@@ -85,7 +89,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			#{instId},#{instTitle},#{instContent},#{instType},#{applyDept},#{instAmt},sysdate(),#{optUser},
+			#{instId},#{instTitle},#{instContent},#{instType},#{applyDept},#{instAmt},sysdate(),#{optUser},#{instStatus}
 			<if test="softAmt !=null and softAmt !='' ">
 				#{softAmt},
 			</if>
@@ -117,6 +121,9 @@
 			<if test="instType !=null and instType !='' ">
 				inst_type=#{instType},
 			</if>
+			<if test="instStatus !=null and instStatus !='' ">
+				inst_status=#{instStatus},
+			</if>
 			<if test="applyDept !=null and applyDept !='' ">
 				apply_dept=#{applyDept},
 			</if>
@@ -142,9 +149,8 @@
 		where inst_id=#{instId}
 	</update>
 
-<select id="getInstByMap" resultMap="BaseResultMap" resultType="java.util.HashMap"
-		  >
-		select * from instruction 
+	<select id="getInstByMap" resultMap="BaseResultMap" resultType="java.util.HashMap">
+		select * from instruction
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
 				<when test="instId !=null and instId !=''">
@@ -170,5 +176,5 @@
 		</trim>
 		limit #{start},#{limit} order by inst_id desc
 	</select>
-	
+
 </mapper>  

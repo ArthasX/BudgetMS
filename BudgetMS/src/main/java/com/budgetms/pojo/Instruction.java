@@ -7,6 +7,7 @@ public class Instruction extends BasePOJO {
 	private String instTitle;
 	private String instContent;
 	private int instType;
+	private String instStatus;
 	private int applyDept;
 	private double instAmt;
 	private double softAmt;
@@ -119,6 +120,14 @@ public class Instruction extends BasePOJO {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public String getInstStatus() {
+		return instStatus;
+	}
+
+	public void setInstStatus(String instStatus) {
+		this.instStatus = instStatus;
 	}
 
 }

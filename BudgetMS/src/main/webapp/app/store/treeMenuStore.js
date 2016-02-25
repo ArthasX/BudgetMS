@@ -3,9 +3,11 @@ Ext.define('BudgetMS.store.treeMenuStore', {
 	root : {
 		expanded : true,
 		children : [ {
+			id:'budgetList',
 			text : "预算项目",
 			leaf : true
 		}, {
+			id:'instList',
 			text : "请示",
 			expanded : true,
 			children : [ {
@@ -14,12 +16,14 @@ Ext.define('BudgetMS.store.treeMenuStore', {
 			}, {
 				text : "测试2",
 				leaf : true
-			} ]
+			} ]	
 		}, {
+			id:'contList',
 			text : "合同",
 			leaf : true
 		},
 		{
+			id:'invoList',
 			text : "发票",
 			leaf : true
 		}]

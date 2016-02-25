@@ -14,9 +14,10 @@ Ext.define('BudgetMS.view.inst.add', {
 			text : '取消',
 			scope : this,
 			handler : this.close
-		} ]
-
+		} ];
+		
 		this.callParent(arguments);
+		this.down('form').getForm().findField('instId').setValue(genInstId());
 	}
 });
 
@@ -26,8 +27,7 @@ var instAddItems = [ {
 	items : [ {
 		xtype : 'textfield',
 		name : 'instId',
-		fieldLabel : '请示编号',
-		value:genInstId()
+		fieldLabel : '请示编号'
 	}, {
 		xtype : 'textfield',
 		name : 'instTitle',

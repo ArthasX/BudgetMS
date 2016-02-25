@@ -11,6 +11,9 @@ var instFields=[ {
 	name : 'instType',
 	type : 'int'
 }, {
+	name : 'instStatus',
+	type : 'auto'
+},{
 	name : 'applyDept',
 	type : 'int'
 }, {

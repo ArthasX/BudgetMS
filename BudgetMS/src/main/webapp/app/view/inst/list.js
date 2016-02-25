@@ -22,6 +22,9 @@ var instColum = [ {
 	header : '请示类型',
 	dataIndex : 'instType'
 }, {
+	header : '请示状态',
+	dataIndex : 'instStatus'
+}, {
 	header : '申请部门',
 	dataIndex : 'applyDept'
 
@@ -60,6 +63,40 @@ var instColum = [ {
 }, {
 
 } ];
+
+Ext.define('BudgetMS.view.inst.list', {
+	extend : 'Ext.grid.Panel',
+	alias : 'widget.instList',
+	id : 'instList',
+	store : 'instStore',
+	border : false,
+	//frame : true,// 渲染
+	enableKeyNav : true,// 键盘控制
+	columnLines : true,// 竖线
+	tbar : {
+		layout : {
+			type : 'hbox',
+			align : 'stretch'
+		},
+		items : [ {
+			xtype : 'instMainForm'
+		} ]
+	},
+	dockedItems : [ {
+		xtype : 'pagingtoolbar',
+		store : 'instStore', // same store GridPanel is using
+		dock : 'bottom',
+		displayInfo : true
+	} ],
+	initComponent : function() {
+
+		this.columns = instColum;
+
+		this.callParent(arguments);
+		// this.bbar = pagingToolbar;
+	}
+
+});
 
 /**
  * 分页工具栏
@@ -103,39 +140,4 @@ var instColum = [ {
 // this.callParent();
 // }
 // });
-Ext.define('BudgetMS.view.inst.list', {
-	extend : 'Ext.grid.Panel',
-	alias : 'widget.instList',
-	store : 'instStore',
-	title : 'All instrctions',
-	frame : true,// 渲染
-	enableKeyNav : true,// 键盘控制
-	columnLines : true,// 竖线
-	tbar : [ {
-		xtype : 'button',
-		text : '添加',
-		id : 'showAddInst' // ,iconCls:'table_add'
-	}, {
-		xtype : 'button',
-		text : '修改',
-		id : 'showUpdateInst'
-	}, {
-		xtype : 'button',
-		text : '刪除',
-		id : 'deletInst'
-	} ],
-	dockedItems : [ {
-		xtype : 'pagingtoolbar',
-		store : 'instStore', // same store GridPanel is using
-		dock : 'bottom',
-		displayInfo : true
-	} ],
-	initComponent : function() {
-
-		this.columns = instColum;
-
-		this.callParent(arguments);
-		// this.bbar = pagingToolbar;
-	}
-
-});
+//

@@ -17,7 +17,8 @@ Ext.define('BudgetMS.store.instStore', {
 		reader : {
 			type : 'json'
 		// root : 'root'
-		}
+		},
+		extraParams:[]//在controller中添加事件，然后按照
 	},
 	autoLoad : {
 		start : 0,

@@ -60,6 +60,22 @@ var instEditItems = [ {
 		}
 	}, {
 		xtype : 'combo',
+		name : 'instStatus',
+		fieldLabel : '请示状态',
+		valueField : 'typeId',
+		displayField : 'typeName',
+		store : {
+			fields : [ 'typeId', 'typeName' ],
+			data : [ {
+				"typeId" : "在途",
+				"typeName" : "在途"
+			}, {
+				"typeId" : "审批结束",
+				"typeName" : "审批结束"
+			} ]
+		}
+	}, {
+		xtype : 'combo',
 		name : 'applyDept',
 		fieldLabel : '申请部门',
 		valueField : 'deptId',
