@@ -1,5 +1,8 @@
 package com.budgetms.util;
 
+import java.sql.SQLException;
+
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.util.Base64;
 
 /***
@@ -38,7 +41,7 @@ public class MysqlErrTranslator {
 			return szErrorDesc;
 		}
 	}
- 
+
 	public static final int DB_ER_CANT_CREATE_TABLE = 1005; // 创建表失败
 	public static final int DB_ER_CANT_CREATE_DB = 1006; // 创建数据库失败
 	public static final int DB_ER_DB_CREATE_EXISTS = 1007; // 数据库已存在，创建数据库失败
@@ -163,22 +166,49 @@ public class MysqlErrTranslator {
 			new MyError(DB_ER_SPECIFIC_ACCESS_DENIED_ERROR, "权限不足，您无权进行此操作"),
 			new MyError(DB_ER_NOT_SUPPORTED_YET, "MySQL版本过低，不具有本功能"), };
 
+	public static int getErrno(Exception e) {
+		SQLException sqle = (SQLException) e.getCause();
+		return sqle.getErrorCode();
+	}
+
 	public static String getErrorInfo(int errno) {
+		return getError(errno).getErrorDesc();
+	}
+
+	public static MyError getError(int errno) {
 		for (int i = 0; i < errormap.length; i++) {
 			if (errno == errormap[i].getErrorNo()) {
-				return errormap[i].getErrorDesc();
+				return errormap[i];
 			}
 		}
-		return "";
+		return new MyError(errno, errno + "对应的错误信息未定义");
+	}
+
+	public static MyError getError(Exception e){
+		return getError(getErrno(e));
+	}
+	public static JSON getJsonErrorInfo(int errno) {
+		MyError err = getError(errno);
+		return (JSON) JSON.toJSON(err);
+	}
+
+	public static JSON getJsonErrorInfo(Exception e) {
+		return getJsonErrorInfo(getErrno(e));
+	}
+
+	public static JSON getJsonErrorMsg(Exception e) {
+		MyError err = getError(e);
+		Msg msg = new Msg(err);
+		return null;
 	}
 
 	public static void main(String[] args) {
-//		for (int i = 0; i < errormap.length; i++) {
-//			System.out.println(errormap[i].getErrorNo() + "："
-//					+ errormap[i].getErrorDesc());
-//		}
-		
-		String s="SDnFeA83KA25c1JgQxIgiORkg3UdBWgRZoEhCBJI1vTdtkzV4qhXIw/SDn4c";
- 
+		// for (int i = 0; i < errormap.length; i++) {
+		// System.out.println(errormap[i].getErrorNo() + "："
+		// + errormap[i].getErrorDesc());
+		// }
+
+		String s = "SDnFeA83KA25c1JgQxIgiORkg3UdBWgRZoEhCBJI1vTdtkzV4qhXIw/SDn4c";
+
 	}
 }

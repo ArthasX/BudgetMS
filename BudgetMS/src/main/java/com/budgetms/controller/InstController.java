@@ -3,10 +3,12 @@ package com.budgetms.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,10 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.budgetms.pojo.Instruction;
 import com.budgetms.service.IInstService;
+import com.budgetms.util.MysqlErrTranslator;
 
 @Controller
 @RequestMapping("/inst")
-public class InstController {
+public class InstController extends BaseController {
 	@Resource
 	private IInstService instService;
 
@@ -62,7 +65,7 @@ public class InstController {
 	public Object getAllInst(HttpServletRequest request) {
 		String start = request.getParameter("start");
 		String limit = request.getParameter("limit");
-		//Map
+		// Map
 		List<Instruction> l = instService.getAllInst();
 		String s = JSON.toJSONString(l);
 		return JSON.toJSON(l);
@@ -70,14 +73,40 @@ public class InstController {
 
 	@RequestMapping("/updateInst.do")
 	@ResponseBody
-	public int updateInst(HttpServletRequest request) {
-		return 0;
+	public Object updateInst(HttpServletRequest request) {
+		JSON json=(JSON) JSON.toJSON(request.getParameter("obj"));
+		Instruction inst = (Instruction)JSON.toJavaObject(json,Instruction.class);
+		try{
+			instService.updateInst(inst);
+		}catch(Exception e){
+			return MysqlErrTranslator.getJsonErrorInfo(e);
+		}
+		return SUCCESS;
 	}
 
 	@RequestMapping("/insertInst.do")
 	@ResponseBody
-	public int insertInst(HttpServletRequest request) {
-		return 0;
+	public Object insertInst(HttpServletRequest request) {
+		JSON json=(JSON) JSON.toJSON(request.getParameter("obj"));
+		Instruction inst = (Instruction)JSON.toJavaObject(json,Instruction.class);
+		try{
+			instService.insertInst(inst);
+		}catch(Exception e){
+			return MysqlErrTranslator.getJsonErrorInfo(e);
+		}
+		return SUCCESS;
 	}
 
+	@RequestMapping("/deleteInst.do")
+	@ResponseBody
+	public Object deleteInst(HttpServletRequest request) {
+		String instId = request.getParameter("id");
+		//instId = null;
+		try {
+			instService.deleteInst(instId);
+		} catch (DataAccessException e) {
+			return MysqlErrTranslator.getJsonErrorInfo(e);
+		}
+		return SUCCESS;
+	}
 }

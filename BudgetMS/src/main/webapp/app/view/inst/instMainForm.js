@@ -26,17 +26,17 @@ Ext.define('BudgetMS.view.inst.instMainForm', {
 		}, {
 			xtype : 'button',
 			text : '添加',
-			id : 'showAddInst'
+			name : 'showAddInst'
 		
 		}, {
 			xtype : 'button',
 			text : '修改',
-			id : 'showUpdateInst'
+			name : 'showUpdateInst'
 			
 		}, {
 			xtype : 'button',
 			text : '刪除',
-			id : 'deleteInst'
+			name : 'deleteInst'
 			
 		} ]
 	}, {
