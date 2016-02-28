@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 
@@ -15,6 +16,7 @@ import com.budgetms.util.MysqlErrTranslator;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 public class TestInvo extends AbsTest {
+	 static Logger logger = Logger.getLogger(TestInvo.class);
 	@Resource
 	private IInvoService invoService = null;
 

@@ -21,7 +21,7 @@ Ext.define('BudgetMS.store.baseStore', {
 					obj : Ext.JSON.encode(form.getFieldValues())
 				};
 			} else {
-				params = {};
+				params = {obj:'{}'};
 			}
 			console.log("beforeload set params:");
 			console.log(params);

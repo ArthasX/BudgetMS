@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.codec.Decoder;
+import org.apache.commons.codec.DecoderException;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
@@ -47,24 +49,12 @@ public class InstController extends BaseController {
 		String json = request.getParameter("obj");
 		Instruction inst = JSON.toJavaObject(JSON.parseObject(json),
 				Instruction.class);
-		List<Instruction> l = instService.getInstByProperty(inst);
-		logger.info("json:" + JSON.toJSONString(l));
-		return JSON.toJSON(l);
-
+		int start = Integer.parseInt(request.getParameter("start"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		return instService.getInstByPage(inst, start, limit);
 	}
 
-	@RequestMapping("/findAllInst.do")
-	@ResponseBody
-	public Object getAllInst(HttpServletRequest request) {
-		String start = request.getParameter("start");
-		String limit = request.getParameter("limit");
-		// Map
-		List<Instruction> l = instService.getAllInst();
-		String json = JSON.toJSONString(l);
-		logger.info("json:" + json);
-		return JSON.toJSON(l);
-	}
-
+ 
 	@RequestMapping("/updateInst.do")
 	@ResponseBody
 	public Object updateInst(HttpServletRequest request) {
@@ -87,7 +77,7 @@ public class InstController extends BaseController {
 		logger.info("json:" + json);
 		Instruction inst = JSON.toJavaObject(JSON.parseObject(json),
 				Instruction.class);
-		//inst.setOptUser(1);
+		// inst.setOptUser(1);
 		try {
 			instService.insertInst(inst);
 		} catch (Exception e) {
@@ -100,8 +90,8 @@ public class InstController extends BaseController {
 	@ResponseBody
 	public Object deleteInst(HttpServletRequest request) {
 		String instId = request.getParameter("obj");
-		JSON json=JSON.parseObject(instId);
-		//json.
+		JSON json = JSON.parseObject(instId);
+		// json.
 		logger.info("id:" + instId);
 		try {
 			instService.deleteInst(instId);

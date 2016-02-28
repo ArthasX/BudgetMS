@@ -149,32 +149,61 @@
 		where inst_id=#{instId}
 	</update>
 
-	<select id="getInstByMap" resultMap="BaseResultMap" resultType="java.util.HashMap">
-		select * from instruction
+	<select id="getInstCount" resultType="int">
+		select count(*) from instruction
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
 				<when test="instId !=null and instId !=''">
 					inst_Id like '%${instId}%'
 				</when>
 				<otherwise>
-					<trim prefix="(" suffix=")" suffixOverrides=",">
-						<if test="instTitle !=null and instTitle !='' ">
-							inst_title like '%${instTitle}%',
-						</if>
-						<if test="instContent !=null and instContent !='' ">
-							inst_content like '%${instContent}%',
-						</if>
-						<if test="instType !=null and instType !='' ">
-							inst_type like '%${instType}%',
-						</if>
-						<if test="instAmt !=null and instAmt !='' ">
-							inst_amt like '%${instAmt}%',
-						</if>
-					</trim>
+					<if test="instTitle !=null and instTitle !='' ">
+						and inst_title like '%${instTitle}%'
+					</if>
+					<if test="instContent !=null and instContent !='' ">
+						and inst_content like '%${instContent}%'
+					</if>
+					<if test="instType !=null and instType !='' ">
+						and inst_type like '%${instType}%'
+					</if>
+					<if test="instAmt !=null and instAmt !='' ">
+						and inst_amt like '%${instAmt}%'
+					</if>
+					<if test="instStatus !=null and instStatus !='' ">
+						and inst_status like '%${instStatus}%'
+					</if>
 				</otherwise>
 			</choose>
 		</trim>
-		limit #{start},#{limit} order by inst_id desc
 	</select>
 
+
+	<select id="getInstByPage" resultMap="BaseResultMap" resultType="java.util.HashMap">
+		select * from instruction
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.instId !=null and param1.instId !=''">
+					inst_Id like '%${param1.instId}%'
+				</when>
+				<otherwise>
+					<if test="param1.instTitle !=null and param1.instTitle !='' ">
+						and inst_title like '%${param1.instTitle}%'
+					</if>
+					<if test="param1.instContent !=null and param1.instContent !='' ">
+						and inst_content like '%${param1.instContent}%'
+					</if>
+					<if test="param1.instType !=null and param1.instType !='' ">
+						and inst_type like '%${param1.instType}%'
+					</if>
+					<if test="param1.instAmt !=null and param1.instAmt !='' ">
+						and inst_amt like '%${param1.instAmt}%'
+					</if>
+					<if test="param1.instStatus !=null and param1.instStatus !='' ">
+						and inst_status like '%${param1.instStatus}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by inst_id desc limit #{param2},#{param3}
+	</select>
 </mapper>  

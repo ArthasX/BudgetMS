@@ -5,38 +5,27 @@ Ext.define('BudgetMS.view.cont.baseContWin', {
 	autoShow : true,
 	initComponent : function() {
 		this.items = contFormItems;
-//		this.buttons = [ {
-//			text : '增加',
-//			name : 'insertCont',
-//			action:'cont/insertCont.do'
-//			}
-//		, {
-//			text : '取消',
-//			scope : this,
-//			handler : this.close
-//		} ];
-//		
-		this.callParent(arguments);
+ 		this.callParent(arguments);
 		this.down('form').getForm().findField('contId').setValue(genContId());
 	}
 });
 
 
-var instFormItems = [ {
+var contFormItems = [ {
 	xtype : 'form',
 	layout : 'auto',
 	items : [ {
 		xtype : 'textfield',
-		name : 'instId',
+		name : 'contId',
 		fieldLabel : '合同编号',
 		 readOnly : true
 	}, {
 		xtype : 'textfield',
-		name : 'instTitle',
+		name : 'contTitle',
 		fieldLabel : '合同名称'
 	},{
 		xtype : 'combo',
-		name : 'instType',
+		name : 'contType',
 		fieldLabel : '合同类型',
 		valueField : 'typeId',
 		displayField : 'typeName',

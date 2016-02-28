@@ -6,22 +6,21 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.budgetms.dao.IInstructionDao;
+import com.budgetms.pojo.Attachment;
 import com.budgetms.pojo.Instruction;
 import com.budgetms.service.IInstService;
 
 @Service("instService")
 public class InstServiceImpl implements IInstService {
+	static Logger logger = Logger.getLogger(InstServiceImpl.class);
 	@Resource
 	private IInstructionDao instDao;
-
-	@Override
-	public Instruction getInstById(String getInstById) {
-		// Instruction inst = instdao.getInstById("QSBH201602150001");
-		return null;
-	}
+ 
 
 	@Override
 	public int insertInst(Instruction inst) {
@@ -45,23 +44,25 @@ public class InstServiceImpl implements IInstService {
 	}
 
 	@Override
-	public List<Instruction> getInstByMap(String start, String limit) {
-		Instruction inst = new Instruction();
-		inst.setInstId("QSBH201602150001");
-
-		Map map = new HashMap();
-		map.put("isnt", inst);
-		map.put("start", start);
-		map.put("limit", limit);
-
-		return instDao.getInstByMap(map);
+	public  Object getInstByPage(Instruction inst,int start, int limit) {
+		List<Instruction> l = instDao.getInstByPage(inst, start, limit);
+		int total = instDao.getInstCount(inst);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("record", l);
+		map.put("total", total);
+		logger.info("json:" + JSON.toJSONString(map));
+		return JSON.toJSON(map);
 	}
 
 	@Override
-	public List<Instruction> getAllInst() {
-		Instruction inst = new Instruction();
-		// 传入一个空的inst对象 根据mapping里面的配置 相当于select * from instruction ...
-		return instDao.getInstByProperty(inst);
+	public int getInstCount(Instruction inst) {
+		return instDao.getInstCount(inst);
+	}
+
+	@Override
+	public List<Attachment> getAttachById(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

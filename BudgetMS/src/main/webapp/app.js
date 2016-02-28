@@ -38,7 +38,7 @@ Ext.application({
 	requires : [ 'Ext.container.Viewport','BudgetMS.util.crudTools' ],
 	name : 'BudgetMS',
 	appFolder : 'app',
-	controllers : [ 'instCtrl', 'treeCtrl' ],
+	controllers : [ 'instCtrl', 'treeCtrl' ,'contCtrl','invoCtrl'],
 	launch : function() {
 		var s = Ext.create('Ext.container.Viewport', {
 			layout : 'border',

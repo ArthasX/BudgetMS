@@ -33,4 +33,16 @@ public class InvoiceServiceImpl implements IInvoService {
 		return invoDao.insertInvo(invo);
 	}
 
+	@Override
+	public List<Invoice> getInvoByPage(Invoice invo, int start, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getInvoCount(Invoice invo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

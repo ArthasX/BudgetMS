@@ -61,14 +61,17 @@ Ext.define('BudgetMS.view.inst.instTbarForm', {
 			valueField : 'typeId',
 			displayField : 'typeName',
 			emptyText : "请选择...",
-			//value:0,
+			allowBlank:true,
 			store : {
 				fields : [ 'typeId', 'typeName' ],
-				data : [ {
-					"typeId" : "1",
+				data : [{
+					"typeId" : "",
+					"typeName" : "请选择..."
+				},{
+					"typeId" : "0",
 					"typeName" : "一般请示"
 				}, {
-					"typeId" : "2",
+					"typeId" : "1",
 					"typeName" : "IT服务申请表"
 				} ]
 			}

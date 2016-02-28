@@ -1,26 +1,26 @@
-Ext.define("model.invo", {
+Ext.define("BudgetMS.model.invo", {
 	extend : "Ext.data.Model",
 	feilds : [ {
 		name : "invoId",
 		type : "auto"
 	}, {
 		name : 'contPaymentId',
-		type : 'int'
+		type : 'auto'
 	}, {
 		name : 'invoAmt',
-		type : 'float'
+		type : 'auto'
 	}, {
 		name : 'invoCompany',
 		type : 'auto'
 	}, {
 		name : 'transDate',
-		type : 'date'
+		type : 'auto'
 	}, {
 		name : 'transfered',
-		type : 'int',
+		type : 'auto',
 	}, {
 		name : 'optDate',
-		type : 'date'
+		type : 'auto'
 	}, {
 		name : 'optUser',
 		type : 'auto'

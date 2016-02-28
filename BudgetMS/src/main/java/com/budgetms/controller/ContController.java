@@ -1,6 +1,8 @@
 package com.budgetms.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -25,28 +27,16 @@ public class ContController extends BaseController {
 
 	@RequestMapping("/findContByProperty.do")
 	@ResponseBody
-	public Object findContByProperty(HttpServletRequest request) {
+	public Object findInstByProperty(HttpServletRequest request) {
 		String json = request.getParameter("obj");
 		Contract cont = JSON.toJavaObject(JSON.parseObject(json),
 				Contract.class);
-		List<Contract> l = contService.getContByProperty(cont);
-		logger.info("json:" + JSON.toJSONString(l));
-		return JSON.toJSON(l);
-
+		int start = Integer.parseInt(request.getParameter("start"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		return contService.getContByPage(cont, start, limit);
 	}
 
-	@RequestMapping("/findAllCont.do")
-	@ResponseBody
-	public Object getAllCont(HttpServletRequest request) {
-		String start = request.getParameter("start");
-		String limit = request.getParameter("limit");
-		// Map
-		List<Contract> l = contService.getAllCont();
-		String json = JSON.toJSONString(l);
-		logger.info("json:" + json);
-		return JSON.toJSON(l);
-	}
-
+ 
 	@RequestMapping("/updateCont.do")
 	@ResponseBody
 	public Object updateCont(HttpServletRequest request) {
@@ -72,7 +62,7 @@ public class ContController extends BaseController {
 		try {
 			contService.insertCont(cont);
 		} catch (Exception e) {
-			return MysqlErrTranslator.getJsonErrorInfo(e, logger);
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
 		return SUCCESS;
 	}
@@ -87,7 +77,7 @@ public class ContController extends BaseController {
 		try {
 			contService.deleteCont(contId);
 		} catch (DataAccessException e) {
-			return MysqlErrTranslator.getJsonErrorInfo(e, logger);
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
 		logger.info(SUCCESS);
 		return SUCCESS;

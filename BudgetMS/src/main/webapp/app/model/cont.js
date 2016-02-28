@@ -1,29 +1,29 @@
-Ext.define("model.cont", {
+Ext.define("BudgetMS.model.cont", {
 	extend : "Ext.data.Model",
 	feilds : [ {
 		name : "contId",
 		type : "auto"
 	}, {
 		name : 'instDivideId',
-		type : 'int'
+		type : 'auto'
 	}, {
 		name : 'contName',
 		type : 'auto'
 	}, {
 		name : 'contAmt',
-		type : 'float'
+		type : 'auto'
 	}, {
 		name : 'contType',
-		type : 'int'
+		type : 'auto'
 	}, {
 		name : 'signedDate',
-		type : 'date',
+		type : 'auto',
 	}, {
 		name : 'signedPerson',
 		type : 'auto'
 	}, {
 		name : 'optDate',
-		type : 'date'
+		type : 'auto'
 	}, {
 		name : 'optUser',
 		type : 'auto'

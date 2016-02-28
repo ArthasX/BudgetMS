@@ -9,25 +9,25 @@ var instFields=[ {
 	type : 'auto'
 }, {
 	name : 'instType',
-	type : 'int'
+	type : 'auto'
 }, {
 	name : 'instStatus',
 	type : 'auto'
 },{
 	name : 'applyDept',
-	type : 'int'
+	type : 'auto'
 }, {
 	name : 'instAmt',
-	type : 'float',
+	type : 'auto',
 }, {
 	name : 'softAmt',
-	type : 'float'
+	type : 'auto'
 }, {
 	name : 'hardAmt',
-	type : 'float'
+	type : 'auto'
 }, {
 	name : 'applyUser',
-	type : 'int'
+	type : 'auto'
 }, {
 	name : 'applyUserName',
 	type : 'auto'

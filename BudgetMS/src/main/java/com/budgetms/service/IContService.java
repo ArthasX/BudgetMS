@@ -13,6 +13,8 @@ public interface IContService {
 	int deleteCont(String contId);
 
 	int insertCont(Contract cont);
-	
-	List<Contract>getAllCont();
+		
+	Object getContByPage(Contract cont, int start, int limit);
+
+	int getContCount(Contract cont);
 }
