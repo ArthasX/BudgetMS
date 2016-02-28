@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.view.invo.addInvoWin', {
 	extend : 'BudgetMS.view.invo.baseInvoWin',
 	alias : 'widget.invoAdd',
-	title : '请示新增',
+	title : '发票新增',
 	layout : 'fit',
 	autoShow : true,
 	initComponent : function() {

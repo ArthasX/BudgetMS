@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.view.cont.addContWin', {
 	extend : 'BudgetMS.view.cont.baseContWin',
 	alias : 'widget.contAdd',
-	title : '请示新增',
+	title : '合同新增',
 	layout : 'fit',
 	autoShow : true,
 	initComponent : function() {
