@@ -1,4 +1,4 @@
-Ext.define('BudgetMS.view.menu.treeMenu', {
+Ext.define('BudgetMS.view.ux.treeMenu', {
 	extend : 'Ext.tree.Panel',
 	alias : 'widget.treeMenu',
 	store : 'treeMenuStore',

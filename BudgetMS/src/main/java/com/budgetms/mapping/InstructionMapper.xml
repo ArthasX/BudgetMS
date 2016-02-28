@@ -40,27 +40,27 @@
 					inst_Id like '%${instId}%'
 				</when>
 				<otherwise>
-					<trim prefix="(" suffix=")" suffixOverrides=",">
-						<if test="instTitle !=null and instTitle !='' ">
-							inst_title like '%${instTitle}%',
-						</if>
-						<if test="instContent !=null and instContent !='' ">
-							inst_content like '%${instContent}%',
-						</if>
-						<if test="instType !=null and instType !='' ">
-							inst_type like '%${instType}%',
-						</if>
-						<if test="instAmt !=null and instAmt !='' ">
-							inst_amt like '%${instAmt}%',
-						</if>
-						<if test="instStatus !=null and instStatus !='' ">
-							inst_status like '%${instStatus}%',
-						</if>
-					</trim>
+
+					<if test="instTitle !=null and instTitle !='' ">
+						and inst_title like '%${instTitle}%'
+					</if>
+					<if test="instContent !=null and instContent !='' ">
+						and inst_content like '%${instContent}%'
+					</if>
+					<if test="instType !=null and instType !='' ">
+						and inst_type like '%${instType}%'
+					</if>
+					<if test="instAmt !=null and instAmt !='' ">
+						and inst_amt like '%${instAmt}%'
+					</if>
+					<if test="instStatus !=null and instStatus !='' ">
+						and inst_status like '%${instStatus}%'
+					</if>
+
 				</otherwise>
 			</choose>
 		</trim>
-
+		order by inst_id desc
 	</select>
 
 	<delete id="deleteInst" parameterType="java.lang.String"> delete from instruction
@@ -71,7 +71,7 @@
 	<insert id="insertInst" parameterType="inst">
 		insert into instruction
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			inst_id,inst_title,inst_content,inst_type,apply_dept,inst_amt,opt_date,opt_user,inst_status
+			inst_id,inst_title,inst_content,inst_type,apply_dept,inst_amt,opt_date,opt_user,inst_status,
 			<if test="softAmt !=null and softAmt !='' ">
 				soft_amt,
 			</if>
@@ -89,7 +89,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			#{instId},#{instTitle},#{instContent},#{instType},#{applyDept},#{instAmt},sysdate(),#{optUser},#{instStatus}
+			#{instId},#{instTitle},#{instContent},#{instType},#{applyDept},#{instAmt},sysdate(),#{optUser},#{instStatus},
 			<if test="softAmt !=null and softAmt !='' ">
 				#{softAmt},
 			</if>

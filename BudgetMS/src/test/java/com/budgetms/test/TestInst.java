@@ -9,8 +9,27 @@ import javax.annotation.Resource;
 import com.alibaba.fastjson.JSON;
 import com.budgetms.pojo.Instruction;
 import com.budgetms.service.IInstService;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class TestInst extends AbsTest {
+
+	static class SetterExclusionStrategy implements ExclusionStrategy {
+
+		@Override
+		public boolean shouldSkipField(FieldAttributes f) {
+			return false;
+
+		}
+
+		@Override
+		public boolean shouldSkipClass(Class<?> clazz) {
+			return false;
+		}
+	}
+
 	@Resource
 	private IInstService instService = null;
 
@@ -22,14 +41,16 @@ public class TestInst extends AbsTest {
 	public void t() {
 		// TODO Auto-generated method stub
 		Instruction inst = new Instruction();
-		inst.setInstId("QSBH201602150001");
+		inst.setInstId("QSBH201602150097");
 		inst.setInstTitle("测试");
 		inst.setInstContent("123");
-		inst.setInstType(1);
-		inst.setInstAmt(15.55);
-		inst.setApplyDept(1);
-		inst.setOptDate(Date.valueOf("2016-02-15"));
-		inst.setOptUser(1);
+		inst.setInstStatus("在途");
+		inst.setSoftAmt("123");
+		inst.setInstType("1");
+		inst.setInstAmt("15.55");
+		inst.setApplyDept("1");
+		inst.setOptDate("2016-02-15");
+		inst.setOptUser("1");
 		instService.insertInst(inst);
 	}
 
@@ -47,8 +68,17 @@ public class TestInst extends AbsTest {
 	}
 
 	public void t2() {
-		List<Instruction> l = instService.getInstByMap("0","25");
-		logger.info(JSON.toJSONString(l));
+		// List<Instruction> l = instService.getInstByMap("0","25");
+		String json = "{'instId':null,'instAmt':'0'}";
+		String json1 = "{'instType':'1','instAmt':'123'}";
+		Gson g = new Gson();
+		Gson g1 = new GsonBuilder().serializeNulls().create();
+		Instruction inst = g.fromJson(json, Instruction.class);
+		Instruction inst1 = g1.fromJson(json1, Instruction.class);	//	
+		 
+		JSON.toJavaObject(JSON.parseObject(json),Instruction.class);
+		logger.info(instService.getInstByProperty(inst1));
+		//logger.info(JSON.toJSONString(inst1));
 	}
 
 }

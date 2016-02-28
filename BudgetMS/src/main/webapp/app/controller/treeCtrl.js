@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.controller.treeCtrl', {
 	extend : 'Ext.app.Controller',
 	stores : [ 'treeMenuStore' ],
-	views : [ 'menu.treeMenu' ],
+	views : [ 'ux.treeMenu' ],
 	models : [],
 	init : function() {
 		this.control({

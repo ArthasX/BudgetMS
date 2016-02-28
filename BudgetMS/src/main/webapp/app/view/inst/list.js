@@ -65,35 +65,30 @@ var instColum = [ {
 } ];
 
 Ext.define('BudgetMS.view.inst.list', {
-	extend : 'Ext.grid.Panel',
+	extend : 'BudgetMS.view.ux.baseGrid',
 	alias : 'widget.instList',
 	id : 'instList',
+	name : 'inst',// Ext.widget(name+'Edit') name+'Add'
 	store : 'instStore',
 	border : false,
-	//frame : true,// 渲染
+	// frame : true,// 渲染
 	enableKeyNav : true,// 键盘控制
 	columnLines : true,// 竖线
 	tbar : {
-		layout : {
-			type : 'hbox',
-			align : 'stretch'
-		},
 		items : [ {
-			xtype : 'instMainForm'
+			xtype : 'instTbarForm'
 		} ]
 	},
 	dockedItems : [ {
 		xtype : 'pagingtoolbar',
-		store : 'instStore', // same store GridPanel is using
+		store : 'instStore', 
 		dock : 'bottom',
 		displayInfo : true
 	} ],
 	initComponent : function() {
-
 		this.columns = instColum;
-
 		this.callParent(arguments);
-		// this.bbar = pagingToolbar;
+		// Ext.apply(this.down('pagingToolbar').store,Ext.create('BudgetMS.store.instStore'));
 	}
 
 });

@@ -1,7 +1,6 @@
-Ext.define('BudgetMS.view.inst.instMainForm', {
+Ext.define('BudgetMS.view.inst.instTbarForm', {
 	extend : 'Ext.form.Panel',
-	alias : 'widget.instMainForm',
-
+	alias : 'widget.instTbarForm',
 	layout : {
 		type : 'hbox',
 		align : 'stretch'
@@ -19,25 +18,25 @@ Ext.define('BudgetMS.view.inst.instMainForm', {
 			name : 'instContent',
 			fieldLabel : '请示内容'
 		}, {
-			xtype : 'button',
+			xtype : 'doFindBtn',
 			text : '查询',
-			name : 'findInst'
-	
+			name : 'findInst',
+			action : 'inst/findInstByProperty.do'
 		}, {
-			xtype : 'button',
+			xtype : 'showAddBtn',
 			text : '添加',
 			name : 'showAddInst'
-		
+
 		}, {
-			xtype : 'button',
+			xtype : 'showUpdBtn',
 			text : '修改',
 			name : 'showUpdateInst'
-			
+
 		}, {
-			xtype : 'button',
+			xtype : 'doDelBtn',
 			text : '刪除',
-			name : 'deleteInst'
-			
+			name : 'deleteInst',
+			action : 'inst/deleteInst.do'
 		} ]
 	}, {
 		flex : 1,
@@ -45,7 +44,8 @@ Ext.define('BudgetMS.view.inst.instMainForm', {
 		items : [ {
 			xtype : 'textfield',
 			name : 'instAmt',
-			fieldLabel : '请示金额'
+			fieldLabel : '请示金额',
+			vtype : 'money'
 		}, {
 			xtype : 'textfield',
 			name : 'instStatus',
@@ -55,16 +55,23 @@ Ext.define('BudgetMS.view.inst.instMainForm', {
 		flex : 1,
 		border : false,
 		items : [ {
-			xtype : 'textfield',
+			xtype : 'combo',
 			name : 'instType',
-			fieldLabel : '请示类型'
+			fieldLabel : '请示类型',
+			valueField : 'typeId',
+			displayField : 'typeName',
+			emptyText : "请选择...",
+			//value:0,
+			store : {
+				fields : [ 'typeId', 'typeName' ],
+				data : [ {
+					"typeId" : "1",
+					"typeName" : "一般请示"
+				}, {
+					"typeId" : "2",
+					"typeName" : "IT服务申请表"
+				} ]
+			}
 		} ]
 	} ]
-
-// ,
-// {
-// xtype : 'instList',
-// flex : 3
-// }
-
 });

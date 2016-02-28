@@ -1,4 +1,11 @@
 var PAGE_SIZE = 25;
+//只能输入金额 数字 number field ??
+Ext.apply(Ext.form.field.VTypes, {
+	money : function(val) {
+		return /^([1-9]\d{0,7}|0)(\.\d{1,2})?$/.test(val);
+	},
+	moneyText : '请输入正确的金额'
+});
 
 function genDH() {
 	var date = new Date();
@@ -22,11 +29,13 @@ function genContId() {
 	return 'HTBH' + genDH();
 }
 function genInvoId() {
-
+	
 }
 
+
+
 Ext.application({
-	requires : [ 'Ext.container.Viewport' ],
+	requires : [ 'Ext.container.Viewport','BudgetMS.util.crudTools' ],
 	name : 'BudgetMS',
 	appFolder : 'app',
 	controllers : [ 'instCtrl', 'treeCtrl' ],
@@ -41,7 +50,7 @@ Ext.application({
 			}, {
 				region : 'west',
 				collapsible : true,
-				title : '菜單',
+				title : '菜单',
 				width : 150,
 				items : {
 					text : '菜单',
@@ -61,6 +70,7 @@ Ext.application({
 				split : true,
 				width : 450
 			}, {
+				id:'mainTabpanel',
 				region : 'center',
 				xtype : 'tabpanel', // TabPanel itself has no title
 				activeTab : 1, // First tab active by default

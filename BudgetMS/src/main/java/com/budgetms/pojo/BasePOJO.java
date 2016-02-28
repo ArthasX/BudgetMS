@@ -1,5 +1,8 @@
 package com.budgetms.pojo;
-
+/**
+ * 所有属性都设置成string  
+ * 为了在转json的时候方便处理  '' 和 null
+ */
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 

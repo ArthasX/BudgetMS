@@ -4,14 +4,14 @@ import java.sql.Date;
 
 public class Contract extends BasePOJO {
 	private String contId;
-	private int instDivideId;
+	private String instDivideId;
 	private String contName;
-	private double contAmt;
-	private int contType;
-	private Date signedDate;
+	private String contAmt;
+	private String contType;
+	private String signedDate;
 	private String signedPerson;
-	private Date optDate;
-	private int optUser;
+	private String optDate;
+	private String optUser;
 	private String remark;
 
 	public String getContId() {
@@ -22,11 +22,11 @@ public class Contract extends BasePOJO {
 		this.contId = contId;
 	}
 
-	public int getInstDivideId() {
+	public String getInstDivideId() {
 		return instDivideId;
 	}
 
-	public void setInstDivideId(int instDivideId) {
+	public void setInstDivideId(String instDivideId) {
 		this.instDivideId = instDivideId;
 	}
 
@@ -38,27 +38,27 @@ public class Contract extends BasePOJO {
 		this.contName = contName;
 	}
 
-	public double getContAmt() {
+	public String getContAmt() {
 		return contAmt;
 	}
 
-	public void setContAmt(double contAmt) {
+	public void setContAmt(String contAmt) {
 		this.contAmt = contAmt;
 	}
 
-	public int getContType() {
+	public String getContType() {
 		return contType;
 	}
 
-	public void setContType(int contType) {
+	public void setContType(String contType) {
 		this.contType = contType;
 	}
 
-	public Date getSignedDate() {
+	public String getSignedDate() {
 		return signedDate;
 	}
 
-	public void setSignedDate(Date signedDate) {
+	public void setSignedDate(String signedDate) {
 		this.signedDate = signedDate;
 	}
 
@@ -70,19 +70,19 @@ public class Contract extends BasePOJO {
 		this.signedPerson = signedPerson;
 	}
 
-	public Date getOptDate() {
+	public String getOptDate() {
 		return optDate;
 	}
 
-	public void setOptDate(Date optDate) {
+	public void setOptDate(String optDate) {
 		this.optDate = optDate;
 	}
 
-	public int getOptUser() {
+	public String getOptUser() {
 		return optUser;
 	}
 
-	public void setOptUser(int optUser) {
+	public void setOptUser(String optUser) {
 		this.optUser = optUser;
 	}
 

@@ -36,4 +36,10 @@ public class ContServiceImpl implements IContService {
 		return contDao.insertCont(cont);
 	}
 
+	@Override
+	public List<Contract> getAllCont() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

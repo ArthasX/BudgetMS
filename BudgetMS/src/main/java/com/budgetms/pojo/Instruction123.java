@@ -2,108 +2,132 @@ package com.budgetms.pojo;
 
 import java.sql.Date;
 
-public class Instruction extends BasePOJO {
+public class Instruction123 extends BasePOJO {
 	private String instId;
 	private String instTitle;
 	private String instContent;
-	private String instType;
+	private int instType;
 	private String instStatus;
-	private String applyDept;
-	private String instAmt;
-	private String softAmt;
-	private String hardAmt;
-	private String applyUser;
+	private int applyDept;
+	private double instAmt;
+	private double softAmt;
+	private double hardAmt;
+	private int applyUser;
 	private String applyUserName;
-	private String optDate;
-	private String optUser;
+	private Date optDate;
+	private int optUser;
 	private String remark;
+
 	public String getInstId() {
 		return instId;
 	}
+
 	public void setInstId(String instId) {
 		this.instId = instId;
 	}
+
 	public String getInstTitle() {
 		return instTitle;
 	}
+
 	public void setInstTitle(String instTitle) {
 		this.instTitle = instTitle;
 	}
+
 	public String getInstContent() {
 		return instContent;
 	}
+
 	public void setInstContent(String instContent) {
 		this.instContent = instContent;
 	}
-	public String getInstType() {
+
+	public int getInstType() {
 		return instType;
 	}
-	public void setInstType(String instType) {
+
+	public void setInstType(int instType) {
 		this.instType = instType;
 	}
-	public String getInstStatus() {
-		return instStatus;
-	}
-	public void setInstStatus(String instStatus) {
-		this.instStatus = instStatus;
-	}
-	public String getApplyDept() {
+
+	public int getApplyDept() {
 		return applyDept;
 	}
-	public void setApplyDept(String applyDept) {
+
+	public void setApplyDept(int applyDept) {
 		this.applyDept = applyDept;
 	}
-	public String getInstAmt() {
+
+	public double getInstAmt() {
 		return instAmt;
 	}
-	public void setInstAmt(String instAmt) {
+
+	public void setInstAmt(double instAmt) {
 		this.instAmt = instAmt;
 	}
-	public String getSoftAmt() {
+
+	public double getSoftAmt() {
 		return softAmt;
 	}
-	public void setSoftAmt(String softAmt) {
+
+	public void setSoftAmt(double softAmt) {
 		this.softAmt = softAmt;
 	}
-	public String getHardAmt() {
+
+	public double getHardAmt() {
 		return hardAmt;
 	}
-	public void setHardAmt(String hardAmt) {
+
+	public void setHardAmt(double hardAmt) {
 		this.hardAmt = hardAmt;
 	}
-	public String getApplyUser() {
+
+	public int getApplyUser() {
 		return applyUser;
 	}
-	public void setApplyUser(String applyUser) {
+
+	public void setApplyUser(int applyUser) {
 		this.applyUser = applyUser;
 	}
+
 	public String getApplyUserName() {
 		return applyUserName;
 	}
+
 	public void setApplyUserName(String applyUserName) {
 		this.applyUserName = applyUserName;
 	}
 
-
-	public String getOptDate() {
+	public Date getOptDate() {
 		return optDate;
 	}
-	public void setOptDate(String optDate) {
+
+	public void setOptDate(Date optDate) {
 		this.optDate = optDate;
 	}
-	public String getOptUser() {
+
+	public int getOptUser() {
 		return optUser;
 	}
-	public void setOptUser(String optUser) {
+
+	public void setOptUser(int optUser) {
 		this.optUser = optUser;
 	}
+
 	public String getRemark() {
 		return remark;
 	}
+
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
 
+	public String getInstStatus() {
+		return instStatus;
+	}
 
-	
+	public void setInstStatus(String instStatus) {
+		this.instStatus = instStatus;
+	}
+
 }

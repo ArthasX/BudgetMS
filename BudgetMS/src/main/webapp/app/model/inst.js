@@ -33,7 +33,7 @@ var instFields=[ {
 	type : 'auto'
 }, {
 	name : 'optDate',
-	type : 'date'
+	type : 'auto'
 }, {
 	name : 'optUser',
 	type : 'auto'

@@ -2,6 +2,8 @@ package com.budgetms.util;
 
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.util.Base64;
 
@@ -22,6 +24,7 @@ import com.alibaba.fastjson.util.Base64;
  * 1203：当前用户和数据库建立的连接已到达数据库的最大连接数，请增大可用的数据库连接数或重启数据库 1205：加锁超时
  * 1211：当前用户没有创建用户的权限 1216：外键约束检查失败，更新子表记录失败 1217：外键约束检查失败，删除或修改主表记录失败
  * 1226：当前用户使用的资源已超过所允许的资源，请重启数据库或重启服务器 1227：权限不足，您无权进行此操作 1235：MySQL版本过低，不具有本功能
+ * 1454:Cannot add or update a child row: a foreign key constraint fails
  */
 public class MysqlErrTranslator {
 	public static class MyError {
@@ -102,6 +105,7 @@ public class MysqlErrTranslator {
 	public static final int DB_ER_USER_LIMIT_REACHED = 1226; // 当前用户使用的资源已超过所允许的资源，请重启数据库或重启服务器
 	public static final int DB_ER_SPECIFIC_ACCESS_DENIED_ERROR = 1227; // 权限不足，您无权进行此操作
 	public static final int DB_ER_NOT_SUPPORTED_YET = 1235; // MySQL版本过低，不具有本功能
+	public static final int DB_ER_FK_CONTRAINT_FAIL =1452;//Cannot add or update a child row: a foreign key constraint fails
 	private static final MyError[] errormap = {
 			new MyError(DB_ER_CANT_CREATE_TABLE, "创建表失败"),
 			new MyError(DB_ER_CANT_CREATE_DB, "创建数据库失败"),
@@ -164,17 +168,8 @@ public class MysqlErrTranslator {
 			new MyError(DB_ER_USER_LIMIT_REACHED,
 					"当前用户使用的资源已超过所允许的资源，请重启数据库或重启服务器"),
 			new MyError(DB_ER_SPECIFIC_ACCESS_DENIED_ERROR, "权限不足，您无权进行此操作"),
-			new MyError(DB_ER_NOT_SUPPORTED_YET, "MySQL版本过低，不具有本功能"), };
-
-	public static int getErrno(Exception e) {
-		SQLException sqle = (SQLException) e.getCause();
-		return sqle.getErrorCode();
-	}
-
-	public static String getErrorInfo(int errno) {
-		return getError(errno).getErrorDesc();
-	}
-
+			new MyError(DB_ER_NOT_SUPPORTED_YET, "MySQL版本过低，不具有本功能"), 
+			new MyError(DB_ER_FK_CONTRAINT_FAIL,"Cannot add or update a child row: a foreign key constraint fails")};
 	public static MyError getError(int errno) {
 		for (int i = 0; i < errormap.length; i++) {
 			if (errno == errormap[i].getErrorNo()) {
@@ -183,23 +178,35 @@ public class MysqlErrTranslator {
 		}
 		return new MyError(errno, errno + "对应的错误信息未定义");
 	}
+	
+	public static int getErrno(Exception e) {
+		SQLException sqle = (SQLException) e.getCause();
+		return sqle.getErrorCode();
+	}
+	
+	public static String getErrorInfo(int errno) {
+		return getError(errno).getErrorDesc();
+	}
+
 
 	public static MyError getError(Exception e){
 		return getError(getErrno(e));
 	}
-	public static JSON getJsonErrorInfo(int errno) {
+	public static JSON getJsonErrorInfo(int errno,Logger logger) {
 		MyError err = getError(errno);
-		return (JSON) JSON.toJSON(err);
+		JSON json=(JSON) JSON.toJSON(err);
+		logger.error(json.toJSONString());
+		return json;
 	}
 
-	public static JSON getJsonErrorInfo(Exception e) {
-		return getJsonErrorInfo(getErrno(e));
+	public static JSON getJsonErrorInfo(Exception e,Logger logger) {
+		return getJsonErrorInfo(getErrno(e),logger);
 	}
 
-	public static JSON getJsonErrorMsg(Exception e) {
+	public static JSON getJsonErrorMsg(Exception e,Logger logger) {
 		MyError err = getError(e);
 		Msg msg = new Msg(err);
-		return null;
+		return msg.toJSON();
 	}
 
 	public static void main(String[] args) {

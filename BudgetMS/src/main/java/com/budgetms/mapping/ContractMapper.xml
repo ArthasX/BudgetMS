@@ -30,13 +30,13 @@
 				<otherwise>
 					<trim prefix="(" suffix=")" suffixOverrides=",">
 						<if test="contName !=null and contName !='' ">
-							cont_name like '%${contName}%',
+							and cont_name like '%${contName}%' 
 						</if>
 						<if test="contType !=null and contType !='' ">
-							cont_type like '%${contType}%',
+							and cont_type like '%${contType}%' 
 						</if>
 						<if test="contAmt !=null and contAmt !='' ">
-							cont_amt like '%${contAmt}%',
+							and cont_amt like '%${contAmt}%' 
 						</if>
 					</trim>
 				</otherwise>

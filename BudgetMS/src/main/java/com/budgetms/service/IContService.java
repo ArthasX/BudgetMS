@@ -13,5 +13,6 @@ public interface IContService {
 	int deleteCont(String contId);
 
 	int insertCont(Contract cont);
-
+	
+	List<Contract>getAllCont();
 }

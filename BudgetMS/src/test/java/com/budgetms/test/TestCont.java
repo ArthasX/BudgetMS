@@ -21,13 +21,13 @@ public class TestCont extends AbsTest {
 	public void t1() throws Exception {
 		Contract cont = new Contract();
 		cont.setContId("HTBH201602170001");
-		cont.setInstDivideId(1);
+		cont.setInstDivideId("1");
 		cont.setContName("测试合同");
-		cont.setContAmt(150.00);
-		cont.setOptDate(Date.valueOf("2016-02-17"));
-		cont.setOptUser(1);
-		cont.setContType(1);
-		cont.setSignedDate(Date.valueOf("2016-01-01"));
+		cont.setContAmt("150.00");
+		cont.setOptDate("2016-02-17");
+		cont.setOptUser("1");
+		cont.setContType("1");
+		cont.setSignedDate("2016-01-01");
 		cont.setSignedPerson("张三");
 
 		// iContService.insertCont(cont);
