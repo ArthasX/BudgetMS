@@ -53,8 +53,7 @@ public class ContServiceImpl implements IContService {
 
 	@Override
 	public int getContCount(Contract cont) {
-		// TODO Auto-generated method stub
-		return 0;
+		return contDao.getContCount(cont);
 	}
 
 }

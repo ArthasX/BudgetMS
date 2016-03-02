@@ -1,6 +1,6 @@
 Ext.define("BudgetMS.model.invo", {
 	extend : "Ext.data.Model",
-	feilds : [ {
+	fields : [ {
 		name : "invoId",
 		type : "auto"
 	}, {

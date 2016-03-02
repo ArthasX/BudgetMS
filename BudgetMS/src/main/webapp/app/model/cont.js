@@ -1,6 +1,6 @@
 Ext.define("BudgetMS.model.cont", {
 	extend : "Ext.data.Model",
-	feilds : [ {
+	fields : [ {
 		name : "contId",
 		type : "auto"
 	}, {
@@ -8,6 +8,9 @@ Ext.define("BudgetMS.model.cont", {
 		type : 'auto'
 	}, {
 		name : 'contName',
+		type : 'auto'
+	}, {
+		name : 'contCompany',
 		type : 'auto'
 	}, {
 		name : 'contAmt',

@@ -1,5 +1,5 @@
 /**
- * 请示表头
+ * 合同表头
  * 
  */
 var contColum = [ {
@@ -7,46 +7,34 @@ var contColum = [ {
 	text : '选中',
 	dataIndex : 'active'
 }, {
-	header : '请示编号',
+	header : '合同编号',
 	dataIndex : 'contId',
 	width : 150
 }, {
-	header : '请示标题',
-	dataIndex : 'contTitle',
+	header : '请示拆分编号',
+	dataIndex : 'instDivideId',
 	width : 150
 }, {
-	header : '请示内容',
-	dataIndex : 'contContent',
+	header : '合同名称',
+	dataIndex : 'contName',
+	width : 150
+},{
+	header : '公司',
+	dataIndex : 'contCompany',
 	width : 150
 }, {
-	header : '请示类型',
+	header : '合同类型',
 	dataIndex : 'contType'
 }, {
-	header : '请示状态',
-	dataIndex : 'contStatus'
-}, {
-	header : '申请部门',
-	dataIndex : 'applyDept'
-
-}, {
-	header : '请示金额',
+	header : '合同金额',
 	dataIndex : 'contAmt'
 }, {
-	header : '软件金额',
-	dataIndex : 'softAmt'
+	header : '签订日期',
+	dataIndex : 'signedDate',
 
 }, {
-	header : '硬件金额',
-	dataIndex : 'hardAmt'
-},
-// {
-// header : '申请人',
-// dataIndex : 'applyUser',
-//	
-// },
-{
-	header : '申请人',
-	dataIndex : 'applyUserName',
+	header : '签订人',
+	dataIndex : 'signedPerson',
 
 }, {
 	header : '操作时间',
@@ -81,7 +69,7 @@ Ext.define('BudgetMS.view.cont.list', {
 	},
 	dockedItems : [ {
 		xtype : 'pagingtoolbar',
-		store : 'contStore', 
+		store : 'contStore',
 		dock : 'bottom',
 		displayInfo : true
 	} ],

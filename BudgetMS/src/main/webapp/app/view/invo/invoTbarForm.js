@@ -12,11 +12,11 @@ Ext.define('BudgetMS.view.invo.invoTbarForm', {
 		items : [ {
 			xtype : 'textfield',
 			name : 'invoId',
-			fieldLabel : '请示编号'
+			fieldLabel : '发票编号'
 		}, {
 			xtype : 'textfield',
-			name : 'invoContent',
-			fieldLabel : '请示内容'
+			name : 'invoCompany',
+			fieldLabel : '公司'
 		}, {
 			xtype : 'doFindBtn',
 			text : '查询',
@@ -44,37 +44,12 @@ Ext.define('BudgetMS.view.invo.invoTbarForm', {
 		items : [ {
 			xtype : 'textfield',
 			name : 'invoAmt',
-			fieldLabel : '请示金额',
+			fieldLabel : '发票金额',
 			vtype : 'money'
-		}, {
-			xtype : 'textfield',
-			name : 'invoStatus',
-			fieldLabel : '请示状态'
 		} ]
 	}, {
 		flex : 1,
 		border : false,
-		items : [ {
-			xtype : 'combo',
-			name : 'invoType',
-			fieldLabel : '请示类型',
-			valueField : 'typeId',
-			displayField : 'typeName',
-			emptyText : "请选择...",
-			allowBlank:true,
-			store : {
-				fields : [ 'typeId', 'typeName' ],
-				data : [{
-					"typeId" : "",
-					"typeName" : "请选择..."
-				},{
-					"typeId" : "0",
-					"typeName" : "一般请示"
-				}, {
-					"typeId" : "1",
-					"typeName" : "IT服务申请表"
-				} ]
-			}
-		} ]
+		items : []
 	} ]
 });

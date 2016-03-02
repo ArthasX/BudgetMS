@@ -5,11 +5,10 @@ Ext.define('BudgetMS.view.cont.baseContWin', {
 	autoShow : true,
 	initComponent : function() {
 		this.items = contFormItems;
- 		this.callParent(arguments);
+		this.callParent(arguments);
 		this.down('form').getForm().findField('contId').setValue(genContId());
 	}
 });
-
 
 var contFormItems = [ {
 	xtype : 'form',
@@ -18,12 +17,16 @@ var contFormItems = [ {
 		xtype : 'textfield',
 		name : 'contId',
 		fieldLabel : '合同编号',
-		 readOnly : true
+		readOnly : true
 	}, {
 		xtype : 'textfield',
-		name : 'contTitle',
+		name : 'contName',
 		fieldLabel : '合同名称'
-	},{
+	}, {
+		xtype : 'textfield',
+		name : 'instDivideId',
+		fieldLabel : '请示拆分编号'
+	}, {
 		xtype : 'combo',
 		name : 'contType',
 		fieldLabel : '合同类型',
@@ -39,22 +42,26 @@ var contFormItems = [ {
 				"typeName" : "IT服务申请表"
 			} ]
 		}
-	},{
-		 
 	}, {
 		xtype : 'textfield',
-		name : 'softAmt',
-		fieldLabel : '软件金额',
+		name : 'contCompany',
+		fieldLabel : '公司'
+	}, {
+		xtype : 'textfield',
+		name : 'contAmt',
+		fieldLabel : '合同金额',
 		vtype : 'money'
 	}, {
-		xtype : 'textfield',
-		name : 'hardAmt',
-		fieldLabel : '硬件金额',
-		vtype : 'money'
+		xtype : 'datefield',
+		name : 'signedDate',
+		fieldLabel : '签订日期',
+		editable : true,
+		emptyText : "--请选择--",
+		format : "Y-m-d"
 	}, {
 		xtype : 'textfield',
-		name : 'applyUserName',
-		fieldLabel : '申请人'
+		name : 'signedPerson',
+		fieldLabel : '签订人'
 	}, {
 		xtype : 'textfield',
 		name : 'remark',

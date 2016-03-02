@@ -7,6 +7,7 @@ public class Contract extends BasePOJO {
 	private String instDivideId;
 	private String contName;
 	private String contAmt;
+	private String contCompany;
 	private String contType;
 	private String signedDate;
 	private String signedPerson;
@@ -92,6 +93,14 @@ public class Contract extends BasePOJO {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public String getContCompany() {
+		return contCompany;
+	}
+
+	public void setContCompany(String contCompany) {
+		this.contCompany = contCompany;
 	}
 
 }

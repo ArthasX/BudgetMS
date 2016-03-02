@@ -2,7 +2,6 @@ Ext.define('BudgetMS.view.inst.editInstWin', {
 	extend : 'BudgetMS.view.inst.baseInstWin',
 	alias : 'widget.instEdit',
 	title : '请示修改',
-	layout : 'fit',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {
@@ -17,6 +16,8 @@ Ext.define('BudgetMS.view.inst.editInstWin', {
 		} ]
 
 		this.callParent(arguments);
-		this.down('form').getForm().findField('instId').readOnly = true;
+		var form=this.down('form');
+		if(form)
+			form.getForm().findField('instId').readOnly = true;
 	}
 });

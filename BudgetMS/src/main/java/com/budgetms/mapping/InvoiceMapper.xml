@@ -7,19 +7,20 @@
 
 	<resultMap id="BaseResultMap" type="com.budgetms.pojo.Invoice">
 		<id column="invo_Id" property="invoId" jdbcType="VARCHAR" />
-		<result column="cont_payment_id" property="contPaymentId" jdbcType="INTEGER" />
+		<result column="cont_payment_id" property="contPaymentId"
+			jdbcType="INTEGER" />
 		<result column="invo_company" property="invoCompany" jdbcType="VARCHAR" />
 		<result column="invo_amt" property="invoAmt" jdbcType="DECIMAL" />
 		<result column="trans_date" property="transDate" jdbcType="DATE" />
 		<result column="transfered" property="transfered" jdbcType="VARCHAR" />
- 
+
 		<result column="opt_date" property="optDate" jdbcType="DATE" />
 		<result column="opt_user" property="optUser" jdbcType="INTEGER" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
- 
-	<select id="getInvoByProperty" resultMap="BaseResultMap" resultType="java.util.HashMap"
-		parameterType="invo" >
+
+	<select id="getInvoByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="invo">
 		select * from invoice
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
@@ -57,7 +58,7 @@
 	<insert id="insertInvo" parameterType="invo">
 		insert into invoice
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			invo_id,invo_company ,invo_amt,opt_date,opt_user,
+			invo_id,invo_company ,invo_amt,opt_date,opt_user,cont_payment_id
 			<if test="transfered !=null and transfered !='' ">
 				transfered,
 			</if>
@@ -69,7 +70,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			#{invoId},#{invoCompany},#{invoAmt},#{optDate},#{optUser},
+			#{invoId},#{invoCompany},#{invoAmt},sysdate(),#{optUser},#{contPaymentId}
 			<if test="transfered !=null and transfered !='' ">
 				#{transfered},
 			</if>
@@ -86,8 +87,11 @@
 	<update id="updateInvo" parameterType="invo">
 		update invoice
 		<set>
-			<if test="invoTitle !=null and invoTitle !='' ">
-				invo_title=#{invoTitle},
+			<if test="contPaymentId !=null and contPaymentId !='' ">
+				cont_payment_id=#{contPaymentId},
+			</if>
+			<if test="invoCompany !=null and invoCompany !='' ">
+				invo_company=#{invoCompany},
 			</if>
 			<if test="transDate !=null and transDate !='' ">
 				trans_date=#{transDate},
@@ -96,7 +100,7 @@
 				invo_amt=#{invoAmt},
 			</if>
 			<if test="transfered !=null and transfered !='' ">
-				transfered#{transfered},
+				transfered=#{transfered},
 			</if>
 			<if test="remark !=null and remark!= '' ">
 				remark=#{remark},
@@ -105,4 +109,55 @@
 		where invo_id=#{invoId}
 	</update>
 
+	<select id="getInvoByPage" resultMap="BaseResultMap" resultType="java.util.HashMap">
+		select * from invoice
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.invoId !=null and param1.invoId !=''">
+					invo_Id like '%${param1.invoId}%'
+				</when>
+				<otherwise>
+					<trim prefix="(" suffix=")" suffixOverrides=",">
+						<if test="param1.invoCompany !=null and param1.invoCompany !='' ">
+							invo_company like '%${param1.invoCompany}%',
+						</if>
+						<if test="param1.invoAmt !=null and param1.invoAmt !='' ">
+							invo_amt like '%${param1.invoAmt}%',
+						</if>
+					</trim>
+				</otherwise>
+			</choose>
+		</trim>
+		order by invo_id desc limit #{param2},#{param3}
+	</select>
+
+	<select id="getInvoCount" resultType="int">
+		select count(*) from invoice
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="invoId !=null and invoId !=''">
+					invo_Id like '%${invoId}%'
+				</when>
+				<otherwise>
+					<trim prefix="(" suffix=")" suffixOverrides=",">
+						<if test="invoCompany !=null and invoCompany !='' ">
+							invo_company like '%${invoCompany}%',
+						</if>
+						<if test="transDate !=null and transDate !='' ">
+							trans_date like '%${transDate}%',
+						</if>
+						<if test="invoAmt !=null and invoAmt !='' ">
+							invo_amt like '%${invoAmt}%',
+						</if>
+						<if test="transfered !=null and transfered !='' ">
+							transfered like '%%{transfered}%'
+						</if>
+						<if test="remark !=null and remark !='' ">
+							remark like '%%{remark}%'
+						</if>
+					</trim>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
 </mapper>  

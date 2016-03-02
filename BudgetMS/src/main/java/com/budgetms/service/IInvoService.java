@@ -14,7 +14,7 @@ public interface IInvoService {
 
 	int insertInvo(Invoice invo);
 		
-	List<Invoice> getInvoByPage(Invoice invo, int start, int limit);
+	Object getInvoByPage(Invoice invo, int start, int limit);
 
 	int getInvoCount(Invoice invo);
 }

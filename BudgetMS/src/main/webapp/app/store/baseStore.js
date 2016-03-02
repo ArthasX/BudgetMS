@@ -1,10 +1,6 @@
 Ext.define('BudgetMS.store.baseStore', {
 	extend : 'Ext.data.Store',
 	pageSize : PAGE_SIZE,
-	autoLoad : {
-		start : 0,
-		limit : PAGE_SIZE
-	},
 	listeners : {
 		'beforeload' : function(store, operation, eOpts) {
 //			debugger;

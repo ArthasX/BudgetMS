@@ -16,7 +16,7 @@ Ext.define('BudgetMS.view.ux.button.doAddBtn', {
 			var tab = tabpanel.getActiveTab();
 			var grid = tab.down('gridview');
 			var url = btn.action;
-			console.log(this.doCRUDAjax(record, url, grid,win));
+			this.doCRUDAjax(record, url, grid,win);
 		}
 	}
 });

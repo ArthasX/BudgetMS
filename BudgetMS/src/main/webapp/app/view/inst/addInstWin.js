@@ -1,21 +1,22 @@
-Ext.define('BudgetMS.view.invo.addInstWin', {
-	extend : 'BudgetMS.view.invo.baseInstWin',
-	alias : 'widget.invoAdd',
+Ext.define('BudgetMS.view.inst.addInstWin', {
+	extend : 'BudgetMS.view.inst.baseInstWin',
+	alias : 'widget.instAdd',
 	title : '请示新增',
-	layout : 'fit',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {
 			xtype : 'doAddBtn',
 			text : '增加',
 			name : 'insertInst',
-			action : 'invo/insertInst.do'
+			action : 'inst/insertInst.do'
 		}, {
 			text : '取消',
 			scope : this,
 			handler : this.close
 		} ];
 		this.callParent(arguments);
-		this.down('form').getForm().findField('invoId').setValue(genInstId());
+		var form=this.down('form'); 
+		if(form)
+			form.getForm().findField('instId').setValue(genInstId());
 	}
 });

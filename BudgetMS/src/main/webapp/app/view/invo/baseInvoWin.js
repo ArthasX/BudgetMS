@@ -13,19 +13,16 @@ var invoFormItems = [ {
 	items : [ {
 		xtype : 'textfield',
 		name : 'invoId',
-		fieldLabel : '请示编号'
-	}, {
+		fieldLabel : '发票编号'
+	},   {
 		xtype : 'textfield',
-		name : 'invoTitle',
-		fieldLabel : '请示标题'
-	}, {
-		xtype : 'textarea',
-		name : 'invoContent',
-		fieldLabel : '请示内容'
+		name : 'invoAmt',
+		fieldLabel : '发票金额',
+		vtype : 'money'
 	}, {
 		xtype : 'combo',
-		name : 'invoType',
-		fieldLabel : '请示类型',
+		name : 'contPaymentId',
+		fieldLabel : '合同付款编号',
 		valueField : 'typeId',
 		displayField : 'typeName',
 		store : {
@@ -40,59 +37,20 @@ var invoFormItems = [ {
 		}
 	}, {
 		xtype : 'combo',
-		name : 'invoStatus',
-		fieldLabel : '请示状态',
+		name : 'transfered',
+		fieldLabel : '是否移交',
 		valueField : 'typeId',
 		displayField : 'typeName',
 		store : {
 			fields : [ 'typeId', 'typeName' ],
 			data : [ {
-				"typeId" : "在途",
-				"typeName" : "在途"
+				"typeId" : "0",
+				"typeName" : "否"
 			}, {
-				"typeId" : "审批结束",
-				"typeName" : "审批结束"
+				"typeId" : "1",
+				"typeName" : "是"
 			} ]
 		}
-	}, {
-		xtype : 'combo',
-		name : 'applyDept',
-		fieldLabel : '申请部门',
-		valueField : 'deptId',
-		displayField : 'deptName',
-		allowBlank: false,
-		store : {
-			fields : [ 'deptId', 'deptName' ],
-			data : [ {
-				"deptId" : "1",
-				"deptName" : "电子银行"
-			}, {
-				"deptId" : "2",
-				"deptName" : "科技管理"
-			}, {
-				"deptId" : "3",
-				"deptName" : "科技开发"
-			} ]
-		}
-	}, {
-		xtype : 'textfield',
-		name : 'invoAmt',
-		fieldLabel : '请示金额',
-		vtype : 'money'
-	}, {
-		xtype : 'textfield',
-		name : 'softAmt',
-		fieldLabel : '软件金额',
-		vtype : 'money'
-	}, {
-		xtype : 'textfield',
-		name : 'hardAmt',
-		fieldLabel : '硬件金额',
-		vtype : 'money'
-	}, {
-		xtype : 'textfield',
-		name : 'applyUserName',
-		fieldLabel : '申请人'
 	}, {
 		xtype : 'textfield',
 		name : 'remark',

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
  
 
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 import com.budgetms.controller.InstController;
 import com.budgetms.pojo.Instruction;
 import com.budgetms.service.IInstService;
+import com.budgetms.util.FileUtil;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
@@ -43,7 +45,7 @@ public class TestInst extends AbsTest {
 	
 	@Override
 	public void test() {
-		t4();
+		t5();
 	}
 
 	public void t() {
@@ -108,5 +110,15 @@ public class TestInst extends AbsTest {
 	            e.printStackTrace();  
 	        }  
 	    }  
-
+	 public void t5() {   
+	        try {  
+	        	request.setParameter("start", "0");
+	        	request.setParameter("limit", "2");
+	        	request.setParameter("obj", "{'instType':'1'}");
+	        	FileUtil fu=new FileUtil(request, response) ;
+	     
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        }  
+	    }  
 }

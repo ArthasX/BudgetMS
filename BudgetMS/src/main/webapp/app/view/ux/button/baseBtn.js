@@ -32,12 +32,12 @@ Ext.define('BudgetMS.view.ux.button.baseBtn', {
 				var text = response.responseText;
 				console.log(text);
 				var msg = Ext.JSON.decode(text);
-				if (msg.status == "success") {
-					Ext.Msg.alert(msg.status, msg.msg);
+				if (msg.success) {
+					Ext.Msg.alert('成功', msg.msg);
 					grid.store.reload();
-					win.close();
+					//win.close(); 暂时不要自动关闭
 				} else
-					Ext.Msg.alert(msg.status, msg.msg);
+					Ext.Msg.alert('失败', msg.msg);
 			},
 			failure : function(response) {
 				Ext.Msg.alert('状态', response.statusText + "->timedout:"

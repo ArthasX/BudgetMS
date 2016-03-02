@@ -12,11 +12,11 @@ Ext.define('BudgetMS.view.cont.contTbarForm', {
 		items : [ {
 			xtype : 'textfield',
 			name : 'contId',
-			fieldLabel : '请示编号'
+			fieldLabel : '合同编号'
 		}, {
 			xtype : 'textfield',
-			name : 'contContent',
-			fieldLabel : '请示内容'
+			name : 'contName',
+			fieldLabel : '合同名称'
 		}, {
 			xtype : 'doFindBtn',
 			text : '查询',
@@ -44,12 +44,12 @@ Ext.define('BudgetMS.view.cont.contTbarForm', {
 		items : [ {
 			xtype : 'textfield',
 			name : 'contAmt',
-			fieldLabel : '请示金额',
+			fieldLabel : '合同金额',
 			vtype : 'money'
 		}, {
 			xtype : 'textfield',
-			name : 'contStatus',
-			fieldLabel : '请示状态'
+			name : 'contCompany',
+			fieldLabel : '公司'
 		} ]
 	}, {
 		flex : 1,
@@ -57,7 +57,7 @@ Ext.define('BudgetMS.view.cont.contTbarForm', {
 		items : [ {
 			xtype : 'combo',
 			name : 'contType',
-			fieldLabel : '请示类型',
+			fieldLabel : '合同类型',
 			valueField : 'typeId',
 			displayField : 'typeName',
 			emptyText : "请选择...",
@@ -69,7 +69,7 @@ Ext.define('BudgetMS.view.cont.contTbarForm', {
 					"typeName" : "请选择..."
 				},{
 					"typeId" : "0",
-					"typeName" : "一般请示"
+					"typeName" : "一般合同"
 				}, {
 					"typeId" : "1",
 					"typeName" : "IT服务申请表"

@@ -6,7 +6,7 @@ import java.util.Map;
 import com.budgetms.pojo.Contract;
  
 
-public interface IContractDao {
+public interface IContractDao  {
 	List<Contract> getContById(String contId);
 
 	int insertCont(Contract cont);

@@ -15,7 +15,6 @@ Ext.define('BudgetMS.view.invo.editInvoWin', {
 			scope : this,
 			handler : this.close
 		} ]
-
 		this.callParent(arguments);
 		this.down('form').getForm().findField('invoId').readOnly = true;
 	}

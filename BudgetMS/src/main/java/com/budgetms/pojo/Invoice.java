@@ -4,32 +4,30 @@ import java.sql.Date;
 
 public class Invoice extends BasePOJO{
 	private String invoId;
-	private int contPaymentId;
-	private double invoAmt;
+	private String contPaymentId;
+	private String invoAmt;
 	private String invoCompany;
-	private Date transDate;
-	private int transfered;
-	private Date optDate;
-	private int optUser;
+	private String transDate;
+	private String transfered;
+	private String optDate;
+	private String optUser;
 	private String remark;
-	
-	
 	public String getInvoId() {
 		return invoId;
 	}
 	public void setInvoId(String invoId) {
 		this.invoId = invoId;
 	}
-	public int getContPaymentId() {
+	public String getContPaymentId() {
 		return contPaymentId;
 	}
-	public void setContPaymentId(int contPaymentId) {
+	public void setContPaymentId(String contPaymentId) {
 		this.contPaymentId = contPaymentId;
 	}
-	public double getInvoAmt() {
+	public String getInvoAmt() {
 		return invoAmt;
 	}
-	public void setInvoAmt(double invoAmt) {
+	public void setInvoAmt(String invoAmt) {
 		this.invoAmt = invoAmt;
 	}
 	public String getInvoCompany() {
@@ -38,29 +36,28 @@ public class Invoice extends BasePOJO{
 	public void setInvoCompany(String invoCompany) {
 		this.invoCompany = invoCompany;
 	}
-	public Date getTransDate() {
+	public String getTransDate() {
 		return transDate;
 	}
-	public void setTransDate(Date transDate) {
+	public void setTransDate(String transDate) {
 		this.transDate = transDate;
 	}
- 
-	public int getTransfered() {
+	public String getTransfered() {
 		return transfered;
 	}
-	public void setTransfered(int transfered) {
+	public void setTransfered(String transfered) {
 		this.transfered = transfered;
 	}
-	public Date getOptDate() {
+	public String getOptDate() {
 		return optDate;
 	}
-	public void setOptDate(Date optDate) {
+	public void setOptDate(String optDate) {
 		this.optDate = optDate;
 	}
-	public int getOptUser() {
+	public String getOptUser() {
 		return optUser;
 	}
-	public void setOptUser(int optUser) {
+	public void setOptUser(String optUser) {
 		this.optUser = optUser;
 	}
 	public String getRemark() {
@@ -69,6 +66,6 @@ public class Invoice extends BasePOJO{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-
+	
 	
 }

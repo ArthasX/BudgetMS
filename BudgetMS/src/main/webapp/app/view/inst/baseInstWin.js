@@ -1,15 +1,23 @@
 Ext.define('BudgetMS.view.inst.baseInstWin', {
 	extend : 'Ext.window.Window',
-	layout : 'fit',
+	layout : {
+		type : 'hbox',
+		align : 'stretch'
+	},
+	height:500,
+	width:800,
 	autoShow : true,
 	initComponent : function() {
 		this.items = instFormItems;
 		this.callParent(arguments);
 	}
+
 });
+ 
 var instFormItems = [ {
+	flex : 1,
 	xtype : 'form',
-	layout : 'auto',
+	layout:'auto',
 	items : [ {
 		xtype : 'textfield',
 		name : 'instId',
@@ -60,7 +68,7 @@ var instFormItems = [ {
 		fieldLabel : '申请部门',
 		valueField : 'deptId',
 		displayField : 'deptName',
-		allowBlank: false,
+		allowBlank : false,
 		store : {
 			fields : [ 'deptId', 'deptName' ],
 			data : [ {
@@ -98,5 +106,9 @@ var instFormItems = [ {
 		name : 'remark',
 		fieldLabel : '备注'
 	} ]
-// 上传文件的组件
+} // 上传文件的组件
+, {
+	flex : 1,
+	xtype : 'baseFileGrid',
+	name : 'inst'
 } ];

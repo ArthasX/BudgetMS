@@ -1,57 +1,45 @@
 package com.budgetms.pojo;
 
-public class Attachment extends BasePOJO{
-	private int atchid;
-	private String atchName;
+public class Attachment extends BasePOJO {
+	private String attachId;
+	private String attachName;
 	private String recordId;
 	private String url;
-	private String atchType;
+	private String attachType;
 	private String remark;
-
-	public int getAtchid() {
-		return atchid;
+	public String getAttachId() {
+		return attachId;
 	}
-
-	public void setAtchid(int atchid) {
-		this.atchid = atchid;
+	public void setAttachId(String attachId) {
+		this.attachId = attachId;
 	}
-
-	public String getAtchName() {
-		return atchName;
+	public String getAttachName() {
+		return attachName;
 	}
-
-	public void setAtchName(String atchName) {
-		this.atchName = atchName;
+	public void setAttachName(String attachName) {
+		this.attachName = attachName;
 	}
-
 	public String getRecordId() {
 		return recordId;
 	}
-
 	public void setRecordId(String recordId) {
 		this.recordId = recordId;
 	}
-
 	public String getUrl() {
 		return url;
 	}
-
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
-	public String getAtchType() {
-		return atchType;
+	public String getAttachType() {
+		return attachType;
 	}
-
-	public void setAtchType(String atchType) {
-		this.atchType = atchType;
+	public void setAttachType(String attachType) {
+		this.attachType = attachType;
 	}
-
 	public String getRemark() {
 		return remark;
 	}
-
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
