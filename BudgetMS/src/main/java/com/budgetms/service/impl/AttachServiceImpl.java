@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
+import com.alibaba.fastjson.JSON;
 import com.budgetms.dao.IAttachDao;
 import com.budgetms.pojo.Attachment;
 import com.budgetms.service.IAttachService;
 
- 
+@Service("attachService") 
 public class AttachServiceImpl implements IAttachService {
 	@Resource 
 	private IAttachDao attachDao=null;
@@ -19,9 +22,8 @@ public class AttachServiceImpl implements IAttachService {
 	}
 
 	@Override
-	public List<Attachment> getAttachByProperty(Attachment attach) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object getAttachByProperty(Attachment attach) {
+		return JSON.toJSON(attachDao.getAttachByProperty(attach));
 	}
 
 	@Override

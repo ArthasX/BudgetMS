@@ -7,7 +7,7 @@ import com.budgetms.pojo.Attachment;
 public interface IAttachService {
 	List<Attachment> getAttachByIdType(String recordId, String type);
 
-	List<Attachment> getAttachByProperty(Attachment attach);
+	Object getAttachByProperty(Attachment attach);
 
 	int insertAttach(Attachment attach);
 

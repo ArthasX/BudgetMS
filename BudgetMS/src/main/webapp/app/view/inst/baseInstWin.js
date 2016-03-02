@@ -1,23 +1,24 @@
 Ext.define('BudgetMS.view.inst.baseInstWin', {
 	extend : 'Ext.window.Window',
+	name : 'inst',
 	layout : {
 		type : 'hbox',
 		align : 'stretch'
 	},
-	height:500,
-	width:800,
+	height : 500,
+	width : 800,
 	autoShow : true,
 	initComponent : function() {
 		this.items = instFormItems;
 		this.callParent(arguments);
-	}
 
+	}
 });
- 
+
 var instFormItems = [ {
 	flex : 1,
 	xtype : 'form',
-	layout:'auto',
+	layout : 'auto',
 	items : [ {
 		xtype : 'textfield',
 		name : 'instId',

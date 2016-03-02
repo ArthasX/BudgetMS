@@ -4,12 +4,14 @@ Ext.define('BudgetMS.view.ux.button.fileUploadBtn', {
 	text:'上传',
 	listeners : {
 		'click' : function(btn, e) {
-			debugger;
 			var form = btn.up('form').getForm();
 			console.log(btn, btn.ownerCt, btn.ownerCt.ownerCt);
-			var attachType=btn.up('baseFileGrid').name;
-			var recordId=btn.up('window').down('form').getForm().findField(+'Id').getValue()
-			var fileName = Ext.getCmp('fileUpload').getRawValue();// 上传文件名称的路径
+			var grid=btn.up('baseFileGrid');
+			var attachType=grid.name;
+			var store=grid.getStore();
+			var count=store.getCount();
+			var recordId=btn.up('window').down('form').getForm().findField(attachType+'Id').getValue()
+			var fileName = form.findField('fileUpload').getRawValue();// 上传文件名称的路径
 			if (fileName == "") {
 				Ext.Msg.show({
 					title : '提示',
@@ -32,14 +34,15 @@ Ext.define('BudgetMS.view.ux.button.fileUploadBtn', {
 					}
 				}
 			}
-			console.log('filename:', fileName);
+			console.log('filename:', fileName,'count:',count);
 			form.submit({
 				url : 'attach/upload.do',
-				params:{recordId:recordId,attachType:attachType},
+				params:{recordId:recordId,attachType:attachType,count:count},
 				method : 'POST',
 				waitMsg : '数据上传中, 请稍等...',
 				success : function(form, action) {
 					Ext.MessageBox.alert("提示信息", action.result.msg);
+					grid.loadFile();
 				},
 				failure : function(form, action) {
 					 if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {

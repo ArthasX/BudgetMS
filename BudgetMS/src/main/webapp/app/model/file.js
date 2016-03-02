@@ -1,10 +1,10 @@
 Ext.define("BudgetMS.model.file", {
 	extend : "Ext.data.Model",
 	fields : [ {
-		name : 'atchId',
+		name : 'attachId',
 		type : 'auto'
 	}, {
-		name : 'atchName',
+		name : 'attachName',
 		type : 'auto'
 	}, {
 		name : 'recordId',
@@ -13,7 +13,7 @@ Ext.define("BudgetMS.model.file", {
 		name : 'url',
 		type : 'auto'
 	}, {
-		name : 'atchType',
+		name : 'attachType',
 		type : 'auto'
 	}, {
 		name : 'remark',

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!-- 别名 -->
-    <typeAliases>
-        <typeAlias type="com.budgetms.pojo.Instruction" alias="inst"/>
-        <typeAlias type="com.budgetms.pojo.Contract" alias="cont"/>
-        <typeAlias type="com.budgetms.pojo.Invoice" alias="invo"/>
-        
-    </typeAliases>
+	<!-- 别名 -->
+	<typeAliases>
+		<typeAlias type="com.budgetms.pojo.Instruction" alias="inst" />
+		<typeAlias type="com.budgetms.pojo.Contract" alias="cont" />
+		<typeAlias type="com.budgetms.pojo.Invoice" alias="invo" />
+		<typeAlias type="com.budgetms.pojo.Attachment" alias="attach" />
+
+	</typeAliases>
 </configuration>

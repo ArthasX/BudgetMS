@@ -15,12 +15,14 @@ Ext.define('BudgetMS.view.ux.baseGrid', {
 			// debugger;
 			console.log('Double clicked on ', record.data);
 			var view = Ext.widget(grid.ownerCt.name + 'Edit');
-			view.down('form').loadRecord(record)
+			view.down('form').loadRecord(record);
+			view.down('baseFileGrid').loadFile();
 		}
 	},
 	initComponent : function() {
 		this.callParent(arguments);
 		console.log('basegrid', this.down('pagingtoolbar'));
 	}
+	
 
 });

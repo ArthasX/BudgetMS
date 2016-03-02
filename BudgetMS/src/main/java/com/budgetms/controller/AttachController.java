@@ -46,15 +46,17 @@ public class AttachController extends BaseController {
 	public Object upload(HttpServletRequest request,
 			HttpServletResponse response) {
 		String recordId = request.getParameter("recordId");
-		String atchType = request.getParameter("atchType");
+		String atchType = request.getParameter("attachType");
+		int count = Integer.parseInt(request.getParameter("count"));
 		String[] fileNames;
 		FileUtil fu = new FileUtil(request, response);
 		try {
-			fileNames = fu.upload2();
-			logger.info("上传文件数量："+fileNames.length);
+			fileNames = fu.upload2(recordId, count);
+			logger.info("上传文件数量：" + fileNames.length);
 			for (String fileName : fileNames) {
 				attachService.insertAttach(recordId, fileName, atchType);
-				logger.info("文件名："+fileName+"记录编号:"+recordId+"类型:"+atchType);
+				logger.info("文件名：" + fileName + "记录编号:" + recordId + "类型:"
+						+ atchType);
 			}
 		} catch (IOException e) {
 			logger.error(e.getStackTrace());
@@ -65,16 +67,16 @@ public class AttachController extends BaseController {
 
 	@RequestMapping("/download.do")
 	@ResponseBody
-	public Object download(HttpServletRequest request,
+	public void download(HttpServletRequest request,
 			HttpServletResponse response) {
 		String fileName = request.getParameter("fileName");
 		FileUtil fu = new FileUtil(request, response);
 		try {
 			fu.down(fileName);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error(e.getStackTrace());
-			return new Msg(false, "失败", e.getCause().toString()).toJSON();
+			//return new Msg(false, "失败", "文件获取失败").toJSON();
 		}
-		return SUCCESS;
+		//return SUCCESS;
 	}
 }

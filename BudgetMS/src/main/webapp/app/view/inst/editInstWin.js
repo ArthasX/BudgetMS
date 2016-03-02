@@ -14,7 +14,6 @@ Ext.define('BudgetMS.view.inst.editInstWin', {
 			scope : this,
 			handler : this.close
 		} ]
-
 		this.callParent(arguments);
 		var form=this.down('form');
 		if(form)

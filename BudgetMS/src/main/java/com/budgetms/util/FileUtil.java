@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.log4j.Logger;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -26,6 +27,8 @@ public class FileUtil {
 	static final String UPLOADDIR = "/upload";
 	private HttpServletRequest request;
 	private HttpServletResponse response;
+
+	static Logger logger = Logger.getLogger(FileUtil.class);
 
 	public FileUtil(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
@@ -79,7 +82,7 @@ public class FileUtil {
 	public void down(String fileName) throws IOException {
 		response.setContentType(CONTENT_TYPE);
 		fileName = URLDecoder.decode(fileName, "utf-8");
-		String path = getPath() + fileName;
+		String path = getPath() + "\\" + fileName;
 		path = path.replace("%20", " ");
 		File file = new File(path);
 
@@ -115,8 +118,9 @@ public class FileUtil {
 	 * @throws IOException
 	 */
 	// HttpServletRequest request,HttpServletResponse response
-	public String[] upload2() throws IllegalStateException, IOException {
-		StringBuffer fileNames=new StringBuffer();
+	public String[] upload2(String recordId, int count)
+			throws IllegalStateException, IOException {
+		StringBuffer fileNames = new StringBuffer();
 		// 创建一个通用的多部分解析器
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
@@ -125,7 +129,7 @@ public class FileUtil {
 			// 转换成多部分request
 			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 			// 取得request中的所有文件名
-			Iterator<String> iter = multiRequest.getFileNames();		
+			Iterator<String> iter = multiRequest.getFileNames();
 			while (iter.hasNext()) {
 				// 记录上传过程起始时的时间，用来计算上传时间
 				int pre = (int) System.currentTimeMillis();
@@ -138,12 +142,19 @@ public class FileUtil {
 					if (myFileName.trim() != "") {
 						System.out.println(myFileName);
 						// 重命名上传后的文件名
-						String fileName = file.getOriginalFilename();
+						// String fileName = file.getOriginalFilename();
+						// 附件数量+1 然后再生成一个新的文件名
+						String fileName = ++count
+								+ "-"
+								+ recordId
+								+ myFileName.substring(myFileName
+										.lastIndexOf("."));
 						// 定义上传路径
-						String path = getPath() + fileName;
+						String path = getPath() + "\\" + fileName;
 						File localFile = new File(path);
 						file.transferTo(localFile);
-						fileNames.append(fileName+"|");
+						logger.info("上传文件" + path);
+						fileNames.append(fileName + "#");
 					}
 				}
 				// 记录上传该文件后的时间
@@ -152,9 +163,11 @@ public class FileUtil {
 			}
 
 		}
-		return fileNames.substring(0, fileNames.lastIndexOf("|")).split("|");
+		return fileNames.substring(0, fileNames.lastIndexOf("#")).split("#");
 	}
-	public void write(MultipartFile file) throws IllegalStateException, IOException{
+
+	public void write(MultipartFile file) throws IllegalStateException,
+			IOException {
 		if (file != null) {
 			// 取得当前上传文件的文件名称
 			String myFileName = file.getOriginalFilename();

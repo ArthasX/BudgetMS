@@ -20,20 +20,20 @@ import com.budgetms.util.Msg;
 @RequestMapping("/upload")
 public class UploadController extends BaseController {
 	static Logger logger= Logger.getLogger(UploadController.class);
-	@Resource
+ 
 	
 	@RequestMapping("/upload.do")
 	@ResponseBody
 	public Object upload(HttpServletRequest request, HttpServletResponse response) {
-		String recordId=request.getParameter("recordId");
-		FileUtil fu = new FileUtil(request, response);
-		try {
-			fu.upload2();
-			
-		} catch (IOException e) {
-			logger.error(e.getStackTrace());
-			return new Msg(false,"失败",e.getCause().toString()).toJSON();
-		}
+//		String recordId=request.getParameter("recordId");
+//		FileUtil fu = new FileUtil(request, response);
+//		try {
+//			fu.upload2();
+//			
+//		} catch (IOException e) {
+//			logger.error(e.getStackTrace());
+//			return new Msg(false,"失败",e.getCause().toString()).toJSON();
+//		}
 		return SUCCESS;
 	}
 }

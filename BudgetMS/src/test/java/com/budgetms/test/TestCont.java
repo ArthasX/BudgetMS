@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.fastjson.JSON;
 import com.budgetms.controller.ContController;
 import com.budgetms.pojo.Contract;
-import com.budgetms.service.IContService;
-import com.budgetms.service.impl.ContServiceImpl;
+import com.budgetms.service.IContService; 
 
 public class TestCont extends AbsTest {
 	@Resource

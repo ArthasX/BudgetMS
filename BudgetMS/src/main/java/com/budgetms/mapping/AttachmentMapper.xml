@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IAttachDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.Attachment">
+		<id column="attach_Id" property="attachId" jdbcType="INTEGER" />
+		<result column="attach_name" property="attachName" jdbcType="VARCHAR" />
+		<result column="record_Id" property="recordId" jdbcType="VARCHAR" />
+		<result column="url" property="attachType" jdbcType="VARCHAR" />
+		<result column="attach_type" property="attachType" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+
+	<select id="getAttachByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="attach">
+		select * from attachment
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="attachId !=null and attachId !=''">
+					attach_Id like '%${attachId}%'
+				</when>
+				<otherwise>
+					<if test="attachName !=null and attachName !='' ">
+						and attach_name like '%${attachName}%'
+					</if>
+					<if test="recordId !=null and recordId !='' ">
+						and record_id =#{recordId}
+					</if>
+					<if test="attachType !=null and attachType !='' ">
+						and attach_type like '%${attachType}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by attach_id desc
+	</select>
+
+	<select id="getAttachByIdType" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from attachment
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="recordId !=null and recordId !='' ">
+				and record_id like '%${recordId}%'
+			</if>
+			<if test="attachType !=null and attachType !='' ">
+				and attach_type like '%${attachType}%'
+			</if>
+		</trim>
+		order by attach_id desc
+	</select>
+
+	<delete id="deleteAttach" parameterType="java.lang.String"> delete from attachment
+		where
+		attach_Id=#{attachId}
+	</delete>
+
+	<insert id="insertAttach" parameterType="attach">
+		insert into attachment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="attachType !=null and attachType !='' ">
+				attach_type,
+			</if>
+			<if test="attachName !=null and attachName !='' ">
+				attach_name,
+			</if>
+			<if test="recordId !=null and recordId !='' ">
+				record_id,
+			</if>
+			<if test="url !=null and url !='' ">
+				url,
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="attachType !=null and attachType !='' ">
+				#{attachType},
+			</if>
+			<if test="attachName !=null and attachName !='' ">
+				#{attachName},
+			</if>
+			<if test="recordId !=null and recordId !='' ">
+				#{recordId},
+			</if>
+			<if test="url !=null and url !='' ">
+				#{url},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				#{remark},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateAttach" parameterType="attach">
+		update attachment
+		<set>
+			<if test="attachName !=null and attachName !='' ">
+				attach_name=#{attachName},
+			</if>
+			<if test="recordId !=null and recordId !='' ">
+				recordId=#{recordId},
+			</if>
+			<if test="attachType !=null and attachType !='' ">
+				url=#{attachType},
+			</if>
+			<if test="attachType !=null and attachType !='' ">
+				attach_type=#{attachType},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark=#{remark},
+			</if>
+		</set>
+		where attach_id=#{attachId}
+	</update>
+
+	<select id="getAttachCount" resultType="int">
+		select count(*) from attachment
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="attachId !=null and attachId !=''">
+					attach_Id like '%${attachId}%'
+				</when>
+				<otherwise>
+					<if test="attachName !=null and attachName !='' ">
+						and attach_name like '%${attachName}%'
+					</if>
+					<if test="recordId !=null and recordId !='' ">
+						and record_id like '%${recordId}%'
+					</if>
+					<if test="attachType !=null and attachType !='' ">
+						and url like '%${attachType}%'
+					</if>
+					<if test="attachType !=null and attachType !='' ">
+						and attach_type like '%${attachType}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getAttachByPage" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from attachment
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.attachId !=null and param1.attachId !=''">
+					attach_Id like '%${param1.attachId}%'
+				</when>
+				<otherwise>
+					<if test="param1.attachName !=null and param1.attachName !='' ">
+						and attach_name like '%${param1.attachName}%'
+					</if>
+					<if test="param1.recordId !=null and param1.recordId !='' ">
+						and record_id like '%${param1.recordId}%'
+					</if>
+					<if test="param1.attachType !=null and param1.attachType !='' ">
+						and url like '%${param1.attachType}%'
+					</if>
+					<if test="param1.attachType !=null and param1.attachType !='' ">
+						and attach_type like '%${param1.attachType}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by attach_id desc limit #{param2},#{param3}
+	</select>
+</mapper>  
