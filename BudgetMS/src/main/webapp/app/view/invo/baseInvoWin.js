@@ -1,6 +1,12 @@
 Ext.define('BudgetMS.view.invo.baseInvoWin', {
 	extend : 'Ext.window.Window',
-	layout : 'fit',
+	name : 'invo',
+	layout : {
+		type : 'hbox',
+		align : 'stretch'
+	},
+	height : 500,
+	width : 800,
 	autoShow : true,
 	initComponent : function() {
 		this.items = invoFormItems;
@@ -8,13 +14,14 @@ Ext.define('BudgetMS.view.invo.baseInvoWin', {
 	}
 });
 var invoFormItems = [ {
+	flex : 1,
 	xtype : 'form',
 	layout : 'auto',
 	items : [ {
 		xtype : 'textfield',
 		name : 'invoId',
 		fieldLabel : '发票编号'
-	},   {
+	}, {
 		xtype : 'textfield',
 		name : 'invoAmt',
 		fieldLabel : '发票金额',
@@ -57,4 +64,8 @@ var invoFormItems = [ {
 		fieldLabel : '备注'
 	} ]
 // 上传文件的组件
+}, {
+	flex : 1,
+	xtype : 'baseFileGrid',
+	name : 'invo'
 } ];

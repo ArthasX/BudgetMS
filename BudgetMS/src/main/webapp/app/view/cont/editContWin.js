@@ -2,7 +2,6 @@ Ext.define('BudgetMS.view.cont.editContWin', {
 	extend : 'BudgetMS.view.cont.baseContWin',
 	alias : 'widget.contEdit',
 	title : '合同修改',
-	layout : 'fit',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {

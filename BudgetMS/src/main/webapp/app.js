@@ -1,5 +1,5 @@
 var PAGE_SIZE = 25;
-//只能输入金额 数字 number field ??
+// 只能输入金额 数字 number field ??
 Ext.apply(Ext.form.field.VTypes, {
 	money : function(val) {
 		return /^([1-9]\d{0,7}|0)(\.\d{1,2})?$/.test(val);
@@ -29,18 +29,20 @@ function genContId() {
 	return 'HTBH' + genDH();
 }
 function genInvoId() {
-	
+
 }
-
-
+// 定义缓存
+var deptMemoryStore;
+var typeInfoMemoryStore;
 
 Ext.application({
-	requires : [ 'Ext.container.Viewport','BudgetMS.util.crudTools' ],
+	requires : [ 'Ext.container.Viewport' ],
 	name : 'BudgetMS',
 	appFolder : 'app',
-	controllers : [ 'instCtrl', 'treeCtrl' ,'contCtrl','invoCtrl'],
+	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl' ],
 	launch : function() {
-		var s = Ext.create('Ext.container.Viewport', {
+
+		var page = Ext.create('Ext.container.Viewport', {
 			layout : 'border',
 			items : [ {
 				region : 'north',
@@ -70,10 +72,10 @@ Ext.application({
 				split : true,
 				width : 450
 			}, {
-				id:'mainTabpanel',
+				id : 'mainTabpanel',
 				region : 'center',
 				xtype : 'tabpanel', // TabPanel itself has no title
-				activeTab : 1, // First tab active by default
+				activeTab : 0, // First tab active by default
 				items : [ {
 					title : '请示',
 					xtype : 'instList',
@@ -82,11 +84,11 @@ Ext.application({
 					closeAction : 'hide',
 					collapsible : false
 				}, {
-					title : '123'
+					title : 'Main',
+					xtype : 'dashbord'
 				} ]
 			} ]
-
 		});
-
+		
 	}
 })

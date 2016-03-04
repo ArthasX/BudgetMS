@@ -1,16 +1,18 @@
 package com.budgetms.pojo;
 
 public class TypeInfo extends BasePOJO{
-	private int typeId;
+	private String typeId;
 	private String typeName;
 	private String typeCategory;
 	private String remark;
 
-	public int getTypeId() {
+	 
+
+	public String getTypeId() {
 		return typeId;
 	}
 
-	public void setTypeId(int typeId) {
+	public void setTypeId(String typeId) {
 		this.typeId = typeId;
 	}
 

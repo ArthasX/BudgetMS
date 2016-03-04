@@ -11,6 +11,7 @@ Ext.define('BudgetMS.view.ux.baseFileGrid', {
 		items : [ {
 			xtype : 'filefield',
 			name : 'fileUpload',
+			width:300,
 			fieldLabel : '附件',
 			msgTarget : 'side',
 			allowBlank : false,

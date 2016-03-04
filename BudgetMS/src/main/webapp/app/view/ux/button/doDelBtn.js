@@ -3,25 +3,26 @@ Ext.define('BudgetMS.view.ux.button.doDelBtn', {
 	alias : 'widget.doDelBtn',
 	listeners : {// 暂时就写死吧
 		'click' : function(btn, e, eOpts) {
+			debugger;
 			var btnName = btn.name;// 根据button的name来确定他的ownerCt的类型
-			var fieldName;// 字段名称 instId contId invoId
 			// var tableName;
-			var grid;// grid组件对象
+			var grid = btn.up('grid');// grid组件对象
+			var fieldName = grid.name + 'Id';// 字段名称 instId contId invoId
 			// grid=btn.ownerCt.ownerCt.ownerCt.ownerCt;grid =
 			// Ext.getCmp('instList'); 也可以得到grid
 			// btn-panel-instTbarForm-instList
-			var tabpanel = Ext.getCmp('mainTabpanel');
-			var tab = tabpanel.getActiveTab();
-			var grid = tab.down('gridview');
-			if (btnName == 'deleteInst') {
-				fieldName = 'instId';
-			}
-			if (btnName == 'deleteCont') {
-				fieldName = 'contId';
-			}
-			if (btnName == 'deleteInvo') {
-				fieldName = 'invoId';
-			}
+			// var tabpanel = Ext.getCmp('mainTabpanel');
+			// var tab = tabpanel.getActiveTab();
+			// var grid = tab.down('gridview');
+			// if (btnName == 'deleteInst') {
+			// fieldName = 'instId';
+			// }
+			// if (btnName == 'deleteCont') {
+			// fieldName = 'contId';
+			// }
+			// if (btnName == 'deleteInvo') {
+			// fieldName = 'invoId';
+			// }
 
 			var record = grid.getSelectionModel().getLastSelected();
 			if (!record) {

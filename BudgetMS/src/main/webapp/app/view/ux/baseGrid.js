@@ -14,7 +14,7 @@ Ext.define('BudgetMS.view.ux.baseGrid', {
 		'itemdblclick' : function(grid, record) {
 			// debugger;
 			console.log('Double clicked on ', record.data);
-			var view = Ext.widget(grid.ownerCt.name + 'Edit');
+			var view = Ext.widget(grid.name + 'Edit');
 			view.down('form').loadRecord(record);
 			view.down('baseFileGrid').loadFile();
 		}

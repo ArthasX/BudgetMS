@@ -1,12 +1,17 @@
 Ext.define('BudgetMS.view.cont.baseContWin', {
 	extend : 'Ext.window.Window',
 	title : '请示新增',
-	layout : 'fit',
+	layout : {
+		type : 'hbox',
+		align : 'stretch'
+	},
 	autoShow : true,
+	height : 500,
+	width : 800,
 	initComponent : function() {
 		this.items = contFormItems;
 		this.callParent(arguments);
-		this.down('form').getForm().findField('contId').setValue(genContId());
+		//this.down('form').getForm().findField('contId').setValue(genContId());
 	}
 });
 
@@ -68,4 +73,8 @@ var contFormItems = [ {
 		fieldLabel : '备注'
 	} ]
 // 上传文件的组件
+} , {
+	flex : 1,
+	xtype : 'baseFileGrid',
+	name : 'cont'
 } ];

@@ -3,11 +3,13 @@ Ext.define('BudgetMS.view.ux.button.showAddBtn', {
 	alias:'widget.showAddBtn',
 	listeners : {
 		'click' : function(btn, e) {
-			var tabpanel = Ext.getCmp('mainTabpanel');
-			var tab = tabpanel.getActiveTab();
-			var view = Ext.widget(tab.name + 'Add');
+//			var tabpanel = Ext.getCmp('mainTabpanel');
+//			var tab = tabpanel.getActiveTab();
+//			var view = Ext.widget(tab.name + 'Add');
 			// var view = Ext.create('BudgetMS.view.inst.add');// = Ext.widget
 			// var grid = tab.down('gridview');
+			var grid = btn.up('grid');// grid组件对象
+			var view = Ext.widget(grid.name + 'Add');
 		}
 	}
 });

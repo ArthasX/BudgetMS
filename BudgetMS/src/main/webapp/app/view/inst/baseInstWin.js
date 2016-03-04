@@ -64,25 +64,26 @@ var instFormItems = [ {
 			} ]
 		}
 	}, {
-		xtype : 'combo',
-		name : 'applyDept',
-		fieldLabel : '申请部门',
-		valueField : 'deptId',
-		displayField : 'deptName',
-		allowBlank : false,
-		store : {
-			fields : [ 'deptId', 'deptName' ],
-			data : [ {
-				"deptId" : "1",
-				"deptName" : "电子银行"
-			}, {
-				"deptId" : "2",
-				"deptName" : "科技管理"
-			}, {
-				"deptId" : "3",
-				"deptName" : "科技开发"
-			} ]
-		}
+//		xtype : 'combo',
+//		name : 'applyDept',
+//		fieldLabel : '申请部门',
+//		valueField : 'deptId',
+//		displayField : 'deptName',
+//		allowBlank : false,
+//		store : {
+//			fields : [ 'deptId', 'deptName' ],
+//			data : [ {
+//				"deptId" : "1",
+//				"deptName" : "电子银行"
+//			}, {
+//				"deptId" : "2",
+//				"deptName" : "科技管理"
+//			}, {
+//				"deptId" : "3",
+//				"deptName" : "科技开发"
+//			} ]
+//		}
+		xtype:'deptCombo'
 	}, {
 		xtype : 'textfield',
 		name : 'instAmt',
