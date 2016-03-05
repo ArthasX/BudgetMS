@@ -2,28 +2,28 @@ package com.budgetms.pojo;
 
 public class ProjectInfo extends BasePOJO{
 	
-	private int proInfoId;
-	private double proAmt;
-	private int proStatus;
+	private String proInfoId;
+	private String proAmt;
+	private String proStatus;
 	private String proId;
 	private String year;
 	private String remark;
-	public int getProInfoId() {
+	public String getProInfoId() {
 		return proInfoId;
 	}
-	public void setProInfoId(int proInfoId) {
+	public void setProInfoId(String proInfoId) {
 		this.proInfoId = proInfoId;
 	}
-	public double getProAmt() {
+	public String getProAmt() {
 		return proAmt;
 	}
-	public void setProAmt(double proAmt) {
+	public void setProAmt(String proAmt) {
 		this.proAmt = proAmt;
 	}
-	public int getProStatus() {
+	public String getProStatus() {
 		return proStatus;
 	}
-	public void setProStatus(int proStatus) {
+	public void setProStatus(String proStatus) {
 		this.proStatus = proStatus;
 	}
 	public String getProId() {
@@ -44,6 +44,6 @@ public class ProjectInfo extends BasePOJO{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
+	 
 	
 }

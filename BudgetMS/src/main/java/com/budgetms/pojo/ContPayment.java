@@ -3,23 +3,23 @@ package com.budgetms.pojo;
 import java.sql.Date;
 
 public class ContPayment extends BasePOJO{
-	private int contPaymentId;
-	private int period;
+	private String contPaymentId;
+	private String period;
 	private String contId;
-	private double payAmt;
-	private Date expectPayDate;
-	private int isPaid;
+	private String payAmt;
+	private String expectPayDate;
+	private String isPaid;
 	private String remark;
-	public int getContPaymentId() {
+	public String getContPaymentId() {
 		return contPaymentId;
 	}
-	public void setContPaymentId(int contPaymentId) {
+	public void setContPaymentId(String contPaymentId) {
 		this.contPaymentId = contPaymentId;
 	}
-	public int getPeriod() {
+	public String getPeriod() {
 		return period;
 	}
-	public void setPeriod(int period) {
+	public void setPeriod(String period) {
 		this.period = period;
 	}
 	public String getContId() {
@@ -28,22 +28,22 @@ public class ContPayment extends BasePOJO{
 	public void setContId(String contId) {
 		this.contId = contId;
 	}
-	public double getPayAmt() {
+	public String getPayAmt() {
 		return payAmt;
 	}
-	public void setPayAmt(double payAmt) {
+	public void setPayAmt(String payAmt) {
 		this.payAmt = payAmt;
 	}
-	public Date getExpectPayDate() {
+	public String getExpectPayDate() {
 		return expectPayDate;
 	}
-	public void setExpectPayDate(Date expectPayDate) {
+	public void setExpectPayDate(String expectPayDate) {
 		this.expectPayDate = expectPayDate;
 	}
-	public int getIsPaid() {
+	public String getIsPaid() {
 		return isPaid;
 	}
-	public void setIsPaid(int isPaid) {
+	public void setIsPaid(String isPaid) {
 		this.isPaid = isPaid;
 	}
 	public String getRemark() {
@@ -52,6 +52,6 @@ public class ContPayment extends BasePOJO{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
+	 
 	
 }

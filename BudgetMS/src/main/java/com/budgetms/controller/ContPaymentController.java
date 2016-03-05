@@ -1,9 +1,5 @@
 package com.budgetms.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,68 +10,61 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.budgetms.pojo.Contract;
+import com.budgetms.pojo.ContPayment;
 import com.budgetms.service.IContPaymentService;
-import com.budgetms.service.IContService;
 import com.budgetms.util.MysqlErrTranslator;
 
 @Controller
-@RequestMapping("/cont")
-public class ContController extends BaseController {
-	static Logger logger = Logger.getLogger(ContController.class);
+@RequestMapping("/contPayment")
+public class ContPaymentController extends BaseController {
+	static Logger logger = Logger.getLogger(ContPaymentController.class);
 	@Resource
-	private IContService contService;
-	@RequestMapping("/findContByProperty.do")
+	private IContPaymentService contPaymentService;
+
+	@RequestMapping("/findContPaymentByContId.do")
 	@ResponseBody
-	public Object findInstByProperty(HttpServletRequest request) {
-		String json = request.getParameter("obj");
-		Contract cont = JSON.toJavaObject(JSON.parseObject(json),
-				Contract.class);
-		int start = Integer.parseInt(request.getParameter("start"));
-		int limit = Integer.parseInt(request.getParameter("limit"));
-		return contService.getContByPage(cont, start, limit);
+	public Object findContPaymentByContId(HttpServletRequest request) {
+		String id = request.getParameter("obj");
+		return contPaymentService.getContPaymentByContId(id);
 	}
-	
-	
-	@RequestMapping("/updateCont.do")
+
+	@RequestMapping("/updateContPayment.do")
 	@ResponseBody
 	public Object updateCont(HttpServletRequest request) {
 		String json = request.getParameter("obj");
 		logger.info("json:" + json);
-		Contract cont = JSON.toJavaObject(JSON.parseObject(json),
-				Contract.class);
+		ContPayment contPayment = JSON.toJavaObject(JSON.parseObject(json),
+				ContPayment.class);
 		try {
-			contService.updateCont(cont);
+			contPaymentService.updateContPayment(contPayment);
 		} catch (Exception e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
 		return SUCCESS;
 	}
 
-	@RequestMapping("/insertCont.do")
+	@RequestMapping("/insertContPayment.do")
 	@ResponseBody
 	public Object insertCont(HttpServletRequest request) {
 		String json = request.getParameter("obj");
 		logger.info("json:" + json);
-		Contract cont = JSON.toJavaObject(JSON.parseObject(json),
-				Contract.class);
+		ContPayment contPayment = JSON.toJavaObject(JSON.parseObject(json),
+				ContPayment.class);
 		try {
-			contService.insertCont(cont);
+			contPaymentService.insertContPayment(contPayment);
 		} catch (Exception e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
 		return SUCCESS;
 	}
 
-	@RequestMapping("/deleteCont.do")
+	@RequestMapping("/deleteContPayment.do")
 	@ResponseBody
 	public Object deleteCont(HttpServletRequest request) {
-		String contId = request.getParameter("obj");
-		JSON json=JSON.parseObject(contId);
-		//json.
-		logger.info("id:" + contId);
+		String contPaymentId = request.getParameter("obj");
+		logger.info("id:" + contPaymentId);
 		try {
-			contService.deleteCont(contId);
+			contPaymentService.deleteContpayment(contPaymentId);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}

@@ -1,8 +1,10 @@
 Ext.define('BudgetMS.view.ux.combo.deptCombo', {
 	extend : 'Ext.form.field.ComboBox',
 	alias : 'widget.deptCombo',
-	fieldLabel : '请示类型',
+	allowBlank : false,
+	fieldLabel : '申请部门',
 	valueField : 'deptId',
 	displayField : 'deptName',
-	store : 'deptStore'
+	//name:'applyDept',
+	//store : 'deptMemoryStore'
 })

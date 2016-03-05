@@ -9,5 +9,5 @@ Ext.define('BudgetMS.store.deptStore', {
 			type : 'json'
 		}
 	},
-	//autoLoad:true
+	//autoLoad : true
 });

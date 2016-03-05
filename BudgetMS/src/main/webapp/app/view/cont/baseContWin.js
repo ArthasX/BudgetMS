@@ -39,13 +39,16 @@ var contFormItems = [ {
 		displayField : 'typeName',
 		store : {
 			fields : [ 'typeId', 'typeName' ],
-			data : [ {
-				"typeId" : "0",
-				"typeName" : "真实合同"
+			data : [{
+				"typeId" : "3",
+				"typeName" : "虚拟合同"
 			}, {
-				"typeId" : "1",
-				"typeName" : "IT服务申请表"
-			} ]
+				"typeId" : "4",
+				"typeName" : "真实合同"
+			} , {
+				"typeId" : "5",
+				"typeName" : "开口合同"
+			}  ]
 		}
 	}, {
 		xtype : 'textfield',

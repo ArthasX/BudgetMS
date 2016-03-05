@@ -118,20 +118,19 @@
 					cont_Id like '%${param1.contId}%'
 				</when>
 				<otherwise>
-					<trim prefix="(" suffix=")" suffixOverrides=",">
-						<if test="param1.contName !=null and param1.contName !='' ">
-							and cont_name like '%${param1.contName}%'
-						</if>
-						<if test="param1.contType !=null and param1.contType !='' ">
-							and cont_type like '%${param1.contType}%'
-						</if>
-						<if test="param1.contAmt !=null and param1.contAmt !='' ">
-							and cont_amt like '%${param1.contAmt}%'
-						</if>
-						<if test="param1.contCompany !=null and param1.contCompany !='' ">
-							and cont_company like '%${param1.contCompany}%'
-						</if>
-					</trim>
+					<if test="param1.contName !=null and param1.contName !='' ">
+						and cont_name like '%${param1.contName}%'
+					</if>
+					<if test="param1.contType !=null and param1.contType !='' ">
+						and cont_type like '%${param1.contType}%'
+					</if>
+					<if test="param1.contAmt !=null and param1.contAmt !='' ">
+						and cont_amt like '%${param1.contAmt}%'
+					</if>
+					<if test="param1.contCompany !=null and param1.contCompany !='' ">
+						and cont_company like '%${param1.contCompany}%'
+					</if>
+
 				</otherwise>
 			</choose>
 		</trim>
@@ -146,17 +145,20 @@
 					cont_Id like '%${contId}%'
 				</when>
 				<otherwise>
-					<trim prefix="(" suffix=")" suffixOverrides=",">
-						<if test="contName !=null and contName !='' ">
-							and cont_name like '%${contName}%'
-						</if>
-						<if test="contType !=null and contType !='' ">
-							and cont_type like '%${contType}%'
-						</if>
-						<if test="contAmt !=null and contAmt !='' ">
-							and cont_amt like '%${contAmt}%'
-						</if>
-					</trim>
+
+					<if test="contName !=null and contName !='' ">
+						and cont_name like '%${contName}%'
+					</if>
+					<if test="contType !=null and contType !='' ">
+						and cont_type like '%${contType}%'
+					</if>
+					<if test="contAmt !=null and contAmt !='' ">
+						and cont_amt like '%${contAmt}%'
+					</if>
+					<if test="contCompany !=null and contCompany !='' ">
+						and cont_company like '%${contCompany}%'
+					</if>
+
 				</otherwise>
 			</choose>
 		</trim>

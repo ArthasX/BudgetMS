@@ -9,7 +9,7 @@
 		<id column="attach_Id" property="attachId" jdbcType="INTEGER" />
 		<result column="attach_name" property="attachName" jdbcType="VARCHAR" />
 		<result column="record_Id" property="recordId" jdbcType="VARCHAR" />
-		<result column="url" property="attachType" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
 		<result column="attach_type" property="attachType" jdbcType="VARCHAR" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
@@ -134,8 +134,8 @@
 					<if test="recordId !=null and recordId !='' ">
 						and record_id like '%${recordId}%'
 					</if>
-					<if test="attachType !=null and attachType !='' ">
-						and url like '%${attachType}%'
+					<if test="url !=null and url !='' ">
+						and url like '%${url}%'
 					</if>
 					<if test="attachType !=null and attachType !='' ">
 						and attach_type like '%${attachType}%'

@@ -7,6 +7,8 @@
 		<typeAlias type="com.budgetms.pojo.Contract" alias="cont" />
 		<typeAlias type="com.budgetms.pojo.Invoice" alias="invo" />
 		<typeAlias type="com.budgetms.pojo.Attachment" alias="attach" />
-
+		<typeAlias type="com.budgetms.pojo.ContPayment" alias="contPayment" />
+		<typeAlias type="com.budgetms.pojo.InstructionAdjust" alias="instAdj" />
+		<typeAlias type="com.budgetms.pojo.InstructionDivide" alias="instDivide" />
 	</typeAliases>
 </configuration>

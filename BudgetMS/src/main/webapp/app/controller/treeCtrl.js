@@ -14,7 +14,7 @@ Ext.define('BudgetMS.controller.treeCtrl', {
 	treeItemClick : function(tr, record, item, index, e, eOpts) {
 		// console.log(record.raw);
 		// console.log(tr.ownerCt);
-		debugger;
+//		debugger;
 		var treeNode = record.raw;
 		var id = treeNode.id;
 		var name = treeNode.name;

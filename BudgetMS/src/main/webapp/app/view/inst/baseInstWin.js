@@ -9,8 +9,18 @@ Ext.define('BudgetMS.view.inst.baseInstWin', {
 	width : 800,
 	autoShow : true,
 	initComponent : function() {
+		// debugger;
 		this.items = instFormItems;
 		this.callParent(arguments);
+		var form = this.items.items[0].getForm();
+		var applyDeptCombo = form.findField('applyDept');
+		deptMemoryStore.data = deptStore.data;
+		// Ext.apply(combo.store,deptMemoryStore);
+		applyDeptCombo.bindStore(deptMemoryStore);
+////		 决定不用缓存
+//		 typeInfoMemoryStore.data=typeInfoStore.data;debugger;
+//		 var typeInfoCombo =form.findField('instType');
+//		 typeInfoCombo.bindStore(typeInfoMemoryStore);
 
 	}
 });
@@ -32,21 +42,25 @@ var instFormItems = [ {
 		name : 'instContent',
 		fieldLabel : '请示内容'
 	}, {
-		xtype : 'combo',
+		// xtype : 'combo',
+		// name : 'instType',
+		// fieldLabel : '请示类型',
+		// valueField : 'typeId',
+		// displayField : 'typeName',
+		// store : {
+		// fields : [ 'typeId', 'typeName' ],
+		// data : [ {
+		// "typeId" : "1",
+		// "typeName" : "一般请示"
+		// }, {
+		// "typeId" : "2",
+		// "typeName" : "IT服务申请表"
+		// } ]
+		// }
+		xtype : 'typeInfoCombo',
 		name : 'instType',
-		fieldLabel : '请示类型',
-		valueField : 'typeId',
-		displayField : 'typeName',
-		store : {
-			fields : [ 'typeId', 'typeName' ],
-			data : [ {
-				"typeId" : "1",
-				"typeName" : "一般请示"
-			}, {
-				"typeId" : "2",
-				"typeName" : "IT服务申请表"
-			} ]
-		}
+		id:'inst',
+		fieldLabel : '请示类型'
 	}, {
 		xtype : 'combo',
 		name : 'instStatus',
@@ -64,26 +78,27 @@ var instFormItems = [ {
 			} ]
 		}
 	}, {
-//		xtype : 'combo',
-//		name : 'applyDept',
-//		fieldLabel : '申请部门',
-//		valueField : 'deptId',
-//		displayField : 'deptName',
-//		allowBlank : false,
-//		store : {
-//			fields : [ 'deptId', 'deptName' ],
-//			data : [ {
-//				"deptId" : "1",
-//				"deptName" : "电子银行"
-//			}, {
-//				"deptId" : "2",
-//				"deptName" : "科技管理"
-//			}, {
-//				"deptId" : "3",
-//				"deptName" : "科技开发"
-//			} ]
-//		}
-		xtype:'deptCombo'
+		// xtype : 'combo',
+		// name : 'applyDept',
+		// fieldLabel : '申请部门',
+		// valueField : 'deptId',
+		// displayField : 'deptName',
+		// allowBlank : false,
+		// store : {
+		// fields : [ 'deptId', 'deptName' ],
+		// data : [ {
+		// "deptId" : "1",
+		// "deptName" : "电子银行"
+		// }, {
+		// "deptId" : "2",
+		// "deptName" : "科技管理"
+		// }, {
+		// "deptId" : "3",
+		// "deptName" : "科技开发"
+		// } ]
+		// }
+		xtype : 'deptCombo',
+		name : 'applyDept'
 	}, {
 		xtype : 'textfield',
 		name : 'instAmt',

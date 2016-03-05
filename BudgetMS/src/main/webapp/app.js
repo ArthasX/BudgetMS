@@ -31,17 +31,70 @@ function genContId() {
 function genInvoId() {
 
 }
-// 定义缓存
+// 定义缓存    。。其实没必要。。
 var deptMemoryStore;
 var typeInfoMemoryStore;
-
+var deptCombo;
+var deptStore;
+var typeInfoStore;
+var deptData;
+var typeInfoData;
 Ext.application({
 	requires : [ 'Ext.container.Viewport' ],
 	name : 'BudgetMS',
 	appFolder : 'app',
 	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl' ],
 	launch : function() {
+		// debugger;
+		deptStore = Ext.create('BudgetMS.store.deptStore');
+		deptStore.load();
+		// load是异步操作所以下面的赋值语句起不到作用
+		// deptData = deptStore.data;
+		deptMemoryStore = Ext.create('Ext.data.Store', {
+			model : 'BudgetMS.model.dept',
+			proxy : {
+				type : 'memory',
+				reader : {
+					type : 'json',
+				}
+			},
+			listeners : {
 
+				'beforeload' : function(store) {
+					// debugger;
+					// Ext.apply(this.data,deptStore.data);
+					// console.log(store)
+					// 防止store load 导致data为空
+					return false;
+
+				}
+			},
+		});
+		// load是异步操作所以下面的赋值语句起不到作用
+		// deptMemoryStore.data=deptData;
+		// 初始化 类型信息的 memoryStore
+//		typeInfoStore = Ext.create('BudgetMS.store.typeInfoStore');
+//		typeInfoStore.load();
+		// load是异步操作所以下面的赋值语句起不到作用
+		// typeInfoData = typeInfoStore.data;
+		typeInfoMemoryStore = Ext.create('Ext.data.Store', {
+			model : 'BudgetMS.model.typeInfo',
+			proxy : {
+				type : 'memory',
+				reader : {
+					type : 'json',
+				}
+			},
+			listeners : {
+				'beforeload' : function(store) {
+					// 防止store load 导致data为空
+					return false;
+
+				}
+			},
+		})
+		// load是异步操作所以下面的赋值语句起不到作用
+		// typeInfoMemoryStore.data=typeInfoData;
 		var page = Ext.create('Ext.container.Viewport', {
 			layout : 'border',
 			items : [ {
@@ -87,8 +140,15 @@ Ext.application({
 					title : 'Main',
 					xtype : 'dashbord'
 				} ]
-			} ]
-		});
-		
+			} ],
+			listeners:{
+				'show':function(){
+					debugger;
+					console.log('show');
+				}
+			}	
+		}
+		);
+
 	}
 })

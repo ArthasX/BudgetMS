@@ -1,10 +1,10 @@
 Ext.define("BudgetMS.model.typeInfo", {
 	extend : "Ext.data.Model",
 	fields : [ {
-		name : 'typeInfoId',
+		name : 'typeId',
 		type : 'auto'
 	}, {
-		name : 'typeInfoName',
+		name : 'typeName',
 		type : 'auto'
 	}, {
 		name : 'typeCategory',
