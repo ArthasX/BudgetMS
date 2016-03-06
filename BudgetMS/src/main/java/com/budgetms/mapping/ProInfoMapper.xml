@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.budgetms.dao.IInstructionAdjustDao">
+<mapper namespace="com.budgetms.dao.IProInfoDao">
 
-	<resultMap id="BaseResultMap" type="com.budgetms.pojo.InstructionAdjust">
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.ProjectInfo">
 		<id column="inst_adj_id" property="instAdjId" jdbcType="INTEGER" />
 		<result column="inst_id" property="instId" jdbcType="VARCHAR" />
 		<result column="inst_divide_id" property="instDivideId" jdbcType="INTEGER" />
