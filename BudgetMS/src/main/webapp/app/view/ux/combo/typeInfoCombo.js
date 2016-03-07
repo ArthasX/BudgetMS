@@ -7,7 +7,7 @@ Ext.define('BudgetMS.view.ux.combo.typeInfoCombo', {
 	displayField : 'typeName',
 	store : 'typeInfoStore',
 	listeners : {
-		// combo展开的时候给sotre加上filter
+		// combo展开的时候给sotre加上filter expand
 		'expand' : function() {	
 			var string = this.id
 			this.store.filterBy(function(record) {//debugger;

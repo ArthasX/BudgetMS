@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import com.budgetms.dao.IInstructionDao;
 import com.budgetms.pojo.Attachment;
 import com.budgetms.pojo.Instruction;
+import com.budgetms.pojo.InstructionDivide;
 import com.budgetms.service.IInstService;
 
 @Service("instService")
@@ -61,6 +62,12 @@ public class InstServiceImpl implements IInstService {
 
 	@Override
 	public List<Attachment> getAttachById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object getInstDivideByProperty(InstructionDivide i) {
 		// TODO Auto-generated method stub
 		return null;
 	}

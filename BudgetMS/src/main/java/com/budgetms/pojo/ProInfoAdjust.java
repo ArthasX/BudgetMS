@@ -1,41 +1,43 @@
 package com.budgetms.pojo;
 
 public class ProInfoAdjust extends BasePOJO{
-	private int proInfoAdjId;
-	private int adjType;
-	private double adjAmt;
+	private String proInfoAdjId;
+	private String adjType;
+	private String adjAmt;
 	private String remark;
-
-	public int getProInfoAdjId() {
+	private String proInfoId;
+	
+	public String getProInfoId() {
+		return proInfoId;
+	}
+	public void setProInfoId(String proInfoId) {
+		this.proInfoId = proInfoId;
+	}
+	public String getProInfoAdjId() {
 		return proInfoAdjId;
 	}
-
-	public void setProInfoAdjId(int proInfoAdjId) {
+	public void setProInfoAdjId(String proInfoAdjId) {
 		this.proInfoAdjId = proInfoAdjId;
 	}
-
-	public int getAdjType() {
+	public String getAdjType() {
 		return adjType;
 	}
-
-	public void setAdjType(int adjType) {
+	public void setAdjType(String adjType) {
 		this.adjType = adjType;
 	}
-
-	public double getAdjAmt() {
+	public String getAdjAmt() {
 		return adjAmt;
 	}
-
-	public void setAdjAmt(double adjAmt) {
+	public void setAdjAmt(String adjAmt) {
 		this.adjAmt = adjAmt;
 	}
-
 	public String getRemark() {
 		return remark;
 	}
-
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+ 
+	
 
 }

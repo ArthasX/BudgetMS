@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.budgetms.pojo.Attachment;
 import com.budgetms.pojo.Instruction;
+import com.budgetms.pojo.InstructionDivide;
 
 public interface IInstService {
 	List<Instruction> getInstByProperty(Instruction inst);
@@ -21,4 +22,11 @@ public interface IInstService {
 	int deleteInst(String instId);
  
     List<Attachment> getAttachById(String id);
+    
+    
+    //inst divide
+    Object getInstDivideByProperty(InstructionDivide i);
+    
+    //inst adjust
+    
 }
