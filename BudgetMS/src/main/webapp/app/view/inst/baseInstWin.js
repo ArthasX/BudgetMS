@@ -59,7 +59,7 @@ var instFormItems = [ {
 		// }
 		xtype : 'typeInfoCombo',
 		name : 'instType',
-		id:'inst',
+		category:'inst',
 		fieldLabel : '请示类型'
 	}, {
 		xtype : 'combo',

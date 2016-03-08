@@ -43,7 +43,7 @@ Ext.application({
 	requires : [ 'Ext.container.Viewport' ],
 	name : 'BudgetMS',
 	appFolder : 'app',
-	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl' ],
+	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl','proCtrl' ],
 	launch : function() {
 		// debugger;
 		deptStore = Ext.create('BudgetMS.store.deptStore');
@@ -106,11 +106,11 @@ Ext.application({
 				region : 'west',
 				collapsible : true,
 				title : '菜单',
-				width : 150,
+				width : 150,layout : 'fit',
 				items : {
 					text : '菜单',
-					xtype : 'treeMenu',
-					layout : 'fit'
+					xtype : 'treeMenu'
+					
 				}
 			// could use a TreePanel or AccordionLayout for navigational items
 			}, /*

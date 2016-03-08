@@ -3,10 +3,15 @@ Ext.define('BudgetMS.store.instAdjStore', {
 	model : 'BudgetMS.model.instAdj',
 	proxy : {
 		type : 'ajax',
-		url : 'inst/findInstAdjByInstId.do',
+		url : 'inst/findInstAdjByPage.do',
 		reader : {
 			type : 'json',
+			root:'record',
+			totalProperty:'total'
 		}
+	},autoLoad : {
+		start : 0,
+		limit : PAGE_SIZE
 	}
 });
 

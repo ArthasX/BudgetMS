@@ -1,16 +1,16 @@
 package com.budgetms.pojo;
 
 public class InstructionDivide extends BasePOJO{
-	private int instDivideId;
+	private String instDivideId;
 	private String instId;
-	private int divideNO;
-	private double divideAmt;
-	private int proInfoId;
+	private String divideNo;
+	private String divideAmt;
+	private String proInfoId;
 	private String remark;
-	public int getInstDivideId() {
+	public String getInstDivideId() {
 		return instDivideId;
 	}
-	public void setInstDivideId(int instDivideId) {
+	public void setInstDivideId(String instDivideId) {
 		this.instDivideId = instDivideId;
 	}
 	public String getInstId() {
@@ -19,22 +19,23 @@ public class InstructionDivide extends BasePOJO{
 	public void setInstId(String instId) {
 		this.instId = instId;
 	}
-	public int getDivideNO() {
-		return divideNO;
+	 
+	public String getDivideNo() {
+		return divideNo;
 	}
-	public void setDivideNO(int divideNO) {
-		this.divideNO = divideNO;
+	public void setDivideNo(String divideNo) {
+		this.divideNo = divideNo;
 	}
-	public double getDivideAmt() {
+	public String getDivideAmt() {
 		return divideAmt;
 	}
-	public void setDivideAmt(double divideAmt) {
+	public void setDivideAmt(String divideAmt) {
 		this.divideAmt = divideAmt;
 	}
-	public int getProInfoId() {
+	public String getProInfoId() {
 		return proInfoId;
 	}
-	public void setProInfoId(int proInfoId) {
+	public void setProInfoId(String proInfoId) {
 		this.proInfoId = proInfoId;
 	}
 	public String getRemark() {
@@ -43,6 +44,7 @@ public class InstructionDivide extends BasePOJO{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	 
 
 	
 }

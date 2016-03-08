@@ -5,8 +5,9 @@ import java.util.List;
 import com.budgetms.pojo.InstructionDivide;
 
 public interface IInstructionDivideDao {
-	List<InstructionDivide> getInstAdjByInstId(String instId);
-	int InstAdj(InstructionDivide i);
-	int updateInstAdj(InstructionDivide i);
-	int deleteInstAdj(String instAdjId);
+	List<InstructionDivide> getInstDivideByProperty(InstructionDivide i);
+	int insertInstDivide(InstructionDivide i);
+	int updateInstDivide(InstructionDivide i);
+	int deleteInstDivide(String id);
+	int getInstDivideCount();
 }

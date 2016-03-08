@@ -3,10 +3,15 @@ Ext.define('BudgetMS.store.instDivideStore', {
 	model : 'BudgetMS.model.instDivide',
 	proxy : {
 		type : 'ajax',
-		url : 'inst/findInstDivideByInstId.do',
+		url : 'inst/findInstDivideByPage.do',
 		reader : {
 			type : 'json',
+			root:'record',
+			totalProperty:'total'
 		}
+	},autoLoad : {
+		start : 0,
+		limit : PAGE_SIZE
 	}
 });
 

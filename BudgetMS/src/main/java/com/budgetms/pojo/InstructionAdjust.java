@@ -1,50 +1,42 @@
 package com.budgetms.pojo;
 
 public class InstructionAdjust extends BasePOJO{
-	private int instAdjId;
+	private String instAdjId;
 	private String instId;
-	private int instDivideId;
-	private double instAdjAmt;
+	private String instDivideId;
+	private String instAdjAmt;
 	private String remark;
-
-	public int getInstAdjId() {
+	public String getInstAdjId() {
 		return instAdjId;
 	}
-
-	public void setInstAdjId(int instAdjId) {
+	public void setInstAdjId(String instAdjId) {
 		this.instAdjId = instAdjId;
 	}
-
 	public String getInstId() {
 		return instId;
 	}
-
 	public void setInstId(String instId) {
 		this.instId = instId;
 	}
-
-	public int getInstDivideId() {
+	public String getInstDivideId() {
 		return instDivideId;
 	}
-
-	public void setInstDivideId(int instDivideId) {
+	public void setInstDivideId(String instDivideId) {
 		this.instDivideId = instDivideId;
 	}
-
-	public double getInstAdjAmt() {
+	public String getInstAdjAmt() {
 		return instAdjAmt;
 	}
-
-	public void setInstAdjAmt(double instAdjAmt) {
+	public void setInstAdjAmt(String instAdjAmt) {
 		this.instAdjAmt = instAdjAmt;
 	}
-
 	public String getRemark() {
 		return remark;
 	}
-
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+ 
 
 }

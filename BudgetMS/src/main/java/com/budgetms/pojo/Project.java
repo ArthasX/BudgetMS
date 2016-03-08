@@ -4,7 +4,7 @@ public class Project extends BasePOJO{
 	private String proId;
 	private String proName;
 	private String proType;
-	private String BudgetInfoId;
+	private String budgetInfoId;
 	private String remark;
 	public String getProId() {
 		return proId;
@@ -24,11 +24,12 @@ public class Project extends BasePOJO{
 	public void setProType(String proType) {
 		this.proType = proType;
 	}
+	 
 	public String getBudgetInfoId() {
-		return BudgetInfoId;
+		return budgetInfoId;
 	}
 	public void setBudgetInfoId(String budgetInfoId) {
-		BudgetInfoId = budgetInfoId;
+		this.budgetInfoId = budgetInfoId;
 	}
 	public String getRemark() {
 		return remark;

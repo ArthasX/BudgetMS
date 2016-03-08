@@ -1,18 +1,18 @@
 package com.budgetms.test;
 
- 
 import java.util.List;
 
 import javax.annotation.Resource;
- 
 
-
+import org.apache.ibatis.annotations.Insert;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
 import com.budgetms.controller.InstController;
 import com.budgetms.pojo.Instruction;
+import com.budgetms.pojo.InstructionAdjust;
+import com.budgetms.pojo.InstructionDivide;
 import com.budgetms.service.IInstService;
 import com.budgetms.util.FileUtil;
 import com.google.gson.ExclusionStrategy;
@@ -22,6 +22,7 @@ import com.google.gson.GsonBuilder;
 
 public class TestInst extends AbsTest {
 	static Logger logger = Logger.getLogger(TestInst.class);
+
 	static class SetterExclusionStrategy implements ExclusionStrategy {
 
 		@Override
@@ -38,14 +39,13 @@ public class TestInst extends AbsTest {
 
 	@Resource
 	private IInstService instService = null;
-	// 注入loginController  
-    @Autowired  
-    private InstController instController ;  
-    
-	
+	// 注入loginController
+	@Autowired
+	private InstController instController;
+
 	@Override
 	public void test() {
-		t5();
+		t4();
 	}
 
 	public void t() {
@@ -84,41 +84,67 @@ public class TestInst extends AbsTest {
 		Gson g = new Gson();
 		Gson g1 = new GsonBuilder().serializeNulls().create();
 		Instruction inst = g.fromJson(json, Instruction.class);
-		Instruction inst1 = g1.fromJson(json1, Instruction.class);	//	
-		 
-		JSON.toJavaObject(JSON.parseObject(json),Instruction.class);
+		Instruction inst1 = g1.fromJson(json1, Instruction.class); //
+
+		JSON.toJavaObject(JSON.parseObject(json), Instruction.class);
 		logger.info(instService.getInstByProperty(inst1));
-		//logger.info(JSON.toJSONString(inst1));
+		// logger.info(JSON.toJSONString(inst1));
 	}
-	
-	public void t3(){
+
+	public void t3() {
 		String json = "{'instId':null,'instAmt':'123'}";
 		Gson g = new Gson();
 		Instruction inst = g.fromJson(json, Instruction.class);
-		//List<Instruction>l=instService.getInstByPage(inst, 1, 2);
-		//logger.debug(l);
+		// List<Instruction>l=instService.getInstByPage(inst, 1, 2);
+		// logger.debug(l);
 	}
-	
-	 public void t4() {   
-	        try {  
-	        	request.setParameter("start", "0");
-	        	request.setParameter("limit", "2");
-	        	request.setParameter("obj", "{'instType':'1'}");
-	        	Object obj =instController.findInstByProperty(request) ;  
-	        	System.out.print(obj);
-	        } catch (Exception e) {  
-	            e.printStackTrace();  
-	        }  
-	    }  
-	 public void t5() {   
-	        try {  
-	        	request.setParameter("start", "0");
-	        	request.setParameter("limit", "2");
-	        	request.setParameter("obj", "{'instType':'1'}");
-	        	FileUtil fu=new FileUtil(request, response) ;
-	     
-	        } catch (Exception e) {  
-	            e.printStackTrace();  
-	        }  
-	    }  
+
+	public void t4() {
+		try {
+			request.setParameter("start", "0");
+			request.setParameter("limit", "2");
+			request.setParameter("obj", "{'instType':'1'}");
+			Object obj = instController.findInstByProperty(request);
+			System.out.print(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void t5() {
+		try {
+			request.setParameter("start", "0");
+			request.setParameter("limit", "2");
+			request.setParameter("obj", "{'instType':'1'}");
+			FileUtil fu = new FileUtil(request, response);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void t6() {
+
+		InstructionDivide id = new InstructionDivide();
+		id.setInstDivideId("2");
+//		id.setInstId("QSBH201602150001");
+//		id.setDivideAmt("100");
+//		id.setDivideNo("1");
+//		id.setProInfoId("1");
+		// instService.insertInstDivide(id);
+		Object o =instService.getInstDivideByProperty(id);
+		logger.info(o);
+//		id.setInstDivideId("1");
+//		id.setDivideAmt("150");
+//		instService.updateInstDivide(id);
+		instService.deleteInstDivide("2");
+		logger.info(instService.getInstDivideByProperty(id));
+	}
+	public void t7(){
+		InstructionAdjust ia = new InstructionAdjust();
+		ia.setInstId("QSBH201602150001");
+		ia.setInstDivideId("1");
+		ia.setInstAdjAmt("50");
+		ia.setRemark("减少50");
+	}
 }

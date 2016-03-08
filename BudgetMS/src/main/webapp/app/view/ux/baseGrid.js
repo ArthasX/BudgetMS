@@ -11,18 +11,19 @@ Ext.define('BudgetMS.view.ux.baseGrid', {
 		}
 	},
 	listeners : {
-		'itemdblclick' : function(grid, record) {
-			//debugger;
+		'itemdblclick' : function(g, record) {
+//			debugger;
 			console.log('Double clicked on ', record.data);
-			var view = Ext.widget(grid.name + 'Edit');
+			var view = Ext.widget(g.name + 'Edit');
 			view.down('form').loadRecord(record);
-			view.down('baseFileGrid').loadFile();
+			var fileGrid = view.down('baseFileGrid');
+			if (fileGrid)
+				view.down('baseFileGrid').loadFile();
 		}
 	},
 	initComponent : function() {
 		this.callParent(arguments);
 		console.log('basegrid', this.down('pagingtoolbar'));
 	}
-	
 
 });

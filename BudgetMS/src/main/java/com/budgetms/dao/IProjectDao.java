@@ -12,4 +12,8 @@ public interface IProjectDao {
 	int updateProject(Project p);
 
 	int deleteProject(String proId);
+
+	List<Project> getProjectByPage(Project p, int start, int limit);
+
+	int getProjectCount(Project p);
 }

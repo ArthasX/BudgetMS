@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.budgetms.pojo.Instruction;
+import com.budgetms.pojo.InstructionAdjust;
+import com.budgetms.pojo.InstructionDivide;
 import com.budgetms.service.IInstService;
 import com.budgetms.util.MysqlErrTranslator;
 
@@ -95,6 +97,130 @@ public class InstController extends BaseController {
 		logger.info("id:" + instId);
 		try {
 			instService.deleteInst(instId);
+		} catch (DataAccessException e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		logger.info(SUCCESS);
+		return SUCCESS;
+	}
+	
+	// inst divide
+	
+	@RequestMapping("/findInstDivideByPage.do")
+	@ResponseBody
+	public Object findInstDivideByPage(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		InstructionDivide i = JSON.toJavaObject(JSON.parseObject(json),
+				InstructionDivide.class);
+		int start = Integer.parseInt(request.getParameter("start"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		return instService.getInstDivideByPage(i, start, limit);
+	}
+
+ 
+	@RequestMapping("/updateInstDivide.do")
+	@ResponseBody
+	public Object updateInstDivide(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		logger.info("json:" + json);
+		InstructionDivide i = JSON.toJavaObject(JSON.parseObject(json),
+				InstructionDivide.class);
+		try {
+			instService.updateInstDivide(i);
+		} catch (Exception e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		return SUCCESS;
+	}
+
+	@RequestMapping("/insertInstDivide.do")
+	@ResponseBody
+	public Object insertInstDivide(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		logger.info("json:" + json);
+		InstructionDivide i = JSON.toJavaObject(JSON.parseObject(json),
+				InstructionDivide.class);
+		// inst.setOptUser(1);
+		try {
+			instService.insertInstDivide(i);
+		} catch (Exception e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		return SUCCESS;
+	}
+
+	@RequestMapping("/deleteInstDivide.do")
+	@ResponseBody
+	public Object deleteInstDivide(HttpServletRequest request) {
+		String id = request.getParameter("obj");
+		JSON json = JSON.parseObject(id);
+		// json.
+		logger.info("id:" + id);
+		try {
+			instService.deleteInstDivide(id);
+		} catch (DataAccessException e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		logger.info(SUCCESS);
+		return SUCCESS;
+	}
+	
+	
+	
+	//inst adj
+	
+	@RequestMapping("/findInstAdjByPage.do")
+	@ResponseBody
+	public Object findInstAdjByPage(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		InstructionAdjust i = JSON.toJavaObject(JSON.parseObject(json),
+				InstructionAdjust.class);
+		int start = Integer.parseInt(request.getParameter("start"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		return instService.getInstAdjByPage(i, start, limit);
+	}
+
+ 
+	@RequestMapping("/updateInstAdj.do")
+	@ResponseBody
+	public Object updateInstAdj(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		logger.info("json:" + json);
+		InstructionAdjust i = JSON.toJavaObject(JSON.parseObject(json),
+				InstructionAdjust.class);
+		try {
+			instService.updateInstAdj(i);
+		} catch (Exception e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		return SUCCESS;
+	}
+
+	@RequestMapping("/insertInstAdj.do")
+	@ResponseBody
+	public Object insertInstAdj(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		logger.info("json:" + json);
+		InstructionAdjust i = JSON.toJavaObject(JSON.parseObject(json),
+				InstructionAdjust.class);
+		// inst.setOptUser(1);
+		try {
+			instService.insertInstAdj(i);
+		} catch (Exception e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		return SUCCESS;
+	}
+
+	@RequestMapping("/deleteInstAdj.do")
+	@ResponseBody
+	public Object deleteInstAdj(HttpServletRequest request) {
+		String id = request.getParameter("obj");
+		JSON json = JSON.parseObject(id);
+		// json.
+		logger.info("id:" + id);
+		try {
+			instService.deleteInstAdj(id);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}

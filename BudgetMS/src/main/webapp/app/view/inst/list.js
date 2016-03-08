@@ -2,11 +2,7 @@
  * 请示表头
  * 
  */
-var instColum = [ {
-	xtype : 'checkcolumn',
-	text : '选中',
-	dataIndex : 'active'
-}, {
+var instColum = [{
 	header : '请示编号',
 	dataIndex : 'instId',
 	width : 150

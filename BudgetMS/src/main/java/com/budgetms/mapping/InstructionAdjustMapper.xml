@@ -8,7 +8,8 @@
 	<resultMap id="BaseResultMap" type="com.budgetms.pojo.InstructionAdjust">
 		<id column="inst_adj_id" property="instAdjId" jdbcType="INTEGER" />
 		<result column="inst_id" property="instId" jdbcType="VARCHAR" />
-		<result column="inst_divide_id" property="instDivideId" jdbcType="INTEGER" />
+		<result column="inst_divide_id" property="instDivideId"
+			jdbcType="INTEGER" />
 		<result column="inst_adj_amt" property="instAdjAmt" jdbcType="DECIMAL" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
@@ -42,17 +43,14 @@
 	<select id="getInstAdjByInstId" resultMap="BaseResultMap"
 		resultType="java.util.HashMap">
 		select * from instruction_adjust where inst_id like '%${instId}%'
-		<!-- <trim prefix="where" prefixOverrides="AND|OR">
-			<if test="instId !=null and instId !='' ">
-				 inst_id like '%${instId}%'
-			</if>
-		</trim> -->
+		<!-- <trim prefix="where" prefixOverrides="AND|OR"> <if test="instId !=null 
+			and instId !='' "> inst_id like '%${instId}%' </if> </trim> -->
 	</select>
 
 	<delete id="deleteInstAdj" parameterType="java.lang.String"> delete from
-	instruction_adjust
-	where
-	inst_adj_id=#{instAdjId}
+		instruction_adjust
+		where
+		inst_adj_id=#{instAdjId}
 	</delete>
 
 	<insert id="insertInstAdj" parameterType="attach">

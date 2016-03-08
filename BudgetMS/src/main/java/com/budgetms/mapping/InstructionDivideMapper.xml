@@ -14,6 +14,23 @@
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
 
+	<select id="getInstDivideByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="instDivide">
+		select * from instruction_divide
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="instDivideId !=null and instDivideId !=''">
+					inst_divide_id like '%${instDivideId}%'
+				</when>
+				<otherwise>
+					<if test="instId !=null and instId !='' ">
+						and inst_id like '%${instId}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by inst_divide_id desc
+	</select>
 
 	<select id="getInstDivideByInstId" resultMap="BaseResultMap"
 		resultType="java.util.HashMap">
@@ -91,6 +108,51 @@
 		</set>
 		where inst_divide_id=#{instDivideId}
 	</update>
- 
 
+	<select id="getInstDivideCount" resultType="int">
+		select count(*) from instruction_adjust
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="instDivideId !=null and instDivideId !=''">
+					inst_divide_id like '%${instDivideId}%'
+				</when>
+				<otherwise>
+					<if test="instId !=null and instId !='' ">
+						and inst_id like '%${instId}%'
+					</if>
+					<if test="proInfoId !=null and proInfoId !='' ">
+						and pro_info_id like '%${proInfoId}%'
+					</if>
+					<if test="divideAmt !=null and divideAmt !='' ">
+						and divide_amt like '%${divideAmt}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getInstDivideByPage" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from instruction_adjust
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.instDivideId !=null and param1.instDivideId !=''">
+					inst_divide_id like '%${param1.instDivideId}%'
+				</when>
+				<otherwise>
+					<if test="param1.instId !=null and param1.instId !='' ">
+						and inst_id like '%${param1.instId}%'
+					</if>
+					<if test="param1.proInfoId !=null and param1.proInfoId !='' ">
+						and pro_info_id like '%${param1.proInfoId}%'
+					</if>
+					<if test="param1.divideAmt !=null and param1.divideAmt !='' ">
+						and divide_amt like '%${param1.divideAmt}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by inst_divide_id desc limit #{param2},#{param3}
+	</select>
 </mapper>  

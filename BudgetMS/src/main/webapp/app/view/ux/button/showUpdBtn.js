@@ -3,7 +3,7 @@ Ext.define('BudgetMS.view.ux.button.showUpdBtn', {
 	alias : 'widget.showUpdBtn',
 	listeners : {
 		'click' : function(btn, e) {
-			//debugger;
+//			debugger;
 			// 使用tabpanel.getActiveTab()。down('gridview')
 			// 通过btn获取组件 减少hardcode 实现重用
 			// debugger;

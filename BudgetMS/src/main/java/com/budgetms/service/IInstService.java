@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.budgetms.pojo.Attachment;
 import com.budgetms.pojo.Instruction;
+import com.budgetms.pojo.InstructionAdjust;
 import com.budgetms.pojo.InstructionDivide;
 
 public interface IInstService {
@@ -26,7 +27,14 @@ public interface IInstService {
     
     //inst divide
     Object getInstDivideByProperty(InstructionDivide i);
-    
+    int insertInstDivide(InstructionDivide i);
+    int updateInstDivide(InstructionDivide i);
+    int deleteInstDivide(String  id);
+    Object getInstDivideByPage(InstructionDivide i,int start,int limit);
     //inst adjust
-    
+    Object getInstAdjByProperty(InstructionAdjust i);
+    int insertInstAdj(InstructionAdjust i);
+    int updateInstAdj(InstructionAdjust i);
+    int deleteInstAdj(String  id);
+    Object getInstAdjByPage(InstructionAdjust i,int start,int limit);
 }

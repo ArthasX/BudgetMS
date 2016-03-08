@@ -3,6 +3,7 @@ Ext.define('BudgetMS.view.ux.button.showAddBtn', {
 	alias:'widget.showAddBtn',
 	listeners : {
 		'click' : function(btn, e) {
+//			debugger;
 //			var tabpanel = Ext.getCmp('mainTabpanel');
 //			var tab = tabpanel.getActiveTab();
 //			var view = Ext.widget(tab.name + 'Add');

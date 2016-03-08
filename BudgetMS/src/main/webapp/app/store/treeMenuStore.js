@@ -3,39 +3,64 @@ Ext.define('BudgetMS.store.treeMenuStore', {
 	root : {
 		expanded : true,
 		children : [ {
-			id:'budgetList',
-			name:'budget',
+			id : 'budgetList',
+			name : 'budget',
 			text : "预算",
 			leaf : true
 		}, {
-			id:'proList',
-			name:'pro',
+			id : 'proList',
+			name : 'pro',
 			text : "项目",
-			leaf : true
+			expanded : true,
+			children : [ {
+				id : 'proInfoList',
+				name : 'proInfo',
+				text : "项目信息",
+				leaf : true
+			}, {
+				id : 'proInfoAdjList',
+				name : 'proInfoAdj',
+				text : "项目信息调整",
+				leaf : true
+			} ]
 		}, {
-			id:'instList',
-			name:'inst',
+			id : 'instList',
+			name : 'inst',
 			text : "请示",
 			expanded : true,
 			children : [ {
-				text : "测试1",
+				id : 'instDivideList',
+				name : 'instDivide',
+				text : "请示拆分",
 				leaf : true
 			}, {
-				text : "测试2",
+				id : 'instAdjList',
+				name : 'instAdj',
+				text : "请示调整",
 				leaf : true
-			} ]	
+			} ]
 		}, {
-			id:'contList',
-			name:'cont',
+			id : 'contList',
+			name : 'cont',
 			text : "合同",
-			leaf : true
-		},
-		{
-			id:'invoList',
-			name:'invo',
+			expanded : true,
+			children : [ {
+				id : 'contPaymentList',
+				name : 'contPayment',
+				text : "合同分期付款",
+				leaf : true
+			}, {
+				id : 'contAdjList',
+				name : 'contAdj',
+				text : "合同调整",
+				leaf : true
+			} ]
+		}, {
+			id : 'invoList',
+			name : 'invo',
 			text : "发票",
 			leaf : true
-		}]
+		} ]
 	}
 
 })

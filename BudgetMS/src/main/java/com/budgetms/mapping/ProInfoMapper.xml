@@ -130,10 +130,10 @@
 						and pro_status like '%${proStatus}%'
 					</if>
 					<if test="proAmt !=null and proAmt !='' ">
-						and url like '%${proAmt}%'
-					</if>
-					<if test="proAmt !=null and proAmt !='' ">
 						and pro_amt like '%${proAmt}%'
+					</if>
+					<if test="year !=null and year !='' ">
+						and year like '%${year}%'
 					</if>
 				</otherwise>
 			</choose>
@@ -158,6 +158,9 @@
 					</if>
 					<if test="param1.proAmt !=null and param1.proAmt !='' ">
 						and pro_amt like '%${param1.proAmt}%'
+					</if>
+					<if test="param1.year !=null and param1.year !='' ">
+						and year like '%${param1.year}%'
 					</if>
 				</otherwise>
 			</choose>

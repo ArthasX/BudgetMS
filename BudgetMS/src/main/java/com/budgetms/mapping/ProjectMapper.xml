@@ -89,7 +89,7 @@
 				pro_name=#{proName},
 			</if>
 			<if test="proType !=null and proType !='' ">
-				proType=#{proType},
+				pro_type=#{proType},
 			</if>
 			<if test="budgetInfoId !=null and budgetInfoId !='' ">
 				budget_info_id=#{budgetInfoId},
