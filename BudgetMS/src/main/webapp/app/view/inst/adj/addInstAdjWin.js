@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.view.inst.adj.addInstAdjWin', {
 	extend : 'BudgetMS.view.inst.adj.baseInstAdjWin',
 	alias : 'widget.instAdjAdd',
-	title : '请示新增',
+	title : '请示调整新增',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {
@@ -16,7 +16,7 @@ Ext.define('BudgetMS.view.inst.adj.addInstAdjWin', {
 		} ];
 		this.callParent(arguments);
 		var form=this.down('form'); 
-//		if(form)
-//			form.getForm().findField('instId').setValue(genInstAdjId());
+		if(form)
+			form.getForm().findField('instAdjId').disabled=true;
 	}
 });

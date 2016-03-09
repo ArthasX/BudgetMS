@@ -18,33 +18,10 @@ var instAdjColum = [ {
 	header : '请示调整金额',
 	dataIndex : 'instAdjAmt'
 }, {
-	header : '硬件金额',
-	dataIndex : 'hardAmt'
-},
-// {
-// header : '申请人',
-// dataIndex : 'applyUser',
-//	
-// },
-{
-	header : '申请人',
-	dataIndex : 'applyUserName',
-
-}, {
-	header : '操作时间',
-	dataIndex : 'optDate',
-
-}, {
-	header : '操作人',
-	dataIndex : 'optUser',
-
-}, {
 	header : '备注',
 	dataIndex : 'remark',
 
-}, {
-
-} ];
+}];
 
 Ext.define('BudgetMS.view.inst.adj.list', {
 	extend : 'BudgetMS.view.ux.baseGrid',

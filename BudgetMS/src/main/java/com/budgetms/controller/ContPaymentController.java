@@ -15,16 +15,29 @@ import com.budgetms.service.IContPaymentService;
 import com.budgetms.util.MysqlErrTranslator;
 
 @Controller
-@RequestMapping("/contPayment")
+@RequestMapping("/cont")
 public class ContPaymentController extends BaseController {
 	static Logger logger = Logger.getLogger(ContPaymentController.class);
 	@Resource
 	private IContPaymentService contPaymentService;
 
+	@RequestMapping("/findContPaymentByPage.do")
+	@ResponseBody
+	public Object findContPaymentByPage(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		int start = Integer.parseInt(request.getParameter("start"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		ContPayment c = JSON.toJavaObject(JSON.parseObject(json), ContPayment.class);
+		return contPaymentService.getContPaymentByPage(c, start, limit);
+	}
+
 	@RequestMapping("/findContPaymentByContId.do")
 	@ResponseBody
 	public Object findContPaymentByContId(HttpServletRequest request) {
 		String id = request.getParameter("obj");
+		int start = Integer.parseInt(request.getParameter("start"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+
 		return contPaymentService.getContPaymentByContId(id);
 	}
 

@@ -1,4 +1,4 @@
-Ext.define('BudgetMS.view.instAdj.adj.baseInstAdjWin', {
+Ext.define('BudgetMS.view.inst.adj.baseInstAdjWin', {
 	extend : 'Ext.window.Window',
 	name : 'instAdj',
 //	layout : {
@@ -28,7 +28,7 @@ var instAdjFormItems = [ {
 		name : 'instId',
 		fieldLabel : '请示编号'
 	}, {
-		xtype : 'textarea',
+		xtype : 'textfield',
 		name : 'instDivideId',
 		fieldLabel : '请示拆分编号'
 	}, {

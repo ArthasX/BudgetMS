@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.view.inst.divide.addInstDivideWin', {
 	extend : 'BudgetMS.view.inst.divide.baseInstDivideWin',
 	alias : 'widget.instDivideAdd',
-	title : '请示新增',
+	title : '请示拆分新增',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {
@@ -16,7 +16,7 @@ Ext.define('BudgetMS.view.inst.divide.addInstDivideWin', {
 		} ];
 		this.callParent(arguments);
 		var form=this.down('form'); 
-//		if(form)
-//			form.getForm().findField('instId').setValue(genInstDivideId());
+		if(form)
+			form.getForm().findField('instDivideId').disabled=true;
 	}
 });

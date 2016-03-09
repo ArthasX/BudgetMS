@@ -2,7 +2,7 @@
  * 请示表头
  * 
  */
-var instColum = [{
+var instColum = [ {
 	header : '请示编号',
 	dataIndex : 'instId',
 	width : 150
@@ -77,7 +77,7 @@ Ext.define('BudgetMS.view.inst.list', {
 	},
 	dockedItems : [ {
 		xtype : 'pagingtoolbar',
-		store : 'instStore', 
+		store : 'instStore',
 		dock : 'bottom',
 		displayInfo : true
 	} ],
@@ -88,47 +88,3 @@ Ext.define('BudgetMS.view.inst.list', {
 	}
 
 });
-
-/**
- * 分页工具栏
- */
-
-// var pagingToolbar = Ext.create('Ext.PagingToolbar', {
-// store : 'instStore',
-// displayInfo : true,
-// displayMsg : 'Displaying topics {0} - {1} of {2}',
-// emptyMsg : "No topics to display",
-// items : [ '-', {
-// text : 'Show Preview',
-// pressed : true,
-// enableToggle : true,
-// toggleHandler : function(btn, pressed) {
-// //var preview = Ext.getCmp('gv').getPlugin('preview');
-// //preview.toggleExpanded(pressed);
-// }
-// } ]
-// });
-// /**
-// * 提取了一个停靠组件的类，方便维护
-// */
-// Ext.define('oaSystem.view.main.region.GridToolbar', {
-// extend : 'Ext.toolbar.Toolbar',
-// alias : 'widget.gridtoolbar',
-// initComponent : function() {
-// this.items = [{
-// text : '新增',
-// glyph : 0xf016,
-// },{
-// text : '修改',
-// glyph : 0xf044
-// },{
-// text : '删除',
-// glyph : 0xf014
-// },{
-// text : '查看',
-// glyph : 0xf022
-// }];
-// this.callParent();
-// }
-// });
-//

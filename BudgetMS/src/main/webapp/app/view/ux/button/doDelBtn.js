@@ -3,7 +3,7 @@ Ext.define('BudgetMS.view.ux.button.doDelBtn', {
 	alias : 'widget.doDelBtn',
 	listeners : {// 暂时就写死吧
 		'click' : function(btn, e, eOpts) {
-			debugger;
+//			debugger;
 			var btnName = btn.name;// 根据button的name来确定他的ownerCt的类型
 			// var tableName;
 			var grid = btn.up('grid');// grid组件对象

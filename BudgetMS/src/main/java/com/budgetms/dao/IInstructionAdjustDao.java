@@ -8,4 +8,5 @@ public interface IInstructionAdjustDao {
 	int updateInstAdj(InstructionAdjust i);
 	int deleteInstAdj(String id);
 	int getInstAdjCount();
+	List<InstructionAdjust> getInstAdjByPage(InstructionAdjust i,int start,int limit);
 }

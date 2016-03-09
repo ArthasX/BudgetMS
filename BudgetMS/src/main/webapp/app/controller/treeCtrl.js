@@ -14,8 +14,8 @@ Ext.define('BudgetMS.controller.treeCtrl', {
 	treeItemClick : function(tr, record, item, index, e, eOpts) {
 		// console.log(record.raw);
 		// console.log(tr.ownerCt);
-//		debugger;
-		 
+		// debugger;
+
 		var treeNode = record.raw;
 		var id = treeNode.id;
 		var name = treeNode.name;
@@ -25,7 +25,7 @@ Ext.define('BudgetMS.controller.treeCtrl', {
 		console.log("id:", id, "text:", text, "tab:", tab);
 		try {
 			if (!tab) {
-				tabs.add({
+				var t = {
 					id : id,
 					name : name,
 					closable : true,
@@ -33,7 +33,8 @@ Ext.define('BudgetMS.controller.treeCtrl', {
 					iconCls : id,
 					xtype : id,
 					closeAction : 'hide'
-				});
+				};
+				tabs.add(t);
 				tabs.setActiveTab(tabs.getComponent(id));
 			} else {
 				tabs.setActiveTab(tab);

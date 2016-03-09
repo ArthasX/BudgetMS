@@ -7,8 +7,8 @@ Ext.define('BudgetMS.store.instStore', {
 		url : 'inst/findInstByProperty.do',
 		reader : {
 			type : 'json',
-			root:'record',
-			totalProperty:'total'
+			root : 'record',
+			totalProperty : 'total'
 		}
 	},
 	autoLoad : {

@@ -10,7 +10,7 @@
 		<result column="inst_id" property="instId" jdbcType="VARCHAR" />
 		<result column="divide_no" property="divideNo" jdbcType="INTEGER" />
 		<result column="divide_amt" property="divideAmt" jdbcType="DECIMAL" />
-		<result column="pro_info_id" property="proInfoId" jdbcType="VARCHAR" />
+		<result column="pro_info_id" property="proInfoId" jdbcType="INTEGER" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
 
@@ -110,7 +110,7 @@
 	</update>
 
 	<select id="getInstDivideCount" resultType="int">
-		select count(*) from instruction_adjust
+		select count(*) from instruction_divide
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
 				<when test="instDivideId !=null and instDivideId !=''">
@@ -134,7 +134,7 @@
 
 	<select id="getInstDivideByPage" resultMap="BaseResultMap"
 		resultType="java.util.HashMap">
-		select * from instruction_adjust
+		select * from instruction_divide
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
 				<when test="param1.instDivideId !=null and param1.instDivideId !=''">

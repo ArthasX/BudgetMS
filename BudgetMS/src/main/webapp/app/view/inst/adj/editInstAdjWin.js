@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.view.inst.adj.editInstAdjWin', {
 	extend : 'BudgetMS.view.inst.adj.baseInstAdjWin',
 	alias : 'widget.instAdjEdit',
-	title : '请示修改',
+	title : '请示调整修改',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {

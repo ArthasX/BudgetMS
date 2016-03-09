@@ -1,14 +1,14 @@
-Ext.define('BudgetMS.store.instAdjStore', {
-	name : 'instAdj',
+Ext.define('BudgetMS.store.contAdjStore', {
+	name : 'contAdj',
 	extend : 'BudgetMS.store.baseStore',
-	model : 'BudgetMS.model.instAdj',
+	model : 'BudgetMS.model.contAdj',
 	proxy : {
 		type : 'ajax',
-		url : 'inst/findInstAdjByPage.do',
+		url : 'cont/findContAdjByPage.do',
 		reader : {
 			type : 'json',
-			root : 'record',
-			totalProperty : 'total'
+			root:'record',
+			totalProperty:'total'
 		}
 	},
 	autoLoad : {

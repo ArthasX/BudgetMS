@@ -10,4 +10,5 @@ public interface IInstructionDivideDao {
 	int updateInstDivide(InstructionDivide i);
 	int deleteInstDivide(String id);
 	int getInstDivideCount();
+	List<InstructionDivide> getInstDivideByPage(InstructionDivide i,int start,int limit);
 }

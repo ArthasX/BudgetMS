@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.budgetms.pojo.ContAdjust;
 import com.budgetms.pojo.Contract;
 import com.budgetms.service.IContPaymentService;
 import com.budgetms.service.IContService;
@@ -27,7 +28,7 @@ public class ContController extends BaseController {
 	private IContService contService;
 	@RequestMapping("/findContByProperty.do")
 	@ResponseBody
-	public Object findInstByProperty(HttpServletRequest request) {
+	public Object findContByProperty(HttpServletRequest request) {
 		String json = request.getParameter("obj");
 		Contract cont = JSON.toJavaObject(JSON.parseObject(json),
 				Contract.class);
@@ -82,4 +83,65 @@ public class ContController extends BaseController {
 		logger.info(SUCCESS);
 		return SUCCESS;
 	}
+	
+	//cont adj
+	
+	@RequestMapping("/findContAdjByPage.do")
+	@ResponseBody
+	public Object findContAdjByPage(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		ContAdjust ca = JSON.toJavaObject(JSON.parseObject(json),
+				ContAdjust.class);
+		int start = Integer.parseInt(request.getParameter("start"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		return contService.getContAdjByPage(ca, start, limit);
+	}
+	
+	
+	@RequestMapping("/updateContAdj.do")
+	@ResponseBody
+	public Object updateContAdj(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		logger.info("json:" + json);
+		ContAdjust ca = JSON.toJavaObject(JSON.parseObject(json),
+				ContAdjust.class);
+		try {
+			contService.updateContAdj(ca);
+		} catch (Exception e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		return SUCCESS;
+	}
+
+	@RequestMapping("/insertContAdj.do")
+	@ResponseBody
+	public Object insertContAdj(HttpServletRequest request) {
+		String json = request.getParameter("obj");
+		logger.info("json:" + json);
+		ContAdjust ca = JSON.toJavaObject(JSON.parseObject(json),
+				ContAdjust.class);
+		try {
+			contService.insertContAdj(ca);
+		} catch (Exception e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		return SUCCESS;
+	}
+
+	@RequestMapping("/deleteContAdj.do")
+	@ResponseBody
+	public Object deleteContAdj(HttpServletRequest request) {
+		String id = request.getParameter("obj");
+		JSON json=JSON.parseObject(id);
+		//json.
+		logger.info("id:" + id);
+		try {
+			contService.deleteContAdj(id);
+		} catch (DataAccessException e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		logger.info(SUCCESS);
+		return SUCCESS;
+	}
+	
 }

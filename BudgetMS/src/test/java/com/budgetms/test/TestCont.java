@@ -46,7 +46,7 @@ public class TestCont extends AbsTest {
 			request.setParameter("start", "0");
 			request.setParameter("limit", "2");
 			request.setParameter("obj", "{'contId':'HTBH'}");
-			Object obj = contController.findInstByProperty(request);
+			Object obj = contController.findContByProperty(request);
 			System.out.print(obj);
 		} catch (Exception e) {
 			e.printStackTrace();

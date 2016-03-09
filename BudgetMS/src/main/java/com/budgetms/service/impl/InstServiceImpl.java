@@ -77,7 +77,7 @@ public class InstServiceImpl implements IInstService {
 	@Override
 	public Object getInstDivideByProperty(InstructionDivide i) {
 		List<InstructionDivide> l = instDivideDao.getInstDivideByProperty(i);
-		Object o = JSON.toJSONString(l);
+		Object o = JSON.toJSON(l);
 		logger.info(o);
 		return o;
 	}
@@ -104,7 +104,7 @@ public class InstServiceImpl implements IInstService {
 	@Override
 	public Object getInstAdjByProperty(InstructionAdjust i) {
 		List<InstructionAdjust> l = instAdjDao.getInstAdjByProperty(i);
-		Object o = JSON.toJSONString(l);
+		Object o = JSON.toJSON(l);
 		logger.info(o);
 		return o;
 	}
@@ -129,24 +129,24 @@ public class InstServiceImpl implements IInstService {
 
 	@Override
 	public Object getInstDivideByPage(InstructionDivide i, int start, int limit) {
-		List<InstructionDivide> l = instDivideDao.getInstDivideByProperty(i);
+		List<InstructionDivide> l = instDivideDao.getInstDivideByPage(i,start,limit);
 		int total = instDivideDao.getInstDivideCount();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("record", l);
 		map.put("total", total);
-		Object o = JSON.toJSONString(map);
+		Object o = JSON.toJSON(map);
 		logger.info(o);
 		return o;
 	}
 
 	@Override
 	public Object getInstAdjByPage(InstructionAdjust i, int start, int limit) {
-		List<InstructionAdjust> l = instAdjDao.getInstAdjByProperty(i);
+		List<InstructionAdjust> l = instAdjDao.getInstAdjByPage(i,start,limit);
 		int total = instAdjDao.getInstAdjCount();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("record", l);
 		map.put("total", total);
-		Object o = JSON.toJSONString(l);
+		Object o = JSON.toJSON(map);
 		logger.info(o);
 		return o;
 	}

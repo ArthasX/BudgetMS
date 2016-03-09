@@ -22,13 +22,10 @@ var instDivideColumn = [ {
 	dataIndex : 'proInfoId'
 }, {
 	header : '备注',
-	dataIndex : 'remark',
-
-}, {
-
+	dataIndex : 'remark'
 } ];
 
-Ext.define('BudgetMS.view.instDivide.list', {
+Ext.define('BudgetMS.view.inst.divide.list', {
 	extend : 'BudgetMS.view.ux.baseGrid',
 	alias : 'widget.instDivideList',
 	id : 'instDivideList',
@@ -51,6 +48,7 @@ Ext.define('BudgetMS.view.instDivide.list', {
 	} ],
 	initComponent : function() {
 		this.columns = instDivideColumn;
+		debugger;
 		this.callParent(arguments);
 	}
 
