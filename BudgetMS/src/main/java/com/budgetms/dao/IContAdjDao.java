@@ -15,5 +15,5 @@ public interface IContAdjDao {
 
 	int deleteContAdj(String id);
 
-	int getContContAdj(ContAdjust ca);
+	int getContAdjCount(ContAdjust ca);
 }

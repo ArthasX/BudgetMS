@@ -11,12 +11,12 @@ Ext.define('BudgetMS.view.pro.proInfoAdj.proInfoAdjTbarForm', {
 		border : false,
 		items : [ {
 			xtype : 'textfield',
-			name : 'proId',
-			fieldLabel : '项目编号'
+			name : 'proInfoAdjId',
+			fieldLabel : '项目信息调整编号'
 		}, {
 			xtype : 'textfield',
-			name : 'proName',
-			fieldLabel : '项目名称'
+			name : 'proInfoId',
+			fieldLabel : '项目信息编号'
 		}, {
 			xtype : 'doFindBtn',
 			text : '查询',
@@ -42,26 +42,32 @@ Ext.define('BudgetMS.view.pro.proInfoAdj.proInfoAdjTbarForm', {
 		flex : 1,
 		border : false,
 		items : [ {
-			xtype : 'combo',
-			name : 'proType',
-			fieldLabel : '项目类型',
-			valueField : 'typeId',
-			displayField : 'typeName',
+			xtype : 'typeInfoCombo',
+			name : 'adjType',
+			fieldLabel : '调整类型',
+			category : 'proInfoAdj',
 			emptyText : "请选择...",
-			allowBlank:true,
-			store : {
-				fields : [ 'typeId', 'typeName' ],
-				data : [ {
-					"typeId" : "项目建设",
-					"typeName" : "项目建设"
-				}, {
-					"typeId" : "全行维保",
-					"typeName" : "全行维保"
-				}, {
-					"typeId" : "基础运营",
-					"typeName" : "基础运营"
-				} ]
-			}
+			allowBlank : true
+		// xtype : 'combo',
+		// name : 'proType',
+		// fieldLabel : '项目类型',
+		// valueField : 'typeId',
+		// displayField : 'typeName',
+		// emptyText : "请选择...",
+		// allowBlank:true,
+		// store : {
+		// fields : [ 'typeId', 'typeName' ],
+		// data : [ {
+		// "typeId" : "项目建设",
+		// "typeName" : "项目建设"
+		// }, {
+		// "typeId" : "全行维保",
+		// "typeName" : "全行维保"
+		// }, {
+		// "typeId" : "基础运营",
+		// "typeName" : "基础运营"
+		// } ]
+		// }
 		} ]
 	} ]
 });

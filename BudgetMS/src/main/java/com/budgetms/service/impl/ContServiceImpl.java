@@ -67,7 +67,7 @@ public class ContServiceImpl implements IContService {
 	@Override
 	public Object getContAdjByPage(ContAdjust c, int start, int limit) {
 		List<ContAdjust> l = contAdjDao.getContAdjByPage(c, start, limit);
-		int total = contAdjDao.getContContAdj(c);
+		int total = contAdjDao.getContAdjCount(c);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("record", l);
 		map.put("total", total);
@@ -91,6 +91,14 @@ public class ContServiceImpl implements IContService {
 
 	@Override
 	public int updateContAdj(ContAdjust ca) {
+		String t = ca.getAdjType();
+		if (t.equals("时间")) {
+			ca.setRemark("合同付款编号:" + ca.getContPaymentId() + "-付款时间调整至:"
+					+ ca.getAdjDate());
+		} else {
+			ca.setRemark("合同付款编号:" + ca.getContPaymentId() + "-付款金额调整至:"
+					+ ca.getAdjAmt());
+		}
 		return contAdjDao.updateContAdj(ca);
 	}
 

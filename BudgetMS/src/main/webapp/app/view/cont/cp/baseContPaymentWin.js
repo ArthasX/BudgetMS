@@ -34,9 +34,12 @@ var contPaymentFormItems = [ {
 		name : 'payAmt',
 		fieldLabel : '付款金额'
 	}, {
-		xtype : 'textfield',
+		xtype : 'datefield',
 		name : 'expectPayDate',
-		fieldLabel : '预计付款日期'
+		fieldLabel : '预计付款日期',
+		editable : true,
+		emptyText : "--请选择--",
+		format : "Y-m-d"
 	}, {
 		xtype : 'combo',
 		name : 'isPaid',
@@ -54,7 +57,7 @@ var contPaymentFormItems = [ {
 			} ]
 		}
 	}, {
-		xtype : 'textfield',
+		xtype : 'textarea',
 		name : 'remark',
 		fieldLabel : '备注'
 	} ]

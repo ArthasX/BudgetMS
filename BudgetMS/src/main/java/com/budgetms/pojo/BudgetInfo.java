@@ -1,15 +1,16 @@
 package com.budgetms.pojo;
 
 public class BudgetInfo extends BasePOJO{
-	private int budgetInfoId;
+	private String budgetInfoId;
 	private String budgetType;
-	private double budgetAmt;
+	private String budgetAmt;
 	private String year;
 	private String remark;
-	public int getBudgetInfoId() {
+	private BudgetType bt;
+	public String getBudgetInfoId() {
 		return budgetInfoId;
 	}
-	public void setBudgetInfoId(int budgetInfoId) {
+	public void setBudgetInfoId(String budgetInfoId) {
 		this.budgetInfoId = budgetInfoId;
 	}
 	public String getBudgetType() {
@@ -18,10 +19,10 @@ public class BudgetInfo extends BasePOJO{
 	public void setBudgetType(String budgetType) {
 		this.budgetType = budgetType;
 	}
-	public double getBudgetAmt() {
+	public String getBudgetAmt() {
 		return budgetAmt;
 	}
-	public void setBudgetAmt(double budgetAmt) {
+	public void setBudgetAmt(String budgetAmt) {
 		this.budgetAmt = budgetAmt;
 	}
 	public String getYear() {
@@ -36,5 +37,12 @@ public class BudgetInfo extends BasePOJO{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	public BudgetType getBt() {
+		return bt;
+	}
+	public void setBt(BudgetType bt) {
+		this.bt = bt;
+	}
+
 	
 }

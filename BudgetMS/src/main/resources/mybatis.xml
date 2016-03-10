@@ -3,7 +3,7 @@
 <configuration>
 	<!-- 别名 -->
 	<typeAliases>
-		<typeAlias type="com.budgetms.pojo.Budget" alias="budget" />
+		<typeAlias type="com.budgetms.pojo.BudgetType" alias="budgetType" />
 		<typeAlias type="com.budgetms.pojo.BudgetInfo" alias="budgetInfo" />
 		<typeAlias type="com.budgetms.pojo.Instruction" alias="inst" />
 		<typeAlias type="com.budgetms.pojo.Contract" alias="cont" />

@@ -17,6 +17,6 @@ Ext.define('BudgetMS.view.pro.proInfoAdj.addProInfoAdjWin', {
 		this.callParent(arguments);
 		var form=this.down('form'); 
 		if(form)
-			form.getForm().findField('proInfoAdjId').setDisable(true);
+			form.getForm().findField('proInfoAdjId').disabled=true;
 	}
 });

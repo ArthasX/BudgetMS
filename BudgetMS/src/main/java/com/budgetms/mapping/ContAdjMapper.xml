@@ -108,7 +108,7 @@
 				#{adjType},
 			</if>
 			<if test="contPaymentId !=null and contPaymentId !='' ">
-				#{contPaymentId}
+				#{contPaymentId},
 			</if>
 			<if test="remark !=null and remark !='' ">
 				#{remark},

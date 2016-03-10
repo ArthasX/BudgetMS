@@ -32,24 +32,28 @@ var contFormItems = [ {
 		name : 'instDivideId',
 		fieldLabel : '请示拆分编号'
 	}, {
-		xtype : 'combo',
-		name : 'contType',
+		xtype:'typeInfoCombo',//自定义的combo  typeInfo表 category 区分
+		name:'contType',
+		category:'cont',
 		fieldLabel : '合同类型',
-		valueField : 'typeId',
-		displayField : 'typeName',
-		store : {
-			fields : [ 'typeId', 'typeName' ],
-			data : [{
-				"typeId" : "3",
-				"typeName" : "虚拟合同"
-			}, {
-				"typeId" : "4",
-				"typeName" : "真实合同"
-			} , {
-				"typeId" : "5",
-				"typeName" : "开口合同"
-			}  ]
-		}
+//		xtype : 'combo',
+//		name : 'contType',
+//		fieldLabel : '合同类型',
+//		valueField : 'typeId',
+//		displayField : 'typeName',
+//		store : {
+//			fields : [ 'typeId', 'typeName' ],
+//			data : [{
+//				"typeId" : "3",
+//				"typeName" : "虚拟合同"
+//			}, {
+//				"typeId" : "4",
+//				"typeName" : "真实合同"
+//			} , {
+//				"typeId" : "5",
+//				"typeName" : "开口合同"
+//			}  ]
+//		}
 	}, {
 		xtype : 'textfield',
 		name : 'contCompany',

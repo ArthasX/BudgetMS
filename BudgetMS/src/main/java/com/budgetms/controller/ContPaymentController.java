@@ -77,7 +77,7 @@ public class ContPaymentController extends BaseController {
 		String contPaymentId = request.getParameter("obj");
 		logger.info("id:" + contPaymentId);
 		try {
-			contPaymentService.deleteContpayment(contPaymentId);
+			contPaymentService.deleteContPayment(contPaymentId);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}

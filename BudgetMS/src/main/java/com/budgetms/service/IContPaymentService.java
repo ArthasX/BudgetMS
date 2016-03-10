@@ -10,7 +10,7 @@ public interface IContPaymentService {
 
 	int updateContPayment(ContPayment c);
 
-	int deleteContpayment(String contPaymentId);
+	int deleteContPayment(String contPaymentId);
 
 	Object getContPaymentByPage(ContPayment c, int start, int limit);
 }

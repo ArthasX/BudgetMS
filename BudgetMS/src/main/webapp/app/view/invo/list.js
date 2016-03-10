@@ -3,10 +3,6 @@
  * 
  */
 var invoColum = [ {
-	xtype : 'checkcolumn',
-	text : '选中',
-	dataIndex : 'active'
-}, {
 	header : '发票编号',
 	dataIndex : 'invoId',
 	width : 150

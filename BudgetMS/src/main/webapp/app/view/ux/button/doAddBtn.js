@@ -7,7 +7,7 @@ Ext.define('BudgetMS.view.ux.button.doAddBtn', {
 			var win=btn.up('window');
 			var form =win.down('form').getForm();
 			if(!form.isValid()){
-				Ext.Msg.alert('注意','红框处不能为空');
+				Ext.Msg.alert('注意','红框处不能为空或格式错误');
 				return;
 			}
 			var record = form.getFieldValues();

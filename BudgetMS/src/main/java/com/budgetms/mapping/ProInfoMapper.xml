@@ -16,7 +16,7 @@
 
 	<select id="getProInfoByProperty" resultMap="BaseResultMap"
 		resultType="java.util.HashMap" parameterType="proInfo">
-		select * from pro_info
+		select * from project_info
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
 				<when test="proInfoId !=null and proInfoId !=''">
@@ -38,7 +38,7 @@
 				</otherwise>
 			</choose>
 		</trim>
-		order by pro_info_adj_id desc
+		order by pro_info_id desc
 	</select>
 
 	<select id="getProInfoByProId" parameterType="java.lang.String"

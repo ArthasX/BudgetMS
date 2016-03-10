@@ -1,8 +1,5 @@
 package com.budgetms.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.budgetms.pojo.ContAdjust;
 import com.budgetms.pojo.Contract;
-import com.budgetms.service.IContPaymentService;
 import com.budgetms.service.IContService;
 import com.budgetms.util.MysqlErrTranslator;
 
