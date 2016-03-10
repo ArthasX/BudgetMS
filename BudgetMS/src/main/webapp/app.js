@@ -43,7 +43,7 @@ Ext.application({
 	requires : [ 'Ext.container.Viewport' ],
 	name : 'BudgetMS',
 	appFolder : 'app',
-	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl','proCtrl' ],
+	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl','proCtrl','budgetCtrl' ],
 	launch : function() {
 		// debugger;
 		deptStore = Ext.create('BudgetMS.store.deptStore');

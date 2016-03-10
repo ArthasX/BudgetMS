@@ -1,16 +1,13 @@
-Ext.define("BudgetMS.model.budgetInfo", {
+Ext.define("BudgetMS.model.budgetType", {
 	extend : "Ext.data.Model",
 	fields : [ {
-		name : "budgetInfoId",
+		name : "budgetId",
 		type : "auto"
 	}, {
+		name : 'budgetName',
+		type : 'auto'
+	}, {
 		name : 'budgetType',
-		type : 'auto'
-	}, {
-		name : 'budgetAmt',
-		type : 'auto'
-	}, {
-		name : 'year',
 		type : 'auto'
 	}, {
 		name : 'remark',
