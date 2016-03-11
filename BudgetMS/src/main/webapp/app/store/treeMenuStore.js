@@ -3,10 +3,16 @@ Ext.define('BudgetMS.store.treeMenuStore', {
 	root : {
 		expanded : true,
 		children : [ {
-			id : 'budgetList',
-			name : 'budget',
-			text : "预算",
-			leaf : true
+			id : 'budgetInfoList',
+			name : 'budgetInfo',
+			text : "预算信息",
+			expanded : true,
+			children : [ {
+				id : 'budgetTypeList',
+				name : 'budgetType',
+				text : "预算类型",
+				leaf : true
+			}]
 		}, {
 			id : 'proList',
 			name : 'pro',

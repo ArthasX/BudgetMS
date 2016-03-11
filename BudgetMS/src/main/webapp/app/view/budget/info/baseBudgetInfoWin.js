@@ -1,4 +1,4 @@
-Ext.define('BudgetMS.view.budget.info.baseBudgetTypeWin', {
+Ext.define('BudgetMS.view.budget.info.baseBudgetInfoWin', {
 	extend : 'Ext.window.Window',
 	// layout : {
 	// type : 'hbox',

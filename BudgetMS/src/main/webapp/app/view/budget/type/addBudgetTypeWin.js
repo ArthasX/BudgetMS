@@ -15,6 +15,6 @@ Ext.define('BudgetMS.view.budget.type.addBudgetTypeWin', {
 			handler : this.close
 		} ];
 		this.callParent(arguments);
-		this.down('form').getForm().findField('budgetTypeId').disabled = true;
+		this.down('form').getForm().findField('budgetId').disabled = true;
 	}
 });

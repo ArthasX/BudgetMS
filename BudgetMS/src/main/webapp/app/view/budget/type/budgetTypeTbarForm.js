@@ -36,6 +36,7 @@ Ext.define('BudgetMS.view.budget.type.budgetTypeTbarForm', {
 		} ]
 	}, {
 		flex : 1,
+		border : false,
 		items : [ {
 			xtype : 'textfield',
 			name : 'budgetType',

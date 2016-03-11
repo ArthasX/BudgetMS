@@ -8,7 +8,7 @@ Ext.define('BudgetMS.controller.baseController', {
 			'ux.button.showUpdBtn', 'ux.button.doUpdBtn',
 			'ux.button.doFindBtn', 'ux.button.doDelBtn',
 			'ux.button.fileUploadBtn', 'ux.baseFileGrid', 'dashbord',
-			'ux.combo.deptCombo', 'ux.combo.typeInfoCombo' ],
+			'ux.combo.deptCombo', 'ux.combo.typeInfoCombo' ,'ux.combo.budgetTypeCombo' ],
 	init : function() {
 		console.log('baseController init...')
 		

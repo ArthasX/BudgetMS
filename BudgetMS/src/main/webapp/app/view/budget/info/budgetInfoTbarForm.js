@@ -1,4 +1,4 @@
-Ext.define('BudgetMS.view.budget.type.budgetInfoTbarForm', {
+Ext.define('BudgetMS.view.budget.info.budgetInfoTbarForm', {
 	extend : 'Ext.form.Panel',
 	alias : 'widget.budgetInfoTbarForm',
 	layout : {
@@ -33,7 +33,7 @@ Ext.define('BudgetMS.view.budget.type.budgetInfoTbarForm', {
 			action : 'budget/deleteBudgetInfo.do'
 		} ]
 	}, {
-		flex : 1,
+		flex : 1,border:false,
 		items : [ {
 			xtype : 'textfield',
 			name : 'year',

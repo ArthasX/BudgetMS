@@ -1,5 +1,5 @@
-Ext.define('BudgetMS.view.budget.type.editContPaymentWin', {
-	extend : 'BudgetMS.view.budget.type.baseContPaymentWin',
+Ext.define('BudgetMS.view.budget.type.editBudgetTypeWin', {
+	extend : 'BudgetMS.view.budget.type.baseBudgetTypeWin',
 	alias : 'widget.budgetTypeEdit',
 	title : '预算类型修改',
 	autoShow : true,
@@ -7,8 +7,8 @@ Ext.define('BudgetMS.view.budget.type.editContPaymentWin', {
 		this.buttons = [ {
 			xtype : 'doUpdBtn',
 			text : '更新',
-			name : 'updateContPayment',
-			action : 'budget/updateContPayment.do'
+			name : 'updateBudgetType',
+			action : 'budget/updateBudgetType.do'
 		}, {
 			text : '取消',
 			scope : this,
@@ -16,6 +16,6 @@ Ext.define('BudgetMS.view.budget.type.editContPaymentWin', {
 		} ]
 
 		this.callParent(arguments);
-		this.down('form').getForm().findField('budgetTypeId').readOnly = true;
+		this.down('form').getForm().findField('budgetId').readOnly = true;
 	}
 });
