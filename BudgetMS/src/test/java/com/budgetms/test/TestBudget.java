@@ -48,7 +48,7 @@ public class TestBudget extends AbsTest {
 		System.out.println("*********************************");
 		System.out.println(budgetService.getBudgetTypeByPage(bt, 0, 25));
 		// update
-		bt.setBudgetId("1");
+		bt.setBudgetTypeId("1");
 		budgetService.updateBudgetType(bt);
 		System.out.println("*********************************");
 		System.out.println(budgetService.getBudgetTypeByPage(bt, 0, 25));

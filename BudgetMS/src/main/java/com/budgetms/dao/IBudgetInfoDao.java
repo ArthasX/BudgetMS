@@ -11,7 +11,7 @@ public interface IBudgetInfoDao {
 
 	int updateBudgetInfo(BudgetInfo bi);
 
-	int deleteBudgetInfo(String id);
+	int deleteBudgetInfo(int id);
 
 	int getBudgetInfoCount(BudgetInfo bi);
 }

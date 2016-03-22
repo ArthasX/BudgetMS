@@ -5,7 +5,18 @@ var budgetInfoColumn = [ {
 }, {
 	header : '预算类型',
 	dataIndex : 'budgetType',
-	width : 150
+	width : 150,
+	renderer : function(value, cellmeta, record, rowIndex, columnIndex, store) {
+		var items=budgetTypeStore.data.items;
+		var l=items.length;
+		for(var i=0;i<l;i++){
+			if(value==items[i].data.budgetType)
+				return items[i].data.budgetName;
+			else
+				continue;
+		}
+		return '数据有误';
+	}
 }, {
 	header : '预算金额',
 	dataIndex : 'budgetAmt',
@@ -18,6 +29,8 @@ var budgetInfoColumn = [ {
 	header : '备注',
 	dataIndex : 'remark',
 
+}, {
+	editor : 'budgetTypeCombo'
 } ];
 
 Ext.define('BudgetMS.view.budget.info.list', {

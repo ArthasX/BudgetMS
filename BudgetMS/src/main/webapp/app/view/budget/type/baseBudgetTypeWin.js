@@ -19,8 +19,8 @@ var budgetTypeFormItems = [ {
 	layout : 'auto',
 	items : [ {
 		xtype : 'textfield',
-		name : 'budgetId',
-		fieldLabel : '预算编号',
+		name : 'budgetTypeId',
+		fieldLabel : '预算类型编号',
 	}, {
 		xtype : 'textfield',
 		name : 'budgetType',

@@ -5,7 +5,7 @@ import java.util.List;
 import com.budgetms.pojo.ProInfo;
 
 public interface IProInfoDao {
-	List<ProInfo> getProInfoByProId(String proId);
+	List<ProInfo> getProInfoByProId(int proId);
 
 	List<ProInfo> getProInfoByProperty(ProInfo p);
 
@@ -13,7 +13,7 @@ public interface IProInfoDao {
 
 	int updateProInfo(ProInfo p);
 
-	int deleteProInfo(String proInfoId);
+	int deleteProInfo(int proInfoId);
 
 	List<ProInfo> getProInfoByPage(ProInfo p, int start, int limit);
 	

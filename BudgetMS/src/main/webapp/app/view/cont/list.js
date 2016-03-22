@@ -24,7 +24,18 @@ var contColum = [ {
 	width : 150
 }, {
 	header : '合同类型',
-	dataIndex : 'contType'
+	dataIndex : 'contType',
+	renderer : function(value, cellmeta, record, rowIndex, columnIndex, store) {
+		var items=typeInfoStore.data.items;
+		var l=items.length;
+		for(var i=0;i<l;i++){
+			if(value==items[i].data.typeId)
+				return items[i].data.typeName;
+			else
+				continue;
+		}
+		return '数据有误';
+	}
 }, {
 	header : '合同金额',
 	dataIndex : 'contAmt'

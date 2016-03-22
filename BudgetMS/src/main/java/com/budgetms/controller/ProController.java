@@ -87,12 +87,10 @@ public class ProController extends BaseController {
 	@RequestMapping("/deletePro.do")
 	@ResponseBody
 	public Object deletePro(HttpServletRequest request) {
-		String proId = request.getParameter("obj");
-		JSON json = JSON.parseObject(proId);
-		// json.
-		logger.info("id:" + proId);
+		String id = getId(request);
+		logger.info("id:" + id);
 		try {
-			proService.deleteProject(proId);
+			proService.deleteProject(id);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
@@ -150,12 +148,10 @@ public class ProController extends BaseController {
 	@RequestMapping("/deleteProInfo.do")
 	@ResponseBody
 	public Object deleteProInfo(HttpServletRequest request) {
-		String proInfoId = request.getParameter("obj");
-		JSON json = JSON.parseObject(proInfoId);
-		// json.
-		logger.info("id:" + proInfoId);
+		String id = getId(request);
+		logger.info("id:" + id);
 		try {
-			proService.deleteProject(proInfoId);
+			proService.deleteProject(id);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
@@ -213,12 +209,10 @@ public class ProController extends BaseController {
 	@RequestMapping("/deleteProInfoAdj.do")
 	@ResponseBody
 	public Object deleteProInfoAdj(HttpServletRequest request) {
-		String proId = request.getParameter("obj");
-		JSON json = JSON.parseObject(proId);
-		// json.
-		logger.info("id:" + proId);
+		String id = getId(request);
+		logger.info("id:" + id);
 		try {
-			proService.deleteProInfoAdj(proId);
+			proService.deleteProInfoAdj(id);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}

@@ -8,7 +8,7 @@ var proInfoColum = [ {
 	width : 150
 }, {
 	header : '项目金额',
-	dataIndex : 'proInfoAmt',
+	dataIndex : 'proAmt',
 	width : 150
 }, {
 	header : '项目状态',

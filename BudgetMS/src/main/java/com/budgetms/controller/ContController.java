@@ -1,6 +1,5 @@
 package com.budgetms.controller;
 
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +21,7 @@ public class ContController extends BaseController {
 	static Logger logger = Logger.getLogger(ContController.class);
 	@Resource
 	private IContService contService;
+
 	@RequestMapping("/findContByProperty.do")
 	@ResponseBody
 	public Object findContByProperty(HttpServletRequest request) {
@@ -32,8 +32,7 @@ public class ContController extends BaseController {
 		int limit = Integer.parseInt(request.getParameter("limit"));
 		return contService.getContByPage(cont, start, limit);
 	}
-	
-	
+
 	@RequestMapping("/updateCont.do")
 	@ResponseBody
 	public Object updateCont(HttpServletRequest request) {
@@ -67,21 +66,19 @@ public class ContController extends BaseController {
 	@RequestMapping("/deleteCont.do")
 	@ResponseBody
 	public Object deleteCont(HttpServletRequest request) {
-		String contId = request.getParameter("obj");
-		JSON json=JSON.parseObject(contId);
-		//json.
-		logger.info("id:" + contId);
+		String id = getId(request);
+		logger.info("id:" + id);
 		try {
-			contService.deleteCont(contId);
+			contService.deleteCont(id);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
 		logger.info(SUCCESS);
 		return SUCCESS;
 	}
-	
-	//cont adj
-	
+
+	// cont adj
+
 	@RequestMapping("/findContAdjByPage.do")
 	@ResponseBody
 	public Object findContAdjByPage(HttpServletRequest request) {
@@ -92,8 +89,7 @@ public class ContController extends BaseController {
 		int limit = Integer.parseInt(request.getParameter("limit"));
 		return contService.getContAdjByPage(ca, start, limit);
 	}
-	
-	
+
 	@RequestMapping("/updateContAdj.do")
 	@ResponseBody
 	public Object updateContAdj(HttpServletRequest request) {
@@ -127,9 +123,7 @@ public class ContController extends BaseController {
 	@RequestMapping("/deleteContAdj.do")
 	@ResponseBody
 	public Object deleteContAdj(HttpServletRequest request) {
-		String id = request.getParameter("obj");
-		JSON json=JSON.parseObject(id);
-		//json.
+		String id = getId(request);
 		logger.info("id:" + id);
 		try {
 			contService.deleteContAdj(id);
@@ -139,5 +133,5 @@ public class ContController extends BaseController {
 		logger.info(SUCCESS);
 		return SUCCESS;
 	}
-	
+
 }

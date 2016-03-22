@@ -83,7 +83,7 @@ public class ContServiceImpl implements IContService {
 			ca.setRemark("合同付款编号:" + ca.getContPaymentId() + "-付款时间调整至:"
 					+ ca.getAdjDate());
 		} else {
-			ca.setRemark("合同付款编号:" + ca.getContPaymentId() + "-付款金额调整至:"
+			ca.setRemark("合同付款编号:" + ca.getContPaymentId() + "-付款金额减少:"
 					+ ca.getAdjAmt());
 		}
 		return contAdjDao.insertContAdj(ca);
@@ -104,7 +104,7 @@ public class ContServiceImpl implements IContService {
 
 	@Override
 	public int deleteContAdj(String id) {
-		return contAdjDao.deleteContAdj(id);
+		return contAdjDao.deleteContAdj(Integer.parseInt(id));
 	}
 
 	@Override

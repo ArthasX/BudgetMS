@@ -31,9 +31,9 @@
 					<if test="recordId !=null and recordId !='' ">
 						and record_id =#{recordId}
 					</if>
-					<if test="attachType !=null and attachType !='' ">
+					<!-- <if test="attachType !=null and attachType !='' ">
 						and attach_type like '%${attachType}%'
-					</if>
+					</if> -->
 				</otherwise>
 			</choose>
 		</trim>

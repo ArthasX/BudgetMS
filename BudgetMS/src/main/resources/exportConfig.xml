@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-body>
+	<sheets>
+		<sheet name="测试sheet" index="0">
+			<table></table>
+			<column>
+				<name></name>
+				<cname></cname>
+				<index>0</index>
+			</column>
+		</sheet>
+	</sheets>
+</xml-body>

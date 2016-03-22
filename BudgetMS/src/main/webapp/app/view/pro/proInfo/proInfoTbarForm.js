@@ -64,5 +64,13 @@ Ext.define('BudgetMS.view.pro.proInfo.proInfoTbarForm', {
 			name : 'proAmt',
 			fieldLabel : '项目金额'
 		} ]
+	}, {
+		flex : 1,
+		border : false,
+		items : [ {
+			xtype : 'textfield',
+			name : 'proInfoId',
+			fieldLabel : '项目信息编号'
+		} ]
 	} ]
 });

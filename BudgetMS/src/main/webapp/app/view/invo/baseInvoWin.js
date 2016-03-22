@@ -27,38 +27,36 @@ var invoFormItems = [ {
 		fieldLabel : '发票金额',
 		vtype : 'money'
 	}, {
-		xtype : 'combo',
+		xtype : 'textfield',
 		name : 'contPaymentId',
 		fieldLabel : '合同付款编号',
 		valueField : 'typeId',
 		displayField : 'typeName',
-		store : {
-			fields : [ 'typeId', 'typeName' ],
-			data : [ {
-				"typeId" : "1",
-				"typeName" : "一般请示"
-			}, {
-				"typeId" : "2",
-				"typeName" : "IT服务申请表"
-			} ]
-		}
-	}, {
-		xtype : 'combo',
-		name : 'transfered',
-		fieldLabel : '是否移交',
-		valueField : 'typeId',
-		displayField : 'typeName',
-		store : {
-			fields : [ 'typeId', 'typeName' ],
-			data : [ {
-				"typeId" : "0",
-				"typeName" : "否"
-			}, {
-				"typeId" : "1",
-				"typeName" : "是"
-			} ]
-		}
-	}, {
+		allowBlank:false
+	}, 
+//	{
+//		xtype : 'combo',
+//		name : 'transfered',
+//		fieldLabel : '是否移交',
+//		valueField : 'typeId',
+//		displayField : 'typeName',
+//		store : {
+//			fields : [ 'typeId', 'typeName' ],
+//			data : [ {
+//				"typeId" : "0",
+//				"typeName" : "否"
+//			}, {
+//				"typeId" : "1",
+//				"typeName" : "是"
+//			} ]
+//		}
+//	},
+	,{
+		xtype:'textfield',
+		name:'invoCompany',
+		fieldLabel:'公司'
+	},
+	{
 		xtype : 'textfield',
 		name : 'remark',
 		fieldLabel : '备注'

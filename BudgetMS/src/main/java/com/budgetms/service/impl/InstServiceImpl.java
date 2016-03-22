@@ -13,10 +13,12 @@ import com.alibaba.fastjson.JSON;
 import com.budgetms.dao.IInstructionAdjustDao;
 import com.budgetms.dao.IInstructionDao;
 import com.budgetms.dao.IInstructionDivideDao;
+import com.budgetms.dao.IProInfoDao;
 import com.budgetms.pojo.Attachment;
 import com.budgetms.pojo.Instruction;
 import com.budgetms.pojo.InstructionAdjust;
 import com.budgetms.pojo.InstructionDivide;
+import com.budgetms.pojo.ProInfo;
 import com.budgetms.service.IInstService;
 
 @Service("instService")
@@ -28,6 +30,8 @@ public class InstServiceImpl implements IInstService {
 	private IInstructionDivideDao instDivideDao;
 	@Resource
 	private IInstructionAdjustDao instAdjDao;
+	@Resource
+	private IProInfoDao proInfoDao;
 
 	@Override
 	public int insertInst(Instruction inst) {
@@ -85,20 +89,34 @@ public class InstServiceImpl implements IInstService {
 	@Override
 	public int insertInstDivide(InstructionDivide i) {
 		logger.info(i);
-		return instDivideDao.insertInstDivide(i);
-		
+		String proInfoId = i.getProInfoId();
+		ProInfo pi = new ProInfo();
+		pi.setProInfoId(proInfoId);
+		int piCount = proInfoDao.getProInfoCount(pi);
+		if (piCount > 0)
+			return instDivideDao.insertInstDivide(i);
+		else
+			return -1;
+
 	}
 
 	@Override
 	public int updateInstDivide(InstructionDivide i) {
 		logger.info(i);
-		return instDivideDao.updateInstDivide(i);
+		String proInfoId = i.getProInfoId();
+		ProInfo pi = new ProInfo();
+		pi.setProInfoId(proInfoId);
+		int piCount = proInfoDao.getProInfoCount(pi);
+		if (piCount > 0)
+			return instDivideDao.updateInstDivide(i);
+		else
+			return -1;
 	}
 
 	@Override
-	public int deleteInstDivide(String  id) {
-		logger.info("delete inst divide: "+id);
-		return instDivideDao.deleteInstDivide(id);
+	public int deleteInstDivide(String id) {
+		logger.info("delete inst divide: " + id);
+		return instDivideDao.deleteInstDivide(Integer.parseInt(id));
 	}
 
 	@Override
@@ -122,14 +140,15 @@ public class InstServiceImpl implements IInstService {
 	}
 
 	@Override
-	public int deleteInstAdj(String  id) {
-		logger.info("delete inst adjust: "+id);
-		return instAdjDao.deleteInstAdj(id);
+	public int deleteInstAdj(String id) {
+		logger.info("delete inst adjust: " + id);
+		return instAdjDao.deleteInstAdj(Integer.parseInt(id));
 	}
 
 	@Override
 	public Object getInstDivideByPage(InstructionDivide i, int start, int limit) {
-		List<InstructionDivide> l = instDivideDao.getInstDivideByPage(i,start,limit);
+		List<InstructionDivide> l = instDivideDao.getInstDivideByPage(i, start,
+				limit);
 		int total = instDivideDao.getInstDivideCount();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("record", l);
@@ -141,7 +160,8 @@ public class InstServiceImpl implements IInstService {
 
 	@Override
 	public Object getInstAdjByPage(InstructionAdjust i, int start, int limit) {
-		List<InstructionAdjust> l = instAdjDao.getInstAdjByPage(i,start,limit);
+		List<InstructionAdjust> l = instAdjDao
+				.getInstAdjByPage(i, start, limit);
 		int total = instAdjDao.getInstAdjCount();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("record", l);

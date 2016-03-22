@@ -56,7 +56,7 @@ public class ProServiceImpl implements IProService {
 	//PRO INFO
 	@Override
 	public Object getProInfoByProId(String id) {
-		List<ProInfo>l = proInfoDao.getProInfoByProId(id);
+		List<ProInfo>l = proInfoDao.getProInfoByProId(Integer.parseInt(id));
 		Object o = JSON.toJSON(l);
 		logger.info(o);
 		return o;
@@ -74,7 +74,7 @@ public class ProServiceImpl implements IProService {
 
 	@Override
 	public int deleteProInfo(String id) {
-		return proInfoDao.deleteProInfo(id);
+		return proInfoDao.deleteProInfo(Integer.parseInt(id));
 	}
 
 	
@@ -99,7 +99,7 @@ public class ProServiceImpl implements IProService {
 
 	@Override
 	public int deleteProInfoAdj(String id) {
-		return proInfoAdjDao.deleteProInfoAdj(id);
+		return proInfoAdjDao.deleteProInfoAdj(Integer.parseInt(id));
 	}
 
 	@Override

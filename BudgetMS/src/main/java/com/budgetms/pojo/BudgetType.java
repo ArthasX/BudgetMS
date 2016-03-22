@@ -1,15 +1,16 @@
 package com.budgetms.pojo;
 
 public class BudgetType extends BasePOJO{
-	private String budgetId;
+	private String budgetTypeId;
 	private String budgetName;
 	private String budgetType;
 	private String remark;
-	public String getBudgetId() {
-		return budgetId;
+ 
+	public String getBudgetTypeId() {
+		return budgetTypeId;
 	}
-	public void setBudgetId(String budgetId) {
-		this.budgetId = budgetId;
+	public void setBudgetTypeId(String budgetTypeId) {
+		this.budgetTypeId = budgetTypeId;
 	}
 	public String getBudgetName() {
 		return budgetName;

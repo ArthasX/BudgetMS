@@ -13,10 +13,10 @@ Ext.define('BudgetMS.view.inst.baseInstWin', {
 		this.items = instFormItems;
 		this.callParent(arguments);
 		var form = this.items.items[0].getForm();
-		var applyDeptCombo = form.findField('applyDept');
-		deptMemoryStore.data = deptStore.data;
+//		var applyDeptCombo = form.findField('applyDept');
+//		deptMemoryStore.data = deptStore.data;
 		// Ext.apply(combo.store,deptMemoryStore);
-		applyDeptCombo.bindStore(deptMemoryStore);
+//		applyDeptCombo.bindStore(deptMemoryStore);
 ////		 决定不用缓存
 //		 typeInfoMemoryStore.data=typeInfoStore.data;debugger;
 //		 var typeInfoCombo =form.findField('instType');

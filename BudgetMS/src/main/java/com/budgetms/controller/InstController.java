@@ -36,6 +36,7 @@ import com.budgetms.pojo.Instruction;
 import com.budgetms.pojo.InstructionAdjust;
 import com.budgetms.pojo.InstructionDivide;
 import com.budgetms.service.IInstService;
+import com.budgetms.util.Msg;
 import com.budgetms.util.MysqlErrTranslator;
 
 @Controller
@@ -56,7 +57,6 @@ public class InstController extends BaseController {
 		return instService.getInstByPage(inst, start, limit);
 	}
 
- 
 	@RequestMapping("/updateInst.do")
 	@ResponseBody
 	public Object updateInst(HttpServletRequest request) {
@@ -91,21 +91,19 @@ public class InstController extends BaseController {
 	@RequestMapping("/deleteInst.do")
 	@ResponseBody
 	public Object deleteInst(HttpServletRequest request) {
-		String instId = request.getParameter("obj");
-		JSON json = JSON.parseObject(instId);
-		// json.
-		logger.info("id:" + instId);
+		String id = getId(request);
+		logger.info("id:" + id);
 		try {
-			instService.deleteInst(instId);
+			instService.deleteInst(id);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
 		logger.info(SUCCESS);
 		return SUCCESS;
 	}
-	
+
 	// inst divide
-	
+
 	@RequestMapping("/findInstDivideByPage.do")
 	@ResponseBody
 	public Object findInstDivideByPage(HttpServletRequest request) {
@@ -117,7 +115,6 @@ public class InstController extends BaseController {
 		return instService.getInstDivideByPage(i, start, limit);
 	}
 
- 
 	@RequestMapping("/updateInstDivide.do")
 	@ResponseBody
 	public Object updateInstDivide(HttpServletRequest request) {
@@ -125,12 +122,16 @@ public class InstController extends BaseController {
 		logger.info("json:" + json);
 		InstructionDivide i = JSON.toJavaObject(JSON.parseObject(json),
 				InstructionDivide.class);
+		int result;
 		try {
-			instService.updateInstDivide(i);
+			result = instService.updateInstDivide(i);
 		} catch (Exception e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
-		return SUCCESS;
+		if (result != -1)
+			return SUCCESS;
+		else
+			return Msg.NO_PROINFO_ID;
 	}
 
 	@RequestMapping("/insertInstDivide.do")
@@ -141,20 +142,22 @@ public class InstController extends BaseController {
 		InstructionDivide i = JSON.toJavaObject(JSON.parseObject(json),
 				InstructionDivide.class);
 		// inst.setOptUser(1);
+		int result;
 		try {
-			instService.insertInstDivide(i);
+			result = instService.insertInstDivide(i);
 		} catch (Exception e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
-		return SUCCESS;
+		if (result != -1)
+			return SUCCESS;
+		else
+			return Msg.NO_PROINFO_ID;
 	}
 
 	@RequestMapping("/deleteInstDivide.do")
 	@ResponseBody
 	public Object deleteInstDivide(HttpServletRequest request) {
-		String id = request.getParameter("obj");
-		JSON json = JSON.parseObject(id);
-		// json.
+		String id = getId(request);
 		logger.info("id:" + id);
 		try {
 			instService.deleteInstDivide(id);
@@ -164,11 +167,9 @@ public class InstController extends BaseController {
 		logger.info(SUCCESS);
 		return SUCCESS;
 	}
-	
-	
-	
-	//inst adj
-	
+
+	// inst adj
+
 	@RequestMapping("/findInstAdjByPage.do")
 	@ResponseBody
 	public Object findInstAdjByPage(HttpServletRequest request) {
@@ -180,7 +181,6 @@ public class InstController extends BaseController {
 		return instService.getInstAdjByPage(i, start, limit);
 	}
 
- 
 	@RequestMapping("/updateInstAdj.do")
 	@ResponseBody
 	public Object updateInstAdj(HttpServletRequest request) {
@@ -215,9 +215,7 @@ public class InstController extends BaseController {
 	@RequestMapping("/deleteInstAdj.do")
 	@ResponseBody
 	public Object deleteInstAdj(HttpServletRequest request) {
-		String id = request.getParameter("obj");
-		JSON json = JSON.parseObject(id);
-		// json.
+		String id = getId(request);
 		logger.info("id:" + id);
 		try {
 			instService.deleteInstAdj(id);

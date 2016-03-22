@@ -10,19 +10,5 @@ Ext.define('BudgetMS.store.typeInfoStore', {
 		}
 	},
 	autoLoad : true,
-	filterOnLoad : true,
-	listeners : {
-		'beforeload' : function(store) {
-//			debugger;
-//			var combo = store.ownerCt;
-//			
-//			var f = {
-//				property : "typeCategory",
-//				value : /inst/
-//			};
-//			store.addFilter(f);if (!combo)
-//				return;
-		}
-	}
-
+	filterOnLoad : true
 });

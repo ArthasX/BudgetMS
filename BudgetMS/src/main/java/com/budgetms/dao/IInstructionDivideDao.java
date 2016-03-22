@@ -8,7 +8,7 @@ public interface IInstructionDivideDao {
 	List<InstructionDivide> getInstDivideByProperty(InstructionDivide i);
 	int insertInstDivide(InstructionDivide i);
 	int updateInstDivide(InstructionDivide i);
-	int deleteInstDivide(String id);
+	int deleteInstDivide(int id);
 	int getInstDivideCount();
 	List<InstructionDivide> getInstDivideByPage(InstructionDivide i,int start,int limit);
 }

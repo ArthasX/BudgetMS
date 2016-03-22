@@ -48,10 +48,10 @@
 			!=null and budgetType !='' "> budget_type like '%${budgetType}%' </if> </trim> -->
 	</select>
 
-	<delete id="deleteBudgetInfo" parameterType="java.lang.String"> delete from
+	<delete id="deleteBudgetInfo" parameterType="int"> delete from
 		budget_info
 		where
-		budget_info_id=#{budgetInfoId}
+		budget_info_id=#{0}
 	</delete>
 
 	<insert id="insertBudgetInfo" parameterType="budgetInfo">
@@ -128,29 +128,39 @@
 		</trim>
 	</select>
 
+	<!-- <select id="getBudgetInfoByPage" resultMap="BaseResultMap" resultType="java.util.HashMap"> 
+		select a.budget_info_id,b.budget_name as budget_type,a.budget_amt,a.year,a.remark 
+		from budget_info a,budget_type b <trim prefix="where" prefixOverrides="AND|OR"> 
+		<choose> <when test="param1.budgetInfoId !=null and param1.budgetInfoId !=''"> 
+		a.budget_info_id like '%${param1.budgetInfoId}%' </when> <otherwise> <if 
+		test="param1.budgetType !=null and param1.budgetType !='' "> and a.budget_type 
+		like '%${param1.budgetType}%' </if> <if test="param1.budgetAmt !=null and 
+		param1.budgetAmt !='' "> and a.budget_amt like '%${param1.budgetAmt}%' </if> 
+		<if test="param1.year !=null and param1.year !='' "> and a.year like '%${param1.year}%' 
+		</if> </otherwise> </choose> and a.budget_type=b.budget_type </trim> order 
+		by budget_type asc limit #{param2},#{param3} </select> -->
 
 	<select id="getBudgetInfoByPage" resultMap="BaseResultMap"
 		resultType="java.util.HashMap">
-		select a.budget_info_id,b.budget_name as budget_type,a.budget_amt,a.year,a.remark from budget_info a,budget_type b
+		select * from budget_info
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
 				<when test="param1.budgetInfoId !=null and param1.budgetInfoId !=''">
-					a.budget_info_id like '%${param1.budgetInfoId}%'
+					budget_info_id like '%${param1.budgetInfoId}%'
 				</when>
 				<otherwise>
 					<if test="param1.budgetType !=null and param1.budgetType !='' ">
-						and a.budget_type like '%${param1.budgetType}%'
+						and budget_type like '%${param1.budgetType}%'
 					</if>
 					<if test="param1.budgetAmt !=null and param1.budgetAmt !='' ">
-						and a.budget_amt like '%${param1.budgetAmt}%'
+						and budget_amt like '%${param1.budgetAmt}%'
 					</if>
 					<if test="param1.year !=null and param1.year !='' ">
-						and a.year like '%${param1.year}%'
+						and year like '%${param1.year}%'
 					</if>
 				</otherwise>
 			</choose>
-			and a.budget_type=b.budget_type
 		</trim>
-		order by budget_type asc limit #{param2},#{param3}
+		order by year desc,budget_type asc limit #{param2},#{param3}
 	</select>
 </mapper>  

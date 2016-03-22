@@ -48,7 +48,7 @@
 	<delete id="deleteProInfoAdj" parameterType="java.lang.String"> delete from
 		pro_info_adjust
 		where
-		pro_info_adj_id=#{proInfoAdjId}
+		pro_info_adj_id=#{0}
 	</delete>
 
 	<insert id="insertProInfoAdj" parameterType="proInfoAdj">

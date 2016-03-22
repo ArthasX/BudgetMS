@@ -1,7 +1,7 @@
 Ext.define("BudgetMS.model.budgetType", {
 	extend : "Ext.data.Model",
 	fields : [ {
-		name : "budgetId",
+		name : "budgetTypeId",
 		type : "auto"
 	}, {
 		name : 'budgetName',

@@ -58,7 +58,7 @@
 	<insert id="insertInvo" parameterType="invo">
 		insert into invoice
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			invo_id,invo_company ,invo_amt,opt_date,opt_user,cont_payment_id
+			invo_id,invo_company ,invo_amt,opt_date,opt_user,cont_payment_id,
 			<if test="transfered !=null and transfered !='' ">
 				transfered,
 			</if>
@@ -70,7 +70,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			#{invoId},#{invoCompany},#{invoAmt},sysdate(),#{optUser},#{contPaymentId}
+			#{invoId},#{invoCompany},#{invoAmt},sysdate(),#{optUser},#{contPaymentId},
 			<if test="transfered !=null and transfered !='' ">
 				#{transfered},
 			</if>
@@ -83,6 +83,10 @@
 		</trim>
 	</insert>
 
+	<update id="transfer">
+		update intvoice set
+		transfered='是',trans_date=sysdate() where transfered='否'
+	</update>
 
 	<update id="updateInvo" parameterType="invo">
 		update invoice
@@ -128,7 +132,7 @@
 				</otherwise>
 			</choose>
 		</trim>
-		order by invo_id desc limit #{param2},#{param3}
+		order by transfered asc limit #{param2},#{param3}
 	</select>
 
 	<select id="getInvoCount" resultType="int">

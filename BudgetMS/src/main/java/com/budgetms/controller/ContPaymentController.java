@@ -74,10 +74,10 @@ public class ContPaymentController extends BaseController {
 	@RequestMapping("/deleteContPayment.do")
 	@ResponseBody
 	public Object deleteCont(HttpServletRequest request) {
-		String contPaymentId = request.getParameter("obj");
-		logger.info("id:" + contPaymentId);
+		String id = getId(request);
+		logger.info("id:" + id);
 		try {
-			contPaymentService.deleteContPayment(contPaymentId);
+			contPaymentService.deleteContPayment(id);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}

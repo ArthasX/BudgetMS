@@ -45,7 +45,7 @@ public class BudgetServiceImpl implements IBudgetService {
 
 	@Override
 	public int deleteBudgetType(String id) {
-		return budgetTypeDao.deleteBudgetType(id);
+		return budgetTypeDao.deleteBudgetType(Integer.parseInt(id));
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class BudgetServiceImpl implements IBudgetService {
 
 	@Override
 	public int deleteBudgetInfo(String id) {
-		return budgetInfoDao.deleteBudgetInfo(id);
+		return budgetInfoDao.deleteBudgetInfo(Integer.parseInt(id));
 	}
 
 	@Override

@@ -13,7 +13,7 @@ public interface IProInfoAdjustDao {
 
 	int updateProInfoAdj(ProInfoAdjust p);
 
-	int deleteProInfoAdj(String proInfoAdjId);
+	int deleteProInfoAdj(int proInfoAdjId);
 	
 	List<ProInfoAdjust> getProInfoAdjByPage(ProInfoAdjust p,int start,int limit);
 	

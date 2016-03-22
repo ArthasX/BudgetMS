@@ -10,7 +10,7 @@ Ext.define("BudgetMS.model.contPayment", {
 		name : 'period',
 		type : 'auto'
 	}, {
-		name : 'payment',
+		name : 'payAmt',
 		type : 'auto'
 	}, {
 		name : 'expectPayDate',

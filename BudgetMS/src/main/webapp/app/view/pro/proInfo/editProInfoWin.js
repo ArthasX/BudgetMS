@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.view.pro.proInfo.editProInfoWin', {
 	extend : 'BudgetMS.view.pro.proInfo.baseProInfoWin',
 	alias : 'widget.proInfoEdit',
-	title : '项目修改',
+	title : '项目信息修改',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {

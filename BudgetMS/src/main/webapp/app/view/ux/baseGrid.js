@@ -2,6 +2,7 @@ Ext.define('BudgetMS.view.ux.baseGrid', {
 	extend : 'Ext.grid.Panel',
 	border : false,
 	// frame : true,// 渲染
+
 	enableKeyNav : true,// 键盘控制
 	columnLines : true,// 竖线
 	tbar : {
@@ -12,7 +13,7 @@ Ext.define('BudgetMS.view.ux.baseGrid', {
 	},
 	listeners : {
 		'itemdblclick' : function(g, record) {
-			debugger;
+			// debugger;
 			console.log('Double clicked on ', record.data);
 			var view = Ext.widget(this.name + 'Edit');
 			view.down('form').loadRecord(record);
@@ -21,9 +22,12 @@ Ext.define('BudgetMS.view.ux.baseGrid', {
 				view.down('baseFileGrid').loadFile();
 		}
 	},
+	viewConfig : {
+		enableTextSelection : true
+	},
 	initComponent : function() {
 		this.callParent(arguments);
 		console.log('basegrid', this.down('pagingtoolbar'));
-	}
+	},
 
 });

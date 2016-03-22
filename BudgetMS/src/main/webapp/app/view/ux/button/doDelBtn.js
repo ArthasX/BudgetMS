@@ -31,15 +31,17 @@ Ext.define('BudgetMS.view.ux.button.doDelBtn', {
 			}
 
 			var id = record.data[fieldName];
-			var params = {
-				id : id
-			};
+//			var params = {
+//				id : id
+//			};
+			var params=id;
 			var url = btn.action;
-			debugger;
+			var delBtn = this;
+//			debugger;
 			var confirm = Ext.Msg.confirm('确认', '是否删除编号为:' + id + '的记录?',
 					function(btn) {
 						if (btn == 'yes') {
-							this.doCRUDAjax(params, url, grid);
+							delBtn.doCRUDAjax(params, url, grid);
 						}
 					});
 		}

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
 import com.budgetms.controller.ContController;
+import com.budgetms.pojo.ContAdjust;
 import com.budgetms.pojo.Contract;
 import com.budgetms.service.IContService; 
 
@@ -20,7 +21,7 @@ public class TestCont extends AbsTest {
 
 	@Override
 	public void test() throws Exception {
-		t4();
+		t5();
 	}
 
 	public void t1() throws Exception {
@@ -85,5 +86,15 @@ public class TestCont extends AbsTest {
 		iContService.updateCont(c1);
 		//Object obj = contController.insertCont(request);
 		// iContService.insertCont(cont);
+	}
+	
+	public void t5(){
+		ContAdjust ca = new ContAdjust();
+		ca.setAdjAmt("1");
+		ca.setAdjDate("2015-01-01");
+		ca.setAdjType("金额");
+		ca.setContPaymentId("1");
+		
+		iContService.insertContAdj(ca);
 	}
 }

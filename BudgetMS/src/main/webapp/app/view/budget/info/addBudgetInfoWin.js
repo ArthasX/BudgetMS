@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.view.budget.info.addBudgetInfoWin', {
 	extend : 'BudgetMS.view.budget.info.baseBudgetInfoWin',
 	alias : 'widget.budgetInfoAdd',
-	title : '合同分期付款新增',
+	title : '预算信息新增',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {

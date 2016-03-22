@@ -45,7 +45,7 @@
 	<delete id="deleteInstDivide" parameterType="java.lang.String"> delete from
 		instruction_divide
 		where
-		inst_divide_id=#{instDivideId}
+		inst_divide_id=#{0}
 	</delete>
 
 	<insert id="insertInstDivide" parameterType="instDivide">

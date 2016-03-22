@@ -186,14 +186,15 @@
 
 	<select id="getInstByPage" resultMap="BaseResultMap" resultType="java.util.HashMap">
 
-		select
+		<!-- select
 		inst.inst_Id  ,inst.inst_title,inst.inst_content,inst.inst_amt,inst.inst_status,
 		soft_amt,hard_amt,apply_user_name,opt_date,opt_user,remark,
 		(select dept_name from dept b where b.deptid = inst.apply_dept ) as apply_dept ,
 		(select type_name from type_info c
 		 where
 		c.type_id=inst.inst_type ) as inst_type
-		from instruction inst
+		from instruction inst -->
+		select * from instruction
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
 				<when test="param1.instId !=null and param1.instId !=''">

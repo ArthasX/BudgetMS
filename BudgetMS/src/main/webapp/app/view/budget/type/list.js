@@ -1,12 +1,13 @@
 var budgetTypeColumn = [ {
 	header : '预算编号',
-	dataIndex : 'budgetId',
+	dataIndex : 'budgetTypeId',
 }, {
 	header : '预算名称',
 	dataIndex : 'budgetName',
 }, {
 	header : '预算类型',
 	dataIndex : 'budgetType',
+	
 }, {
 	header : '备注',
 	dataIndex : 'remark',

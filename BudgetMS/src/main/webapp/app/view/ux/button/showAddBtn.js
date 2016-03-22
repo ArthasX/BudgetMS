@@ -11,6 +11,8 @@ Ext.define('BudgetMS.view.ux.button.showAddBtn', {
 			// var grid = tab.down('gridview');
 			var grid = btn.up('grid');// grid组件对象
 			var view = Ext.widget(grid.name + 'Add');
+			var fileGrid = view.down('baseFileGrid');
+			fileGrid.loadFile();
 		}
 	}
 });

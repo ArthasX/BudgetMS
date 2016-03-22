@@ -47,10 +47,10 @@
 			and instId !='' "> inst_id like '%${instId}%' </if> </trim> -->
 	</select>
 
-	<delete id="deleteInstAdj" parameterType="java.lang.String"> delete from
+	<delete id="deleteInstAdj" parameterType="int"> delete from
 		instruction_adjust
 		where
-		inst_adj_id=#{instAdjId}
+		inst_adj_id=#{0}
 	</delete>
 
 	<insert id="insertInstAdj" parameterType="attach">

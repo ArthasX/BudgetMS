@@ -13,7 +13,9 @@ public interface IContPaymentDao {
 
 	int insertContPayment(ContPayment c);
 
-	int deleteContPayment(String contPaymentId);
+	int deleteContPayment(int contPaymentId);
 	
 	int getContPaymentCount(ContPayment c);
+	
+
 }

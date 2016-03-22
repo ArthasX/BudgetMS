@@ -45,7 +45,7 @@ public class TestInst extends AbsTest {
 
 	@Override
 	public void test() {
-		t4();
+		t7();
 	}
 
 	public void t() {
@@ -146,5 +146,6 @@ public class TestInst extends AbsTest {
 		ia.setInstDivideId("1");
 		ia.setInstAdjAmt("50");
 		ia.setRemark("减少50");
+		instService.deleteInstAdj("1");
 	}
 }

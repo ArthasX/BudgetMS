@@ -10,22 +10,44 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
+import com.budgetms.dao.IContPaymentDao;
 import com.budgetms.dao.IInvoiceDao;
+import com.budgetms.pojo.ContPayment;
 import com.budgetms.pojo.Invoice;
 import com.budgetms.service.IInvoService;
+
 @Service("invoService")
 public class InvoServiceImpl implements IInvoService {
 	static Logger logger = Logger.getLogger(InvoServiceImpl.class);
 	@Resource
-	private IInvoiceDao invoDao=null;
+	private IInvoiceDao invoDao = null;
+	@Resource
+	private IContPaymentDao contPaymentDao;
+
 	@Override
 	public List<Invoice> getInvoByProperty(Invoice invo) {
 		return invoDao.getInvoByProperty(invo);
 	}
 
+	/**
+	 * 根据invo 得到 contPaymentId 的数量 c 
+	 * new invo()  set contPaymentId = invo.contPaymentId 
+	 * select count()... from .. where contPaymentId= invo.contPaymentId 
+	 * if c>1  do nothing
+	 * if c= 1 set  ContPayment. ispaid = 0;
+	 * 使用触发器了
+	 */
 	@Override
 	public int updateInvo(Invoice invo) {
-		return invoDao.updateInvo(invo);
+		String contPaymentId = invo.getContPaymentId();
+		ContPayment cp = new ContPayment();
+		cp.setContPaymentId(contPaymentId);
+		// invoDao.getInvoCount(invo)
+		int cpCount = contPaymentDao.getContPaymentCount(cp);
+		if (cpCount > 0)
+			return invoDao.updateInvo(invo);
+		else
+			return -1;
 	}
 
 	@Override
@@ -35,7 +57,14 @@ public class InvoServiceImpl implements IInvoService {
 
 	@Override
 	public int insertInvo(Invoice invo) {
-		return invoDao.insertInvo(invo);
+		String contPaymentId = invo.getContPaymentId();
+		ContPayment cp = new ContPayment();
+		cp.setContPaymentId(contPaymentId);
+		int cpCount = contPaymentDao.getContPaymentCount(cp);
+		if (cpCount > 0)
+			return invoDao.insertInvo(invo);
+		else
+			return -1;
 	}
 
 	@Override

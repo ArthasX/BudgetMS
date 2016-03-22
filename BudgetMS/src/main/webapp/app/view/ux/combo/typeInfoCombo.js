@@ -9,9 +9,9 @@ Ext.define('BudgetMS.view.ux.combo.typeInfoCombo', {
 	listeners : {
 		// combo展开的时候给sotre加上filter expand
 		'expand' : function() {	 
-			var string = this.category;
+			var category = this.category;
 			this.store.filterBy(function(record) {//debugger;
-				return record.get('typeCategory') == string;
+				return record.get('typeCategory') == category;
 			});
 		},
 		'select' : function() {

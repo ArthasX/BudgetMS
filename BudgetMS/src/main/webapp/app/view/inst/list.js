@@ -16,13 +16,36 @@ var instColum = [ {
 	width : 150
 }, {
 	header : '请示类型',
-	dataIndex : 'instType'
+	dataIndex : 'instType',
+	renderer : function(value, cellmeta, record, rowIndex, columnIndex, store) {
+		var items=typeInfoStore.data.items;
+		var l=items.length;
+		for(var i=0;i<l;i++){
+			if(value==items[i].data.typeId)
+				return items[i].data.typeName;
+			else
+				continue;
+		}
+		return '数据有误';
+	}
 }, {
 	header : '请示状态',
 	dataIndex : 'instStatus'
 }, {
 	header : '申请部门',
-	dataIndex : 'applyDept'
+	dataIndex : 'applyDept',
+	renderer : function(value, cellmeta, record, rowIndex, columnIndex, store) {
+//		debugger;
+		var l=deptStore.data.items.length;
+		var items=deptStore.data.items;
+		for(var i=0;i<l;i++){
+			if(value==items[i].data.deptId)
+				return items[i].data.deptName;
+			else
+				continue;
+		}
+		return '数据有误';
+	}
 
 }, {
 	header : '请示金额',

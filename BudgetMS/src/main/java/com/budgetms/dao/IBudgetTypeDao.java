@@ -11,7 +11,7 @@ public interface IBudgetTypeDao {
 
 	int updateBudgetType(BudgetType bt);
 
-	int deleteBudgetType(String id);
+	int deleteBudgetType(int id);
 
 	int getBudgetTypeCount(BudgetType bt);
 }

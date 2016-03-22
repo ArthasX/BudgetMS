@@ -51,7 +51,7 @@
 	<delete id="deleteProInfo" parameterType="java.lang.String"> delete from
 		project_info
 		where
-		pro_info_id=#{proInfoId}
+		pro_info_id=#{0}
 	</delete>
 
 	<insert id="insertProInfo" parameterType="proInfo">

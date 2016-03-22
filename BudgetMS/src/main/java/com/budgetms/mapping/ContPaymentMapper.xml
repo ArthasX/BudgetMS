@@ -47,10 +47,10 @@
 		select * from cont_payment where cont_id =#{contId}
 	</select>
 
-	<delete id="deleteContPayment" parameterType="java.lang.String"> delete from
+	<delete id="deleteContPayment" parameterType="int"> delete from
 		cont_payment
 		where
-		cont_payment_id=#{contPaymentId}
+		cont_payment_id=#{0}
 	</delete>
 
 	<insert id="insertContPayment" parameterType="contPayment">

@@ -19,7 +19,7 @@ Ext.define('BudgetMS.view.ux.button.baseBtn', {
 		console.log(this, this.test);
 	},
 	doCRUDAjax : function(params, url, grid,win) {
-		// debugger;
+//		 debugger;
 		console.log('doCRUDAjax')
 		console.log(params);
 		var p = {

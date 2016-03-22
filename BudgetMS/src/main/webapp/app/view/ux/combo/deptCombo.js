@@ -7,4 +7,5 @@ Ext.define('BudgetMS.view.ux.combo.deptCombo', {
 	displayField : 'deptName',
 	//name:'applyDept',
 	//store : 'deptMemoryStore'
+	store : 'deptStore' //取消缓存
 })

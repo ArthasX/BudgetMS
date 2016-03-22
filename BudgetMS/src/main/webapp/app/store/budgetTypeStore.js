@@ -13,7 +13,7 @@ Ext.define('BudgetMS.store.budgetTypeStore', {
 	},
 	autoLoad : {
 		start : 0,
-		limit : PAGE_SIZE
+		limit : 999
 	}
 });
 

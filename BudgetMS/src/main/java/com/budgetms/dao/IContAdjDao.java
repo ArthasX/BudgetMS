@@ -13,7 +13,7 @@ public interface IContAdjDao {
 
 	int updateContAdj(ContAdjust ca);
 
-	int deleteContAdj(String id);
+	int deleteContAdj(int id);
 
 	int getContAdjCount(ContAdjust ca);
 }

@@ -6,7 +6,7 @@
 <mapper namespace="com.budgetms.dao.IProjectDao">
 
 	<resultMap id="BaseResultMap" type="com.budgetms.pojo.Project">
-		<id column="pro_id" property="proId" jdbcType="INTEGER" />
+		<id column="pro_id" property="proId" jdbcType="VARCHAR" />
 		<result column="pro_name" property="proName" jdbcType="VARCHAR" />
 		<result column="pro_type" property="proType" jdbcType="INTEGER" />
 		<result column="budget_info_id" property="budgetInfoId"
@@ -43,7 +43,7 @@
 	<delete id="deleteProject" parameterType="java.lang.String"> delete from
 		project
 		where
-		pro_id=#{proId}
+		pro_id=#{0}
 	</delete>
 
 	<insert id="insertProject" parameterType="pro">

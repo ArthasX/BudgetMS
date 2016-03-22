@@ -31,7 +31,7 @@ function genContId() {
 function genInvoId() {
 
 }
-// 定义缓存    。。其实没必要。。
+// 定义缓存 。。其实没必要。。
 var deptMemoryStore;
 var typeInfoMemoryStore;
 var deptCombo;
@@ -39,62 +39,72 @@ var deptStore;
 var typeInfoStore;
 var deptData;
 var typeInfoData;
+var budgetTypeStore;
+function initStores() {
+//	debugger;
+	budgetTypeStore = Ext.create('BudgetMS.store.budgetTypeStore');
+	deptStore = Ext.create('BudgetMS.store.deptStore');
+	typeInfoStore = Ext.create('BudgetMS.store.typeInfoStore');
+	// s.load();
+}
 Ext.application({
 	requires : [ 'Ext.container.Viewport' ],
 	name : 'BudgetMS',
 	appFolder : 'app',
-	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl','proCtrl','budgetCtrl' ],
+	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl', 'proCtrl',
+			'budgetCtrl' ],
 	launch : function() {
+		// initBudgetType();
 		// debugger;
-		deptStore = Ext.create('BudgetMS.store.deptStore');
-		deptStore.load();
-		// load是异步操作所以下面的赋值语句起不到作用
-		// deptData = deptStore.data;
-		deptMemoryStore = Ext.create('Ext.data.Store', {
-			model : 'BudgetMS.model.dept',
-			proxy : {
-				type : 'memory',
-				reader : {
-					type : 'json',
-				}
-			},
-			listeners : {
-
-				'beforeload' : function(store) {
-					// debugger;
-					// Ext.apply(this.data,deptStore.data);
-					// console.log(store)
-					// 防止store load 导致data为空
-					return false;
-
-				}
-			},
-		});
-		// load是异步操作所以下面的赋值语句起不到作用
-		// deptMemoryStore.data=deptData;
-		// 初始化 类型信息的 memoryStore
-//		typeInfoStore = Ext.create('BudgetMS.store.typeInfoStore');
-//		typeInfoStore.load();
-		// load是异步操作所以下面的赋值语句起不到作用
-		// typeInfoData = typeInfoStore.data;
-		typeInfoMemoryStore = Ext.create('Ext.data.Store', {
-			model : 'BudgetMS.model.typeInfo',
-			proxy : {
-				type : 'memory',
-				reader : {
-					type : 'json',
-				}
-			},
-			listeners : {
-				'beforeload' : function(store) {
-					// 防止store load 导致data为空
-					return false;
-
-				}
-			},
-		})
-		// load是异步操作所以下面的赋值语句起不到作用
-		// typeInfoMemoryStore.data=typeInfoData;
+		// deptStore = Ext.create('BudgetMS.store.deptStore');
+		// deptStore.load();
+		// // load是异步操作所以下面的赋值语句起不到作用
+		// // deptData = deptStore.data;
+		// deptMemoryStore = Ext.create('Ext.data.Store', {
+		// model : 'BudgetMS.model.dept',
+		// proxy : {
+		// type : 'memory',
+		// reader : {
+		// type : 'json',
+		// }
+		// },
+		// listeners : {
+		//
+		// 'beforeload' : function(store) {
+		// // debugger;
+		// // Ext.apply(this.data,deptStore.data);
+		// // console.log(store)
+		// // 防止store load 导致data为空
+		// return false;
+		//
+		// }
+		// },
+		// });
+		// // load是异步操作所以下面的赋值语句起不到作用
+		// // deptMemoryStore.data=deptData;
+		// // 初始化 类型信息的 memoryStore
+		// // typeInfoStore = Ext.create('BudgetMS.store.typeInfoStore');
+		// // typeInfoStore.load();
+		// // load是异步操作所以下面的赋值语句起不到作用
+		// // typeInfoData = typeInfoStore.data;
+		// typeInfoMemoryStore = Ext.create('Ext.data.Store', {
+		// model : 'BudgetMS.model.typeInfo',
+		// proxy : {
+		// type : 'memory',
+		// reader : {
+		// type : 'json',
+		// }
+		// },
+		// listeners : {
+		// 'beforeload' : function(store) {
+		// // 防止store load 导致data为空
+		// return false;
+		//
+		// }
+		// },
+		// })
+		// // load是异步操作所以下面的赋值语句起不到作用
+		// // typeInfoMemoryStore.data=typeInfoData;
 		var page = Ext.create('Ext.container.Viewport', {
 			layout : 'border',
 			items : [ {
@@ -106,11 +116,12 @@ Ext.application({
 				region : 'west',
 				collapsible : true,
 				title : '菜单',
-				width : 150,layout : 'fit',
+				width : 150,
+				layout : 'fit',
 				items : {
 					text : '菜单',
 					xtype : 'treeMenu'
-					
+
 				}
 			// could use a TreePanel or AccordionLayout for navigational items
 			}, /*
@@ -128,27 +139,28 @@ Ext.application({
 				id : 'mainTabpanel',
 				region : 'center',
 				xtype : 'tabpanel', // TabPanel itself has no title
-				activeTab : 0, // First tab active by default
+				// activeTab : 0, // First tab active by default
 				items : [ {
-					title : '请示',
-					xtype : 'instList',
-					closable : true,
-					autoDestroy : false,
-					closeAction : 'hide',
-					collapsible : false
-				}, {
 					title : 'Main',
 					xtype : 'dashbord'
-				} ]
+				}
+				// {
+				// title : '请示',
+				// xtype : 'instList',
+				// closable : true,
+				// autoDestroy : false,
+				// closeAction : 'hide',
+				// collapsible : false
+				// },
+				]
 			} ],
-			listeners:{
-				'show':function(){
+			listeners : {
+				'show' : function() {
 					debugger;
 					console.log('show');
 				}
-			}	
-		}
-		);
-
+			}
+		});
+		initStores();
 	}
 })

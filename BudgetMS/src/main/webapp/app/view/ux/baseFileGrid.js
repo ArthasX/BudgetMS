@@ -11,7 +11,7 @@ Ext.define('BudgetMS.view.ux.baseFileGrid', {
 		items : [ {
 			xtype : 'filefield',
 			name : 'fileUpload',
-			width:300,
+			width : 300,
 			fieldLabel : '附件',
 			msgTarget : 'side',
 			allowBlank : false,
@@ -32,6 +32,7 @@ Ext.define('BudgetMS.view.ux.baseFileGrid', {
 		tpl : '<a href=attach/download.do?fileName={attachName}>下载</a>'
 	} ],
 	initComponent : function() {
+		//可以考虑在这里   new 一个 store 
 		this.columns = this.fileColumn;
 		this.callParent(arguments);
 	},
@@ -41,10 +42,11 @@ Ext.define('BudgetMS.view.ux.baseFileGrid', {
 		}
 	},
 	loadFile : function() {
-//		debugger;
+		debugger;
 		console.log('loadFile')
-		var recordId = this.up('window').down('form').getForm().findField(
-				this.name + 'Id').getValue();
+		var win = this.up('window');
+		var recordId = win.down('form').getForm().findField(this.name + 'Id')
+				.getValue();
 		var store = this.getStore();
 		var obj = {
 			recordId : recordId,
@@ -53,8 +55,12 @@ Ext.define('BudgetMS.view.ux.baseFileGrid', {
 		var params = {
 			obj : Ext.JSON.encode(obj)
 		};
+//		var store = Ext.create('BudgetMS.store.fileStore');
+//		store.proxy.extraParams = params;
+		
 		console.log(recordId, store, obj, params);
-		Ext.apply(store.proxy.extraParams, params);
+		 Ext.apply(store.proxy.extraParams, params);
+//		Ext.apply(this.store, store);
 		store.load();
 	}
 });

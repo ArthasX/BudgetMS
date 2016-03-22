@@ -43,7 +43,7 @@ public class ContPaymentImpl implements IContPaymentService {
 	@Override
 	public int deleteContPayment(String contPaymentId) {
 		logger.info("delete:" + contPaymentId);
-		return contPaymentDao.deleteContPayment(contPaymentId);
+		return contPaymentDao.deleteContPayment(Integer.parseInt(contPaymentId));
 	}
 
 	@Override

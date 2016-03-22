@@ -6,7 +6,7 @@
 <mapper namespace="com.budgetms.dao.IBudgetTypeDao">
 
 	<resultMap id="BaseResultMap" type="com.budgetms.pojo.BudgetType">
-		<id column="budget_id" property="budgetId" jdbcType="INTEGER" />
+		<id column="budget_type_id" property="budgetTypeId" jdbcType="INTEGER" />
 		<result column="budget_type" property="budgetType" jdbcType="VARCHAR" />
 		<result column="budget_name" property="budgetName" jdbcType="DECIMAL" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
@@ -17,8 +17,8 @@
 		select * from budget_type
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
-				<when test="budgetId !=null and budgetId !=''">
-					budget_id like '%${budgetId}%'
+				<when test="budgetTypeId !=null and budgetTypeId !=''">
+					budget_type_id like '%${budgetTypeId}%'
 				</when>
 				<otherwise>
 					<if test="budgetType !=null and budgetType !='' ">
@@ -39,10 +39,10 @@
 		budget_type = #{0}
 	</select>
 
-	<delete id="deleteBudgetType" parameterType="java.lang.String"> delete from
+	<delete id="deleteBudgetType" parameterType="int"> delete from
 		budget_type
 		where
-		budget_id=#{budgetId}
+		budget_type_id=#{0}
 	</delete>
 
 	<insert id="insertBudgetType" parameterType="budgetType">
@@ -85,15 +85,15 @@
 				remark=#{remark},
 			</if>
 		</set>
-		where budget_id=#{budgetId}
+		where budget_type_id=#{budgetTypeId}
 	</update>
 
 	<select id="getBudgetTypeCount" resultType="int">
 		select count(*) from budget_type
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
-				<when test="budgetId !=null and budgetId !=''">
-					budget_id like '%${budgetId}%'
+				<when test="budgetTypeId !=null and budgetTypeId !=''">
+					budget_type_id like '%${budgetTypeId}%'
 				</when>
 				<otherwise>
 					<if test="budgetType !=null and budgetType !='' ">
@@ -113,8 +113,8 @@
 		select * from budget_type
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<choose>
-				<when test="param1.budgetId !=null and param1.budgetId !=''">
-					budget_id like '%${param1.budgetId}%'
+				<when test="param1.budgetTypeId !=null and param1.budgetTypeId !=''">
+					budget_type_id like '%${param1.budgetTypeId}%'
 				</when>
 				<otherwise>
 					<if test="param1.budgetType !=null and param1.budgetType !='' ">

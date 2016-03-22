@@ -10,7 +10,7 @@
 		<result column="cont_payment_id" property="contPaymentId"
 			jdbcType="INTEGER" />
 		<result column="adj_type" property="adjType" jdbcType="VARCHAR" />
-		<result column="adj_amt" property="adjAmt" jdbcType="VARCHAR" />
+		<result column="adj_amt" property="adjAmt" jdbcType="DECIMAL" />
 		<result column='adj_date' property='adjDate' jdbcType="DATE" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
@@ -50,10 +50,10 @@
 		=#{contPaymentId}
 	</select>
 
-	<delete id="deleteContAdj" parameterType="java.lang.String"> delete from
+	<delete id="deleteContAdj" parameterType="int"> delete from
 		cont_adj
 		where
-		cont_adj_id=#{contAdjId}
+		cont_adj_id=#{0}
 	</delete>
 
 	<insert id="insertContAdj" parameterType="contAdj">
@@ -86,7 +86,7 @@
 				#{adjType},
 			</if>
 			<if test="contPaymentId !=null and contPaymentId !='' ">
-				#{contPaymentId}
+				#{contPaymentId},
 			</if>
 			<if test="remark !=null and remark !='' ">
 				#{remark},
@@ -99,19 +99,19 @@
 		update cont_adj
 		<set>
 			<if test="adjAmt !=null and adjAmt !='' ">
-				#{adjAmt},
+				adj_amt=#{adjAmt},
 			</if>
 			<if test="adjDate !=null and adjDate !='' ">
-				#{adjDate},
+				adj_date=#{adjDate},
 			</if>
 			<if test="adjType !=null and adjType !='' ">
-				#{adjType},
+				adj_type= #{adjType},
 			</if>
 			<if test="contPaymentId !=null and contPaymentId !='' ">
-				#{contPaymentId},
+				cont_payment_id=#{contPaymentId},
 			</if>
 			<if test="remark !=null and remark !='' ">
-				#{remark},
+				remark=#{remark},
 			</if>
 		</set>
 		where cont_adj_id=#{contAdjId}

@@ -16,6 +16,6 @@ Ext.define('BudgetMS.view.budget.type.editBudgetTypeWin', {
 		} ]
 
 		this.callParent(arguments);
-		this.down('form').getForm().findField('budgetId').readOnly = true;
+		this.down('form').getForm().findField('budgetTypeId').readOnly = true;
 	}
 });

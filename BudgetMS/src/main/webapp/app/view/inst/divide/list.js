@@ -48,7 +48,6 @@ Ext.define('BudgetMS.view.inst.divide.list', {
 	} ],
 	initComponent : function() {
 		this.columns = instDivideColumn;
-		debugger;
 		this.callParent(arguments);
 	}
 
