@@ -82,4 +82,18 @@ public class InvoController extends BaseController {
 		logger.info(SUCCESS);
 		return SUCCESS;
 	}
+
+	@RequestMapping("/transferInvo.do")
+	@ResponseBody
+	public Object transferInvo(HttpServletRequest request) {
+		int i = 0;
+		try {
+			i = invoService.transfer();
+			logger.info("移交" + i);
+		} catch (DataAccessException e) {
+			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
+		}
+		logger.info(SUCCESS);
+		return new Msg(true, "成功移交" + i + "张").toJSON();
+	}
 }

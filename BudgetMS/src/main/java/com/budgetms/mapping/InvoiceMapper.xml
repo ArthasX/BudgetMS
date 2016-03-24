@@ -84,7 +84,7 @@
 	</insert>
 
 	<update id="transfer">
-		update intvoice set
+		update invoice set
 		transfered='是',trans_date=sysdate() where transfered='否'
 	</update>
 
@@ -132,7 +132,7 @@
 				</otherwise>
 			</choose>
 		</trim>
-		order by transfered asc limit #{param2},#{param3}
+		order by transfered asc,opt_date desc limit #{param2},#{param3}
 	</select>
 
 	<select id="getInvoCount" resultType="int">

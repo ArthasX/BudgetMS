@@ -93,7 +93,7 @@
 				inst_id=#{instId},
 			</if>
 			<if test="instDivideId !=null and instDivideId !='' ">
-				instDivideId=#{instDivideId},
+				inst_divide_Id=#{instDivideId},
 			</if>
 			<if test="instAdjAmt !=null and instAdjAmt !='' ">
 				inst_adj_amt=#{instAdjAmt},

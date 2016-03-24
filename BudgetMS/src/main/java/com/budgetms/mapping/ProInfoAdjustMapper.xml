@@ -39,13 +39,13 @@
 		order by pro_info_adj_id desc
 	</select>
 
-	<select id="getProInfoAdjByProInfoId" parameterType="java.lang.String"
+	<select id="getProInfoAdjByProInfoId"  
 		resultMap="BaseResultMap" resultType="java.util.HashMap">
 		select * from pro_info_adjust
 		where pro_info_id = #{0}
 	</select>
 
-	<delete id="deleteProInfoAdj" parameterType="java.lang.String"> delete from
+	<delete id="deleteProInfoAdj" > delete from
 		pro_info_adjust
 		where
 		pro_info_adj_id=#{0}

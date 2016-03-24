@@ -6,7 +6,7 @@ Ext.define('BudgetMS.controller.baseController', {
 	stores : [ 'fileStore', 'deptStore', 'typeInfoStore','deptMemoryStore'],
 	views : [ 'ux.button.showAddBtn', 'ux.button.doAddBtn',
 			'ux.button.showUpdBtn', 'ux.button.doUpdBtn',
-			'ux.button.doFindBtn', 'ux.button.doDelBtn',
+			'ux.button.doFindBtn', 'ux.button.doDelBtn','ux.button.doTransferBtn',
 			'ux.button.fileUploadBtn', 'ux.baseFileGrid', 'dashbord',
 			'ux.combo.deptCombo', 'ux.combo.typeInfoCombo' ,'ux.combo.budgetTypeCombo' ],
 	init : function() {

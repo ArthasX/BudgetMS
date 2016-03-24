@@ -151,7 +151,7 @@ public class ProController extends BaseController {
 		String id = getId(request);
 		logger.info("id:" + id);
 		try {
-			proService.deleteProject(id);
+			proService.deleteProInfo(id);
 		} catch (DataAccessException e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}

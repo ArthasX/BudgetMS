@@ -21,7 +21,7 @@ Ext.define('BudgetMS.view.pro.proInfoAdj.proInfoAdjTbarForm', {
 			xtype : 'doFindBtn',
 			text : '查询',
 			name : 'findProInfoAdj',
-			action : 'pro/findProByProperty.do'
+			action : 'pro/findProInfoAdjByPage.do'
 		}, {
 			xtype : 'showAddBtn',
 			text : '添加',
@@ -36,7 +36,7 @@ Ext.define('BudgetMS.view.pro.proInfoAdj.proInfoAdjTbarForm', {
 			xtype : 'doDelBtn',
 			text : '刪除',
 			name : 'deleteProInfoAdj',
-			action : 'pro/deletePro.do'
+			action : 'pro/deleteProInfoAdj.do'
 		} ]
 	}, {
 		flex : 1,

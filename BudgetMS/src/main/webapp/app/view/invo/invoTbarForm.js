@@ -37,7 +37,12 @@ Ext.define('BudgetMS.view.invo.invoTbarForm', {
 			text : '刪除',
 			name : 'deleteInvo',
 			action : 'invo/deleteInvo.do'
-		} ]
+		} , {
+			xtype : 'doTransferBtn',
+			text : '移交',
+			name : 'transferInvo',
+			action : 'invo/transferInvo.do'
+		}]
 	}, {
 		flex : 1,
 		border : false,

@@ -54,8 +54,8 @@
 	<insert id="insertCont" parameterType="cont">
 		insert into contract
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			cont_id,inst_divide_Id, cont_name
-			,cont_amt,cont_type,opt_date,opt_user,
+			cont_id,inst_divide_Id, cont_name,
+			,cont_amt,cont_type,opt_date,opt_user,cont_company,
 			<if test="signedDate !=null and signedDate !='' ">
 				signed_date,
 			</if>
@@ -67,7 +67,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			#{contId},#{instDivideId},#{contName},#{contAmt},#{contType},sysdate(),#{optUser},
+			#{contId},#{instDivideId},#{contName},#{contAmt},#{contType},sysdate(),#{optUser},#{contCompany},
 			<if test="signedDate !=null and signedDate !='' ">
 				#{signedDate},
 			</if>
@@ -104,6 +104,9 @@
 			</if>
 			<if test="remark !=null and remark!= '' ">
 				remark=#{remark},
+			</if>
+			<if test="contCompany !=null and contCompany!= '' ">
+				cont_company=#{contCompany},
 			</if>
 		</set>
 		where cont_id=#{contId}

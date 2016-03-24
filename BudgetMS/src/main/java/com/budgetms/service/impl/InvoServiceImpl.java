@@ -83,4 +83,9 @@ public class InvoServiceImpl implements IInvoService {
 		return invoDao.getInvoCount(invo);
 	}
 
+	@Override
+	public int transfer() {
+		return invoDao.transfer();
+	}
+
 }

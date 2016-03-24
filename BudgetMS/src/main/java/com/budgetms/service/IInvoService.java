@@ -13,8 +13,10 @@ public interface IInvoService {
 	int deleteInvo(String invoId);
 
 	int insertInvo(Invoice invo);
-		
+
 	Object getInvoByPage(Invoice invo, int start, int limit);
 
 	int getInvoCount(Invoice invo);
+
+	int transfer();
 }

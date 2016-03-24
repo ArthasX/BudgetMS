@@ -14,7 +14,7 @@ public class TestPro extends AbsTest {
 
 	@Override
 	public void test() throws Exception {
-		 t1();
+		 t4();
 		// t2();
 		// t3();
 	}
@@ -79,5 +79,12 @@ public class TestPro extends AbsTest {
 		proService.updateProInfoAdj(pia);
 		logger.info("*****************************");
 		logger.info(proService.getProInfoAdjByProInfoId("2"));
+	}
+	
+	public void t4() {
+		ProInfoAdjust pia = new ProInfoAdjust();
+  
+		proService.deleteProInfoAdj("6");
+		 
 	}
 }

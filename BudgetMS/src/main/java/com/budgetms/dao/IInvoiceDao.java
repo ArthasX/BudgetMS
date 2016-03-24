@@ -18,4 +18,6 @@ public interface IInvoiceDao {
 	List<Invoice> getInvoByPage(Invoice invo, int start, int limit);
 
 	int getInvoCount(Invoice invo);
+	
+	int transfer();
 }
