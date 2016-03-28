@@ -18,5 +18,7 @@
 		<typeAlias type="com.budgetms.pojo.Project" alias="pro" />
 		<typeAlias type="com.budgetms.pojo.ProInfo" alias="proInfo" />
 		<typeAlias type="com.budgetms.pojo.ProInfoAdjust" alias="proInfoAdj" />
+		
+		<typeAlias type="com.budgetms.pojo.Tender" alias="tender" />
 	</typeAliases>
 </configuration>

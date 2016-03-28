@@ -51,7 +51,7 @@ Ext.application({
 	requires : [ 'Ext.container.Viewport' ],
 	name : 'BudgetMS',
 	appFolder : 'app',
-	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl', 'proCtrl',
+	controllers : [ 'instCtrl', 'treeCtrl', 'contCtrl', 'invoCtrl', 'proCtrl','tenderCtrl',
 			'budgetCtrl' ],
 	launch : function() {
 		// initBudgetType();
@@ -141,7 +141,7 @@ Ext.application({
 				xtype : 'tabpanel', // TabPanel itself has no title
 				// activeTab : 0, // First tab active by default
 				items : [ {
-					title : 'Main',
+					title : '主页',
 					xtype : 'dashbord'
 				}
 				// {

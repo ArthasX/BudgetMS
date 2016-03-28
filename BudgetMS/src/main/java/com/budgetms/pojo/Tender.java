@@ -7,36 +7,34 @@ package com.budgetms.pojo;
  *
  */
 public class Tender extends BasePOJO {
-	private int tenderId;//招标编号
-	private int instDivideId;//请示拆分编号
-	private int apprId;//批复编号
-	private int tenderAmt;//
+	private String tenderId;//招标编号
+	private String instDivideId;//请示拆分编号
+	private String apprId;//批复编号
+	private String tenderAmt;//
 	private String company;
 	private String remark;
-	
-	public int getTenderId() {
+	public String getTenderId() {
 		return tenderId;
 	}
-	public void setTenderId(int tenderId) {
+	public void setTenderId(String tenderId) {
 		this.tenderId = tenderId;
 	}
- 
-	public int getInstDivideId() {
+	public String getInstDivideId() {
 		return instDivideId;
 	}
-	public void setInstDivideId(int instDivideId) {
+	public void setInstDivideId(String instDivideId) {
 		this.instDivideId = instDivideId;
 	}
-	public int getApprId() {
+	public String getApprId() {
 		return apprId;
 	}
-	public void setApprId(int apprId) {
+	public void setApprId(String apprId) {
 		this.apprId = apprId;
 	}
-	public int getTenderAmt() {
+	public String getTenderAmt() {
 		return tenderAmt;
 	}
-	public void setTenderAmt(int tenderAmt) {
+	public void setTenderAmt(String tenderAmt) {
 		this.tenderAmt = tenderAmt;
 	}
 	public String getCompany() {
@@ -52,5 +50,5 @@ public class Tender extends BasePOJO {
 		this.remark = remark;
 	}
 	
-	
+	 
 }

@@ -66,6 +66,11 @@ Ext.define('BudgetMS.store.treeMenuStore', {
 			name : 'invo',
 			text : "发票",
 			leaf : true
+		} , {
+			id : 'tenderList',
+			name : 'tender',
+			text : "招标",
+			leaf : true
 		} ]
 	}
 

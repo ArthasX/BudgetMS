@@ -7,15 +7,10 @@ Ext.define('BudgetMS.controller.treeCtrl', {
 		this.control({
 			'treeMenu' : {
 				itemclick : this.treeItemClick
-			// itemdblclicl: this.expand
 			}
 		});
 	},
 	treeItemClick : function(tr, record, item, index, e, eOpts) {
-		// console.log(record.raw);
-		// console.log(tr.ownerCt);
-		// debugger;
-
 		var treeNode = record.raw;
 		var id = treeNode.id;
 		var name = treeNode.name;
@@ -44,7 +39,6 @@ Ext.define('BudgetMS.controller.treeCtrl', {
 		}
 	},
 	expand : function(tr, record) {
-		// console.log(record.data.id);
 		tr.expandNode(record);
 	}
 });

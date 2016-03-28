@@ -162,9 +162,6 @@
 						and record_id like '%${param1.recordId}%'
 					</if>
 					<if test="param1.attachType !=null and param1.attachType !='' ">
-						and url like '%${param1.attachType}%'
-					</if>
-					<if test="param1.attachType !=null and param1.attachType !='' ">
 						and attach_type like '%${param1.attachType}%'
 					</if>
 				</otherwise>
