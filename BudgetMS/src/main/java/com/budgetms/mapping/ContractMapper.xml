@@ -8,7 +8,7 @@
 	<resultMap id="BaseResultMap" type="com.budgetms.pojo.Contract">
 		<id column="cont_Id" property="contId" jdbcType="VARCHAR" />
 		<result column="inst_divide_Id" property="instDivideId"
-			jdbcType="VARCHAR" />
+			jdbcType="INTEGER" />
 		<result column="cont_name" property="contName" jdbcType="VARCHAR" />
 		<result column="cont_amt" property="contAmt" jdbcType="DECIMAL" />
 		<result column="cont_company" property="contCompany" jdbcType="VARCHAR" />
@@ -55,7 +55,7 @@
 		insert into contract
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			cont_id,inst_divide_Id, cont_name,
-			,cont_amt,cont_type,opt_date,opt_user,cont_company,
+			cont_amt,cont_type,opt_date,opt_user,cont_company,
 			<if test="signedDate !=null and signedDate !='' ">
 				signed_date,
 			</if>
