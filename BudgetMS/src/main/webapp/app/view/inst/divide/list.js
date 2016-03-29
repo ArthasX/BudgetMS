@@ -10,19 +10,26 @@ var instDivideColumn = [ {
 	header : '请示编号',
 	dataIndex : 'instId',
 	width : 150
-}, {
-	header : '拆分编号',
-	dataIndex : 'divideNo',
-	width : 150
-}, {
+},
+// {
+// header : '拆分编号',
+// dataIndex : 'divideNo',
+// width : 150
+// },
+{
 	header : '拆分金额',
 	dataIndex : 'divideAmt'
+}, {
+	header : '请示拆分使用情况',
+	dataIndex : 'divideStatus',
+	width : 150
 }, {
 	header : '项目信息编号',
 	dataIndex : 'proInfoId'
 }, {
 	header : '备注',
-	dataIndex : 'remark'
+	dataIndex : 'remark',
+	width : 150
 } ];
 
 Ext.define('BudgetMS.view.inst.divide.list', {

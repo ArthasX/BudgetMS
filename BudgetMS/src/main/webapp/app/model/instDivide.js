@@ -7,7 +7,9 @@ var instDivideFields=[ {
 } ,{
 	name:'divideNo',
 	type:'auto'
-} ,{
+} ,{name:'divideStatus',
+	type:'auto'
+},{
 	name:'divideAmt',
 	type:'auto'
 } ,{

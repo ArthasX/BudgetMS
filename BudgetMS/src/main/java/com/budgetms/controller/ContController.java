@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import com.budgetms.pojo.ContAdjust;
 import com.budgetms.pojo.Contract;
 import com.budgetms.service.IContService;
+import com.budgetms.util.Msg;
 import com.budgetms.util.MysqlErrTranslator;
 
 @Controller
@@ -40,12 +41,16 @@ public class ContController extends BaseController {
 		logger.info("json:" + json);
 		Contract cont = JSON.toJavaObject(JSON.parseObject(json),
 				Contract.class);
+		int result = 0;
 		try {
-			contService.updateCont(cont);
+			result = contService.updateCont(cont);
 		} catch (Exception e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
-		return SUCCESS;
+		if (result != -1)
+			return SUCCESS;
+		else
+			return Msg.NO_INSTDIVIDE_ID;
 	}
 
 	@RequestMapping("/insertCont.do")
@@ -55,12 +60,16 @@ public class ContController extends BaseController {
 		logger.info("json:" + json);
 		Contract cont = JSON.toJavaObject(JSON.parseObject(json),
 				Contract.class);
+		int result = 0;
 		try {
-			contService.insertCont(cont);
+			result = contService.insertCont(cont);
 		} catch (Exception e) {
 			return MysqlErrTranslator.getJsonErrorMsg(e, logger);
 		}
-		return SUCCESS;
+		if (result != -1)
+			return SUCCESS;
+		else
+			return Msg.NO_INSTDIVIDE_ID;
 	}
 
 	@RequestMapping("/deleteCont.do")

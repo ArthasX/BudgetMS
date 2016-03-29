@@ -13,8 +13,10 @@ import com.alibaba.fastjson.JSON;
 import com.budgetms.controller.ContController;
 import com.budgetms.dao.IContAdjDao;
 import com.budgetms.dao.IContractDao;
+import com.budgetms.dao.IInstructionDivideDao;
 import com.budgetms.pojo.ContAdjust;
 import com.budgetms.pojo.Contract;
+import com.budgetms.pojo.InstructionDivide;
 import com.budgetms.service.IContService;
 
 @Service("contService")
@@ -24,7 +26,8 @@ public class ContServiceImpl implements IContService {
 	private IContractDao contDao;
 	@Resource
 	private IContAdjDao contAdjDao;
-
+	@Resource
+	private IInstructionDivideDao instDivideDao;
 	@Override
 	public List<Contract> getContByProperty(Contract cont) {
 		return contDao.getContByProperty(cont);
@@ -32,7 +35,17 @@ public class ContServiceImpl implements IContService {
 
 	@Override
 	public int updateCont(Contract cont) {
-		return contDao.updateCont(cont);
+		String instDivideId = cont.getInstDivideId();
+		InstructionDivide id = new InstructionDivide();
+		id.setInstDivideId(instDivideId);
+		int count = 0;
+		count = contDao.updateCont(cont);
+		if (count > 0) {
+			id.setDivideStatus("已使用");
+			instDivideDao.updateInstDivide(id);
+			return count;
+		} else
+			return -1;
 	}
 
 	@Override
@@ -42,7 +55,17 @@ public class ContServiceImpl implements IContService {
 
 	@Override
 	public int insertCont(Contract cont) {
-		return contDao.insertCont(cont);
+		String instDivideId = cont.getInstDivideId();
+		InstructionDivide id = new InstructionDivide();
+		id.setInstDivideId(instDivideId);
+		int count = 0;
+		count = contDao.insertCont(cont);
+		if (count > 0) {
+			id.setDivideStatus("已使用");
+			instDivideDao.updateInstDivide(id);
+			return count;
+		} else
+			return -1;
 	}
 
 	@Override

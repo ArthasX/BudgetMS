@@ -7,6 +7,7 @@ public class InstructionDivide extends BasePOJO{
 	private String divideAmt;
 	private String proInfoId;
 	private String remark;
+	private String divideStatus;
 	public String getInstDivideId() {
 		return instDivideId;
 	}
@@ -43,6 +44,12 @@ public class InstructionDivide extends BasePOJO{
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getDivideStatus() {
+		return divideStatus;
+	}
+	public void setDivideStatus(String divideStatus) {
+		this.divideStatus = divideStatus;
 	}
 	 
 
