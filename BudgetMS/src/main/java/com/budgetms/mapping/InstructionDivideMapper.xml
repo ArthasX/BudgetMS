@@ -44,7 +44,7 @@
 		</trim>
 	</select>
 
-	<delete id="deleteInstDivide" parameterType="java.lang.String"> delete from
+	<delete id="deleteInstDivide" parameterType="int"> delete from
 		instruction_divide
 		where
 		inst_divide_id=#{0}
