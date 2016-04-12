@@ -13,8 +13,9 @@ Ext.define('BudgetMS.store.budgetTypeStore', {
 	},
 	autoLoad : {
 		start : 0,
-		limit : 999
-	}
+		limit : 99
+	},
+	pageSize: 99
 });
 
 // fields:'',

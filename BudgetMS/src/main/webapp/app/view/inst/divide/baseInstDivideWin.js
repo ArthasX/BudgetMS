@@ -53,7 +53,10 @@ var instDivideFormItems = [ {
 			}, {
 				"typeId" : "未使用",
 				"typeName" : "未使用"
-			} ]
+			} , {
+				"typeId" : "不使用",
+				"typeName" : "不使用"
+			}]
 		}
 			
 	}, {

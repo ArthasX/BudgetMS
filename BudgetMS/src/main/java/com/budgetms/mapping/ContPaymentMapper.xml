@@ -68,6 +68,9 @@
 			<if test="remark !=null and remark !='' ">
 				remark,
 			</if>
+			<if test="expectPayDate !=null and expectPayDate !='' ">
+				 expect_pay_date,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="payAmt !=null and payAmt !='' ">
@@ -81,6 +84,9 @@
 			</if>
 			<if test="remark !=null and remark !='' ">
 				#{remark},
+			</if>
+			<if test="expectPayDate !=null and expectPayDate !='' ">
+				#{expectPayDate},
 			</if>
 		</trim>
 	</insert>
@@ -99,7 +105,10 @@
 				pay_amt=#{payAmt},
 			</if>
 			<if test="remark !=null and remark !='' ">
-				#{remark},
+				remark=#{remark},
+			</if>
+			<if test="expectPayDate !=null and expectPayDate !='' ">
+				expect_pay_date=#{expectPayDate},
 			</if>
 		</set>
 		where cont_payment_id=#{contPaymentId}
