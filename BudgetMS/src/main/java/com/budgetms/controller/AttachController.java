@@ -60,7 +60,7 @@ public class AttachController extends BaseController {
 			}
 		} catch (IOException e) {
 			logger.error(e.getStackTrace());
-			return new Msg(false, "失败", e.getCause().toString()).toJSON();
+			return Msg.UPLOAD_FAIL;
 		}
 		return SUCCESS;
 	}
@@ -78,5 +78,17 @@ public class AttachController extends BaseController {
 			//return new Msg(false, "失败", "文件获取失败").toJSON();
 		}
 		//return SUCCESS;
+	}
+	@RequestMapping("/delete.do")
+	@ResponseBody
+	public Object delete(HttpServletRequest request,HttpServletResponse response){
+		String attachId = request.getParameter("attachId");
+		try{
+			attachService.deleteAttach(attachId);
+		}catch(Exception e){
+			logger.error(e.getStackTrace());
+			return Msg.DELETEFILE_FAIL;
+		}
+		return SUCCESS;
 	}
 }

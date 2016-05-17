@@ -33,8 +33,8 @@ public class AttachServiceImpl implements IAttachService {
 	}
 
 	@Override
-	public int deletAttach(String attachId) {
-		return attachDao.deletAttach(attachId);
+	public int deleteAttach(String attachId) {
+		return attachDao.deleteAttach(attachId);
 	}
 
 	@Override

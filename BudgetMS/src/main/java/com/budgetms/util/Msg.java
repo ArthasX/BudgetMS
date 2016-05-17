@@ -7,6 +7,7 @@ public class Msg {
 
 	public static final JSON SUCCESS = new Msg(true,"成功").toJSON();
 	public static final JSON UPLOAD_FAIL= new Msg(false,"上传文件失败").toJSON();
+	public static final JSON DELETEFILE_FAIL= new Msg(false,"删除文件失败").toJSON();
 	public static final JSON NO_CONTPAYMENT_ID = new Msg(false,"没有对应的合同付款编号").toJSON();
 	public static final JSON NO_PROINFO_ID = new Msg(false,"没有对应的项目信息编号").toJSON();
 	public static final JSON NO_INSTDIVIDE_ID = new Msg(false,"没有对应的请示拆分编号").toJSON();

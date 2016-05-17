@@ -13,5 +13,5 @@ public interface IAttachService {
 
 	int insertAttach(String recordId, String attachName, String attachType);
 
-	int deletAttach(String attachId);
+	int deleteAttach(String attachId);
 }

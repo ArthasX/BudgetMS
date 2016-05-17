@@ -13,5 +13,5 @@ public interface IAttachDao {
 
 	int insertAttach(Attachment attach);
 
-	int deletAttach(String attachId);
+	int deleteAttach(String attachId);
 }
