@@ -68,10 +68,13 @@ Ext.define('BudgetMS.view.inst.instTbarForm', {
 					"typeId" : "",
 					"typeName" : "请选择..."
 				},{
-					"typeId" : "0",
+					"typeId" : "1",
 					"typeName" : "一般请示"
 				}, {
-					"typeId" : "1",
+					"typeId" : "2",
+					"typeName" : "IT服务申请表"
+				}, {
+					"typeId" : "11",
 					"typeName" : "IT服务申请表"
 				} ]
 			}

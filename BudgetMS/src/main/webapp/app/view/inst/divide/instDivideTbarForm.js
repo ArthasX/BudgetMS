@@ -39,5 +39,13 @@ Ext.define('BudgetMS.view.inst.divide.instDivideTbarForm', {
 			name : 'deleteInstDivide',
 			action : 'inst/deleteInstDivide.do'
 		} ]
+	}, {
+		flex : 1,
+		border : false,
+		items : [ {
+			xtype : 'textfield',
+			name : 'instDivideId',
+			fieldLabel : '拆分编号'
+		} ]
 	} ]
 });

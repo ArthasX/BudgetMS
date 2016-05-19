@@ -208,7 +208,7 @@
 						and inst_content like '%${param1.instContent}%'
 					</if>
 					<if test="param1.instType !=null and param1.instType !='' ">
-						and inst_type like '%${param1.instType}%'
+						and inst_type = #{param1.instType}
 					</if>
 					<if test="param1.instAmt !=null and param1.instAmt !='' ">
 						and inst_amt like '%${param1.instAmt}%'
