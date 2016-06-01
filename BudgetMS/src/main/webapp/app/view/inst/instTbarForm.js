@@ -75,7 +75,7 @@ Ext.define('BudgetMS.view.inst.instTbarForm', {
 					"typeName" : "IT服务申请表"
 				}, {
 					"typeId" : "11",
-					"typeName" : "IT服务申请表"
+					"typeName" : "预算执行申请"
 				} ]
 			}
 		} ]

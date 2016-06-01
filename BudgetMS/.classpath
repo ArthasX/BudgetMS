@@ -34,5 +34,7 @@
 			<attribute name="me-identifier" value="data/libraryset/EE_6//javax.annotation.jar"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/liubin/Downloads/IBMDB2jdbc(jb51.net)/db2jcc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/liubin/Downloads/IBMDB2jdbc(jb51.net)/db2jcc4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

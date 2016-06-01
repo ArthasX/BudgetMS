@@ -149,7 +149,7 @@ public class InstServiceImpl implements IInstService {
 	public Object getInstDivideByPage(InstructionDivide i, int start, int limit) {
 		List<InstructionDivide> l = instDivideDao.getInstDivideByPage(i, start,
 				limit);
-		int total = instDivideDao.getInstDivideCount();
+		int total = instDivideDao.getInstDivideCount(i);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("record", l);
 		map.put("total", total);

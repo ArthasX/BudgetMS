@@ -44,4 +44,12 @@
   <session-config>
     <session-timeout>150</session-timeout>
   </session-config>
+  <servlet>
+  	<servlet-name>HAC</servlet-name>
+    <servlet-class>com.budgetms.util.HacValidation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>HAC</servlet-name>
+  	<url-pattern>/HacValidation</url-pattern>
+  </servlet-mapping>
 </web-app>
