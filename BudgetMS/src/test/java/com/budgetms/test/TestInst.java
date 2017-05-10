@@ -15,137 +15,139 @@ import com.budgetms.pojo.InstructionAdjust;
 import com.budgetms.pojo.InstructionDivide;
 import com.budgetms.service.IInstService;
 import com.budgetms.util.FileUtil;
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
+ 
 public class TestInst extends AbsTest {
 	static Logger logger = Logger.getLogger(TestInst.class);
 
-	static class SetterExclusionStrategy implements ExclusionStrategy {
-
-		@Override
-		public boolean shouldSkipField(FieldAttributes f) {
-			return false;
-
-		}
-
-		@Override
-		public boolean shouldSkipClass(Class<?> clazz) {
-			return false;
-		}
-	}
-
-	@Resource
-	private IInstService instService = null;
-	// 注入loginController
-	@Autowired
-	private InstController instController;
-
 	@Override
-	public void test() {
-		t7();
-	}
-
-	public void t() {
+	public void test() throws Exception {
 		// TODO Auto-generated method stub
-		Instruction inst = new Instruction();
-		inst.setInstId("QSBH201602150097");
-		inst.setInstTitle("测试");
-		inst.setInstContent("123");
-		inst.setInstStatus("在途");
-		inst.setSoftAmt("123");
-		inst.setInstType("1");
-		inst.setInstAmt("15.55");
-		inst.setApplyDept("1");
-		inst.setOptDate("2016-02-15");
-		inst.setOptUser("1");
-		instService.insertInst(inst);
+		
 	}
 
-	public void t1() {
-		Instruction inst = new Instruction();
-		inst.setInstTitle("测试");
-		List<Instruction> l = instService.getInstByProperty(inst);
-
-		logger.info(JSON.toJSONString(l));
-		JSON json = (JSON) JSON.toJSON(l.get(0));
-		Instruction i = JSON.toJavaObject(json, Instruction.class);
-		logger.info(JSON.toJSONString(l.get(0)));
-		logger.info(i.toString());
-
-	}
-
-	public void t2() {
-		// List<Instruction> l = instService.getInstByMap("0","25");
-		String json = "{'instId':null,'instAmt':'0'}";
-		String json1 = "{'instType':'1','instAmt':'123'}";
-		Gson g = new Gson();
-		Gson g1 = new GsonBuilder().serializeNulls().create();
-		Instruction inst = g.fromJson(json, Instruction.class);
-		Instruction inst1 = g1.fromJson(json1, Instruction.class); //
-
-		JSON.toJavaObject(JSON.parseObject(json), Instruction.class);
-		logger.info(instService.getInstByProperty(inst1));
-		// logger.info(JSON.toJSONString(inst1));
-	}
-
-	public void t3() {
-		String json = "{'instId':null,'instAmt':'123'}";
-		Gson g = new Gson();
-		Instruction inst = g.fromJson(json, Instruction.class);
-		// List<Instruction>l=instService.getInstByPage(inst, 1, 2);
-		// logger.debug(l);
-	}
-
-	public void t4() {
-		try {
-			request.setParameter("start", "0");
-			request.setParameter("limit", "2");
-			request.setParameter("obj", "{'instType':'1'}");
-			Object obj = instController.findInstByProperty(request);
-			System.out.print(obj);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void t5() {
-		try {
-			request.setParameter("start", "0");
-			request.setParameter("limit", "2");
-			request.setParameter("obj", "{'instType':'1'}");
-			FileUtil fu = new FileUtil(request, response);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void t6() {
-
-		InstructionDivide id = new InstructionDivide();
-		id.setInstDivideId("2");
-//		id.setInstId("QSBH201602150001");
-//		id.setDivideAmt("100");
-//		id.setDivideNo("1");
-//		id.setProInfoId("1");
-		// instService.insertInstDivide(id);
-		Object o =instService.getInstDivideByProperty(id);
-		logger.info(o);
-//		id.setInstDivideId("1");
-//		id.setDivideAmt("150");
-//		instService.updateInstDivide(id);
-		instService.deleteInstDivide("2");
-		logger.info(instService.getInstDivideByProperty(id));
-	}
-	public void t7(){
-		InstructionAdjust ia = new InstructionAdjust();
-		ia.setInstId("QSBH201602150001");
-		ia.setInstDivideId("1");
-		ia.setInstAdjAmt("50");
-		ia.setRemark("减少50");
-		instService.deleteInstAdj("1");
-	}
+//	static class SetterExclusionStrategy implements ExclusionStrategy {
+//
+//		@Override
+//		public boolean shouldSkipField(FieldAttributes f) {
+//			return false;
+//
+//		}
+//
+//		@Override
+//		public boolean shouldSkipClass(Class<?> clazz) {
+//			return false;
+//		}
+//	}
+//
+//	@Resource
+//	private IInstService instService = null;
+//	// 注入loginController
+//	@Autowired
+//	private InstController instController;
+//
+//	@Override
+//	public void test() {
+//		t7();
+//	}
+//
+//	public void t() {
+//		// TODO Auto-generated method stub
+//		Instruction inst = new Instruction();
+//		inst.setInstId("QSBH201602150097");
+//		inst.setInstTitle("测试");
+//		inst.setInstContent("123");
+//		inst.setInstStatus("在途");
+//		inst.setSoftAmt("123");
+//		inst.setInstType("1");
+//		inst.setInstAmt("15.55");
+//		inst.setApplyDept("1");
+//		inst.setOptDate("2016-02-15");
+//		inst.setOptUser("1");
+//		instService.insertInst(inst);
+//	}
+//
+//	public void t1() {
+//		Instruction inst = new Instruction();
+//		inst.setInstTitle("测试");
+//		List<Instruction> l = instService.getInstByProperty(inst);
+//
+//		logger.info(JSON.toJSONString(l));
+//		JSON json = (JSON) JSON.toJSON(l.get(0));
+//		Instruction i = JSON.toJavaObject(json, Instruction.class);
+//		logger.info(JSON.toJSONString(l.get(0)));
+//		logger.info(i.toString());
+//
+//	}
+//
+//	public void t2() {
+//		// List<Instruction> l = instService.getInstByMap("0","25");
+//		String json = "{'instId':null,'instAmt':'0'}";
+//		String json1 = "{'instType':'1','instAmt':'123'}";
+//		Gson g = new Gson();
+//		Gson g1 = new GsonBuilder().serializeNulls().create();
+//		Instruction inst = g.fromJson(json, Instruction.class);
+//		Instruction inst1 = g1.fromJson(json1, Instruction.class); //
+//
+//		JSON.toJavaObject(JSON.parseObject(json), Instruction.class);
+//		logger.info(instService.getInstByProperty(inst1));
+//		// logger.info(JSON.toJSONString(inst1));
+//	}
+//
+//	public void t3() {
+//		String json = "{'instId':null,'instAmt':'123'}";
+//		Gson g = new Gson();
+//		Instruction inst = g.fromJson(json, Instruction.class);
+//		// List<Instruction>l=instService.getInstByPage(inst, 1, 2);
+//		// logger.debug(l);
+//	}
+//
+//	public void t4() {
+//		try {
+//			request.setParameter("start", "0");
+//			request.setParameter("limit", "2");
+//			request.setParameter("obj", "{'instType':'1'}");
+//			Object obj = instController.findInstByProperty(request);
+//			System.out.print(obj);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	public void t5() {
+//		try {
+//			request.setParameter("start", "0");
+//			request.setParameter("limit", "2");
+//			request.setParameter("obj", "{'instType':'1'}");
+//			FileUtil fu = new FileUtil(request, response);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	public void t6() {
+//
+//		InstructionDivide id = new InstructionDivide();
+//		id.setInstDivideId("2");
+////		id.setInstId("QSBH201602150001");
+////		id.setDivideAmt("100");
+////		id.setDivideNo("1");
+////		id.setProInfoId("1");
+//		// instService.insertInstDivide(id);
+//		Object o =instService.getInstDivideByProperty(id);
+//		logger.info(o);
+////		id.setInstDivideId("1");
+////		id.setDivideAmt("150");
+////		instService.updateInstDivide(id);
+//		instService.deleteInstDivide("2");
+//		logger.info(instService.getInstDivideByProperty(id));
+//	}
+//	public void t7(){
+//		InstructionAdjust ia = new InstructionAdjust();
+//		ia.setInstId("QSBH201602150001");
+//		ia.setInstDivideId("1");
+//		ia.setInstAdjAmt("50");
+//		ia.setRemark("减少50");
+//		instService.deleteInstAdj("1");
+//	}
 }
