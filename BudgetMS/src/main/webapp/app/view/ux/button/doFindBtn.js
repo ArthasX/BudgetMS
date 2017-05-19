@@ -11,7 +11,9 @@ Ext.define('BudgetMS.view.ux.button.doFindBtn', {
 				Ext.Msg.alert('注意', '请按正确的格式输入')
 				return;
 			}
-			grid.store.reload();
+            // grid.store.currentPage=1;
+			// grid.store.reload({start:0,limit:PAGE_SIZE});
+			grid.store.loadPage(1,{start:0,limit:PAGE_SIZE});
 		}
 	}
 });

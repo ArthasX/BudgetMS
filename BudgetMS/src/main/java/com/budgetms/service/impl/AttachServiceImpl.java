@@ -14,7 +14,7 @@ import com.budgetms.service.IAttachService;
 @Service("attachService") 
 public class AttachServiceImpl implements IAttachService {
 	@Resource 
-	private IAttachDao attachDao=null;
+	private IAttachDao attachDao;
 	
 	@Override
 	public List<Attachment> getAttachByIdType(String recordId, String type) {

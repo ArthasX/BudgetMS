@@ -13,10 +13,10 @@ Ext.define('BudgetMS.view.pro.proInfoAdj.editProInfoAdjWin', {
 			text : '取消',
 			scope : this,
 			handler : this.close
-		} ]
+		} ];
 		this.callParent(arguments);
-		var form=this.down('form');
-		if(form)
+		var form = this.down('form');
+		if (form)
 			form.getForm().findField('proInfoAdjId').readOnly = true;
 	}
 });

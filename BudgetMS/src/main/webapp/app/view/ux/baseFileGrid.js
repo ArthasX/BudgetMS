@@ -2,7 +2,7 @@ Ext.define('BudgetMS.view.ux.baseFileGrid', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.baseFileGrid',
 	// border : false,
-	store : 'fileStore',
+	//store : 'fileStore',
 	enableKeyNav : true,// 键盘控制
 	columnLines : true,// 竖线
 	tbar : [ {
@@ -55,7 +55,9 @@ Ext.define('BudgetMS.view.ux.baseFileGrid', {
 	initComponent : function() {
 		// 可以考虑在这里 new 一个 store
 		this.columns = this.fileColumn;
-		this.callParent(arguments);
+		var store=Ext.create('BudgetMS.store.fileStore');
+		this.store=store;
+        this.callParent(arguments);
 	},
 	listeners : {
 		'itemdblclick' : function(grid, record) {

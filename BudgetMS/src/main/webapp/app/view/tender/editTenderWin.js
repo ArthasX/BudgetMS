@@ -1,7 +1,7 @@
 Ext.define('BudgetMS.view.tender.editTenderWin', {
 	extend : 'BudgetMS.view.tender.baseTenderWin',
 	alias : 'widget.tenderEdit',
-	title : '发票修改',
+	title : '招标修改',
 	autoShow : true,
 	initComponent : function() {
 		this.buttons = [ {

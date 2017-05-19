@@ -18,5 +18,32 @@ Ext.define("BudgetMS.model.tender", {
 	} ,{
 		name : 'remark',
 		type : 'auto'
-	} ]
+	},{
+		name:'tenderName',
+		type:'auto'
+	},{
+		name:'type',
+		type:'auto'
+	},{
+		name:'startDate',
+		type:'auto'
+	},{
+		name:'endDate',
+		type:'auto'
+	},{
+		name:'openDate',
+		type:'auto'
+	},{
+		name:'negoDate',
+		type:'auto'
+	},{
+		name:'approvalDate',
+		type:'auto'
+	},{
+		name:'finalDate',
+		type:'auto'
+	},{
+		name:'status',
+		type:'auto'
+	}]
 });

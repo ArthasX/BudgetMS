@@ -15,6 +15,7 @@ Ext.define('BudgetMS.view.tender.addTenderWin', {
 			handler : this.close
 		} ];
 		this.callParent(arguments);
-		this.down('form').getForm().findField('tenderId').disabled=true;
+		// this.down('form').getForm().findField('tenderId').disabled=true;
+        this.down('form').getForm().findField('tenderId').setValue(genTenderId());
 	}
 });

@@ -33,5 +33,8 @@ Ext.define("BudgetMS.model.cont", {
 	}, {
 		name : 'remark',
 		type : 'auto'
-	} ]
+	}, {
+        name : 'tenderId',
+        type : 'auto'
+    } ]
 });

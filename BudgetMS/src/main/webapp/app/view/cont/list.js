@@ -3,10 +3,10 @@
  * 
  */
 var contColum = [ {
-	xtype : 'checkcolumn',
-	text : '选中',
-	dataIndex : 'active'
-}, {
+// 	xtype : 'checkcolumn',
+// 	text : '选中',
+// 	dataIndex : 'active'
+// }, {
 	header : '合同编号',
 	dataIndex : 'contId',
 	width : 150
@@ -15,6 +15,10 @@ var contColum = [ {
 	dataIndex : 'instDivideId',
 	width : 150
 }, {
+    header : '招标编号',
+    dataIndex : 'tenderId',
+    width : 150
+} , {
 	header : '合同名称',
 	dataIndex : 'contName',
 	width : 150
@@ -59,9 +63,7 @@ var contColum = [ {
 	header : '备注',
 	dataIndex : 'remark',
 
-}, {
-
-} ];
+}];
 
 Ext.define('BudgetMS.view.cont.list', {
 	extend : 'BudgetMS.view.ux.baseGrid',

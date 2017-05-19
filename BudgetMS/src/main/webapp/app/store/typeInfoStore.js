@@ -1,6 +1,6 @@
 Ext.define('BudgetMS.store.typeInfoStore', {
 	name : 'typeInfo',
-	extend : 'Ext.data.Store',
+	extend : 'BudgetMS.store.baseStore',
 	model : 'BudgetMS.model.typeInfo',
 	proxy : {
 		type : 'ajax',
@@ -9,6 +9,7 @@ Ext.define('BudgetMS.store.typeInfoStore', {
 			type : 'json'
 		}
 	},
-	autoLoad : true,
-	filterOnLoad : true
+	//autoLoad : true,
+	filterOnLoad : true,
+
 });

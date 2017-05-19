@@ -19,7 +19,7 @@ Ext.define('BudgetMS.store.baseStore', {
 			} else {
 				params = {obj:'{}'};
 			}
-			console.log("beforeload set params:");
+			console.log('['+this.name+']'+"beforeload set params:");
 			console.log(params);
 			Ext.apply(store.proxy.extraParams, params);
 		}

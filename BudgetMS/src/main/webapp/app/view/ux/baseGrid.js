@@ -28,6 +28,6 @@ Ext.define('BudgetMS.view.ux.baseGrid', {
 	initComponent : function() {
 		this.callParent(arguments);
 		console.log('basegrid', this.down('pagingtoolbar'));
-	},
+	}
 
 });

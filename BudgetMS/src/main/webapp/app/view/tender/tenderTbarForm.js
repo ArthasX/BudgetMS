@@ -48,7 +48,7 @@ Ext.define('BudgetMS.view.tender.tenderTbarForm', {
 			vtype : 'money'
 		} , {
 			xtype : 'textfield',
-			name : 'remark',
+			name : 'tenderName',
 			fieldLabel : '项目名称' 
 		} ]
 	}, {

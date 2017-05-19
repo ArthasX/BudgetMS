@@ -19,8 +19,7 @@ var instColum = [ {
 	dataIndex : 'instType',
 	renderer : function(value, cellmeta, record, rowIndex, columnIndex, store) {
 		var items=typeInfoStore.data.items;
-		var l=items.length;
-		for(var i=0;i<l;i++){
+		for(var i in items){
 			if(value==items[i].data.typeId)
 				return items[i].data.typeName;
 			else
