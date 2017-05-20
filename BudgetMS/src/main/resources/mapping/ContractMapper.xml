@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IContractDao">
+
+    <resultMap id="BaseResultMap" type="com.budgetms.pojo.Contract">
+        <id column="cont_Id" property="contId" jdbcType="VARCHAR"/>
+        <result column="inst_divide_Id" property="instDivideId"
+                jdbcType="INTEGER"/>
+        <result column="cont_name" property="contName" jdbcType="VARCHAR"/>
+        <result column="cont_amt" property="contAmt" jdbcType="DECIMAL"/>
+        <result column="cont_company" property="contCompany" jdbcType="VARCHAR"/>
+        <result column="cont_type" property="contType" jdbcType="INTEGER"/>
+        <result column="signed_date" property="signedDate" jdbcType="DATE"/>
+        <result column="signed_person" property="signedPerson"
+                jdbcType="VARCHAR"/>
+        <result column="opt_date" property="optDate" jdbcType="DATE"/>
+        <result column="opt_user" property="optUser" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="tender_id" property="tenderId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getContByProperty" resultMap="BaseResultMap"
+            resultType="java.util.HashMap" parameterType="cont">
+        select * from contract
+        <trim prefix="where" prefixOverrides="AND|OR">
+            <choose>
+                <when test="contId !=null and contId !=''">
+                    cont_Id like '%${contId}%'
+                </when>
+                <otherwise>
+                    <trim prefix="(" suffix=")" suffixOverrides=",">
+                        <if test="contName !=null and contName !='' ">
+                            and cont_name like '%${contName}%'
+                        </if>
+                        <if test="contType !=null and contType !='' ">
+                            and cont_type like '%${contType}%'
+                        </if>
+                        <if test="contAmt !=null and contAmt !='' ">
+                            and cont_amt like '%${contAmt}%'
+                        </if>
+                    </trim>
+                </otherwise>
+            </choose>
+        </trim>
+    </select>
+
+    <delete id="deleteCont" parameterType="java.lang.String"> DELETE FROM contract
+    WHERE
+        cont_Id = #{contId}
+    </delete>
+
+    <insert id="insertCont" parameterType="cont">
+        insert into contract
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            cont_id,inst_divide_Id, cont_name,
+            cont_amt,cont_type,opt_date,opt_user,cont_company,tender_id,
+            <if test="signedDate !=null and signedDate !='' ">
+                signed_date,
+            </if>
+            <if test="signedPerson !=null and signedPerson !='' ">
+                signed_person,
+            </if>
+            <if test="remark !=null and remark!= '' ">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{contId},#{instDivideId},#{contName},#{contAmt},#{contType},sysdate(),#{optUser},#{contCompany},#{tenderId},
+            <if test="signedDate !=null and signedDate !='' ">
+                #{signedDate},
+            </if>
+            <if test="signedPerson !=null and signedPerson !='' ">
+                #{signedPerson},
+            </if>
+            <if test="remark !=null and remark!= '' ">
+                #{remark},
+            </if>
+
+        </trim>
+    </insert>
+
+
+    <update id="updateCont" parameterType="cont">
+        update contract
+        <set>
+            <if test="contName !=null and contName !='' ">
+                cont_name=#{contName},
+            </if>
+            <if test="instDivideId !=null and instDivideId !='' ">
+                inst_divide_id=#{instDivideId},
+            </if>
+            <if test="contType !=null and contType !='' ">
+                cont_type=#{contType},
+            </if>
+            <if test="contAmt !=null and contAmt !='' ">
+                cont_amt=#{contAmt},
+            </if>
+            <if test="signedDate !=null and signedDate !='' ">
+                signed_date=#{signedDate},
+            </if>
+            <if test="signedPerson !=null and signedPerson !='' ">
+                signed_person=#{signedPerson},
+            </if>
+            <if test="remark !=null and remark!= '' ">
+                remark=#{remark},
+            </if>
+            <if test="contCompany !=null and contCompany!= '' ">
+                cont_company=#{contCompany},
+            </if>
+            <if test="tenderId !=null and tenderId !='' ">
+                tender_id =#{tenderId},
+            </if>
+        </set>
+        where cont_id=#{contId}
+    </update>
+
+
+    <select id="getContByPage" resultMap="BaseResultMap" resultType="java.util.HashMap">
+        select * from contract
+        <trim prefix="where" prefixOverrides="AND|OR">
+            <choose>
+                <when test="param1.contId !=null and param1.contId !=''">
+                    cont_Id like '%${param1.contId}%'
+                </when>
+                <otherwise>
+                    <if test="param1.contName !=null and param1.contName !='' ">
+                        and cont_name like '%${param1.contName}%'
+                    </if>
+                    <if test="param1.contType !=null and param1.contType !='' ">
+                        and cont_type like '%${param1.contType}%'
+                    </if>
+                    <if test="param1.contAmt !=null and param1.contAmt !='' ">
+                        and cont_amt like '%${param1.contAmt}%'
+                    </if>
+                    <if test="param1.contCompany !=null and param1.contCompany !='' ">
+                        and cont_company like '%${param1.contCompany}%'
+                    </if>
+                    <if test="param1.tenderId !=null and param1.tenderId !='' ">
+                        and tender_id like '%${param1.tenderId}%'
+                    </if>
+                </otherwise>
+            </choose>
+        </trim>
+        order by cont_id desc limit #{param2},#{param3}
+    </select>
+
+    <select id="getContCount" resultType="int">
+        select count(*) from contract
+        <trim prefix="where" prefixOverrides="AND|OR">
+            <choose>
+                <when test="contId !=null and contId !=''">
+                    cont_Id like '%${contId}%'
+                </when>
+                <otherwise>
+
+                    <if test="contName !=null and contName !='' ">
+                        and cont_name like '%${contName}%'
+                    </if>
+                    <if test="contType !=null and contType !='' ">
+                        and cont_type like '%${contType}%'
+                    </if>
+                    <if test="contAmt !=null and contAmt !='' ">
+                        and cont_amt like '%${contAmt}%'
+                    </if>
+                    <if test="contCompany !=null and contCompany !='' ">
+                        and cont_company like '%${contCompany}%'
+                    </if>
+                    <if test="tenderId !=null and tenderId !='' ">
+                        and tender_id like '%${tenderId}%'
+                    </if>
+
+
+                </otherwise>
+            </choose>
+        </trim>
+    </select>
+</mapper>  

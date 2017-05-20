@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IInstructionDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.Instruction">
+		<id column="inst_Id" property="instId" jdbcType="VARCHAR" />
+		<result column="inst_title" property="instTitle" jdbcType="VARCHAR" />
+		<result column="inst_content" property="instContent" jdbcType="VARCHAR" />
+		<result column="inst_type" property="instType" jdbcType="INTEGER" />
+		<result column="inst_status" property="instStatus" jdbcType="VARCHAR" />
+		<result column="apply_dept" property="applyDept" jdbcType="VARCHAR" />
+		<result column="inst_amt" property="instAmt" jdbcType="DECIMAL" />
+		<result column="soft_amt" property="softAmt" jdbcType="DECIMAL" />
+		<result column="hard_amt" property="hardAmt" jdbcType="DECIMAL" />
+		<result column="apply_user" property="applyUser" jdbcType="INTEGER" />
+		<result column="apply_user_name" property="applyUserName"
+			jdbcType="VARCHAR" />
+		<result column="opt_date" property="optDate" jdbcType="DATE" />
+		<result column="opt_user" property="optUser" jdbcType="INTEGER" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+
+	<sql id="Base_Column_List">
+		userId, inst_title,inst_content, inst_type,
+		apply_dept,inst_amt,soft_amt,
+		hard_amt,apply_user,apply_user_name,opt_date,opt_user,remark
+	</sql>
+
+	<select id="getInstByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="inst">
+		select
+		inst.inst_Id,inst.inst_title,inst.inst_contnet,inst.inst_amt,inst.inst_status,
+		(select dept_name from dept b where b.deptid = inst.apply_dept ) as
+		apply_dept
+		(select type_name from type_info c where
+		c.type_id=inst.inst_type ) as inst_type
+		from instruction
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="instId !=null and instId !=''">
+					inst_Id like '%${instId}%'
+				</when>
+				<otherwise>
+
+					<if test="instTitle !=null and instTitle !='' ">
+						and inst_title like '%${instTitle}%'
+					</if>
+					<if test="instContent !=null and instContent !='' ">
+						and inst_content like '%${instContent}%'
+					</if>
+					<if test="instType !=null and instType !='' ">
+						and inst_type like '%${instType}%'
+					</if>
+					<if test="instAmt !=null and instAmt !='' ">
+						and inst_amt like '%${instAmt}%'
+					</if>
+					<if test="instStatus !=null and instStatus !='' ">
+						and inst_status like '%${instStatus}%'
+					</if>
+
+				</otherwise>
+			</choose>
+		</trim>
+		order by inst_id desc
+	</select>
+
+	<delete id="deleteInst" parameterType="java.lang.String"> delete from instruction
+		where
+		inst_Id=#{instId}
+	</delete>
+
+	<insert id="insertInst" parameterType="inst">
+		insert into instruction
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			inst_id,inst_title,inst_content,inst_type,apply_dept,inst_amt,opt_date,opt_user,inst_status,
+			<if test="softAmt !=null and softAmt !='' ">
+				soft_amt,
+			</if>
+			<if test="hardAmt !=null and hardAmt !='' ">
+				hard_amt,
+			</if>
+			<if test="applyUser !=null and applyUser !='' ">
+				apply_user,
+			</if>
+			<if test="applyUserName !=null and applyUserName !='' ">
+				apply_user_name,
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			#{instId},#{instTitle},#{instContent},#{instType},#{applyDept},#{instAmt},sysdate(),#{optUser},#{instStatus},
+			<if test="softAmt !=null and softAmt !='' ">
+				#{softAmt},
+			</if>
+			<if test="hardAmt !=null and hardAmt !='' ">
+				#{hardAmt},
+			</if>
+			<if test="applyUser !=null and applyUser !='' ">
+				#{applyUser},
+			</if>
+			<if test="applyUserName !=null and applyUserName !='' ">
+				#{applyUserName},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				#{remark},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateInst" parameterType="inst">
+		update instruction
+		<set>
+			<if test="instTitle !=null and instTitle !='' ">
+				inst_title=#{instTitle},
+			</if>
+			<if test="instContent !=null and instContent !='' ">
+				inst_content=#{instContent},
+			</if>
+			<if test="instType !=null and instType !='' ">
+				inst_type=#{instType},
+			</if>
+			<if test="instStatus !=null and instStatus !='' ">
+				inst_status=#{instStatus},
+			</if>
+			<if test="applyDept !=null and applyDept !='' ">
+				apply_dept=#{applyDept},
+			</if>
+			<if test="instAmt !=null and instAmt !='' ">
+				inst_amt=#{instAmt},
+			</if>
+			<if test="softAmt !=null and softAmt !='' ">
+				soft_amt=#{softAmt},
+			</if>
+			<if test="hardAmt !=null and hardAmt !='' ">
+				hard_amt=#{hardAmt},
+			</if>
+			<if test="applyUser !=null and applyUser !='' ">
+				apply_user=#{applyUser},
+			</if>
+			<if test="applyUserName !=null and applyUserName !='' ">
+				apply_user_name=#{applyUserName},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark=#{remark},
+			</if>
+		</set>
+		where inst_id=#{instId}
+	</update>
+
+	<select id="getInstCount" resultType="int">
+		select count(*) from instruction
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="instId !=null and instId !=''">
+					inst_Id like '%${instId}%'
+				</when>
+				<otherwise>
+					<if test="instTitle !=null and instTitle !='' ">
+						and inst_title like '%${instTitle}%'
+					</if>
+					<if test="instContent !=null and instContent !='' ">
+						and inst_content like '%${instContent}%'
+					</if>
+					<if test="instType !=null and instType !='' ">
+						and inst_type like '%${instType}%'
+					</if>
+					<if test="instAmt !=null and instAmt !='' ">
+						and inst_amt like '%${instAmt}%'
+					</if>
+					<if test="instStatus !=null and instStatus !='' ">
+						and inst_status like '%${instStatus}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getInstByPage" resultMap="BaseResultMap" resultType="java.util.HashMap">
+
+		<!-- select
+		inst.inst_Id  ,inst.inst_title,inst.inst_content,inst.inst_amt,inst.inst_status,
+		soft_amt,hard_amt,apply_user_name,opt_date,opt_user,remark,
+		(select dept_name from dept b where b.deptid = inst.apply_dept ) as apply_dept ,
+		(select type_name from type_info c
+		 where
+		c.type_id=inst.inst_type ) as inst_type
+		from instruction inst -->
+		select * from instruction
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.instId !=null and param1.instId !=''">
+					inst_Id like '%${param1.instId}%'
+				</when>
+				<otherwise>
+					<if test="param1.instTitle !=null and param1.instTitle !='' ">
+						and inst_title like '%${param1.instTitle}%'
+					</if>
+					<if test="param1.instContent !=null and param1.instContent !='' ">
+						and inst_content like '%${param1.instContent}%'
+					</if>
+					<if test="param1.instType !=null and param1.instType !='' ">
+						and inst_type = #{param1.instType}
+					</if>
+					<if test="param1.instAmt !=null and param1.instAmt !='' ">
+						and inst_amt like '%${param1.instAmt}%'
+					</if>
+					<if test="param1.instStatus !=null and param1.instStatus !='' ">
+						and inst_status like '%${param1.instStatus}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by inst_id desc limit #{param2},#{param3}
+	</select>
+</mapper>  

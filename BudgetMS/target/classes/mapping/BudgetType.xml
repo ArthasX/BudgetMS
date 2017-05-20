@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IBudgetTypeDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.BudgetType">
+		<id column="budget_type_id" property="budgetTypeId" jdbcType="INTEGER" />
+		<result column="budget_type" property="budgetType" jdbcType="VARCHAR" />
+		<result column="budget_name" property="budgetName" jdbcType="DECIMAL" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getBudgetTypeByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="budgetType">
+		select * from budget_type
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="budgetTypeId !=null and budgetTypeId !=''">
+					budget_type_id like '%${budgetTypeId}%'
+				</when>
+				<otherwise>
+					<if test="budgetType !=null and budgetType !='' ">
+						and budget_type like '%${budgetType}%'
+					</if>
+					<if test="budgetName !=null and budgetName !='' ">
+						and budget_name like '%${budgetName}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by budget_type asc
+	</select>
+
+	<select id="getBudgetTypeByType" parameterType="java.lang.String"
+		resultMap="BaseResultMap" resultType="java.util.HashMap">
+		select * from budget_type where
+		budget_type = #{0}
+	</select>
+
+	<delete id="deleteBudgetType" parameterType="int"> delete from
+		budget_type
+		where
+		budget_type_id=#{0}
+	</delete>
+
+	<insert id="insertBudgetType" parameterType="budgetType">
+		insert into budget_type
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="budgetName !=null and budgetName !='' ">
+				budget_name,
+			</if>
+			<if test="budgetType !=null and budgetType !='' ">
+				budget_type,
+			</if>
+			<if test="remark !=null and remark != '' ">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="budgetName !=null and budgetName !='' ">
+				#{budgetName},
+			</if>
+			<if test="budgetType !=null and budgetType !='' ">
+				#{budgetType},
+			</if>
+			<if test="remark !=null and remark != '' ">
+				#{remark},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateBudgetType" parameterType="budgetType">
+		update budget_type
+		<set>
+			<if test="budgetType !=null and budgetType !='' ">
+				budget_type=#{budgetType},
+			</if>
+			<if test="budgetName !=null and budgetName !='' ">
+				budget_name=#{budgetName},
+			</if>
+			<if test="remark !=null and remark != '' ">
+				remark=#{remark},
+			</if>
+		</set>
+		where budget_type_id=#{budgetTypeId}
+	</update>
+
+	<select id="getBudgetTypeCount" resultType="int">
+		select count(*) from budget_type
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="budgetTypeId !=null and budgetTypeId !=''">
+					budget_type_id like '%${budgetTypeId}%'
+				</when>
+				<otherwise>
+					<if test="budgetType !=null and budgetType !='' ">
+						and budget_type like '%${budgetType}%'
+					</if>
+					<if test="budgetName !=null and budgetName !='' ">
+						and budget_name like '%${budgetName}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getBudgetTypeByPage" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from budget_type
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.budgetTypeId !=null and param1.budgetTypeId !=''">
+					budget_type_id like '%${param1.budgetTypeId}%'
+				</when>
+				<otherwise>
+					<if test="param1.budgetType !=null and param1.budgetType !='' ">
+						and budget_type like '%${param1.budgetType}%'
+					</if>
+					<if test="param1.budgetName !=null and param1.budgetName !='' ">
+						and budget_name like '%${param1.budgetName}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by budget_type asc limit #{param2},#{param3}
+	</select>
+</mapper>  

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IProjectDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.Project">
+		<id column="pro_id" property="proId" jdbcType="VARCHAR" />
+		<result column="pro_name" property="proName" jdbcType="VARCHAR" />
+		<result column="pro_type" property="proType" jdbcType="INTEGER" />
+		<result column="budget_info_id" property="budgetInfoId"
+			jdbcType="INTEGER" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+
+	<select id="getProjectByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="pro">
+		select * from project
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="proId !=null and proId !=''">
+					pro_id like '%${proId}%'
+				</when>
+				<otherwise>
+					<if test="proName !=null and proName !='' ">
+						and pro_name like '%${proName}%'
+					</if>
+					<if test="proType !=null and proType !='' ">
+						and pro_type =#{proType}
+					</if>
+					<if test="budgetInfoId !=null and budgetInfoId !='' ">
+						and budget_info_id like '%${budgetInfoId}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by pro_id desc
+	</select>
+
+	<delete id="deleteProject" parameterType="java.lang.String"> delete from
+		project
+		where
+		pro_id=#{0}
+	</delete>
+
+	<insert id="insertProject" parameterType="pro">
+		insert into project
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="proId !=null and proId !='' ">
+				pro_id,
+			</if>
+			<if test="budgetInfoId !=null and budgetInfoId !='' ">
+				budget_info_id,
+			</if>
+			<if test="proName !=null and proName !='' ">
+				pro_name,
+			</if>
+			<if test="proType !=null and proType !='' ">
+				pro_type,
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="proId !=null and proId !='' ">
+				#{proId},
+			</if>
+			<if test="proName !=null and proName !='' ">
+				#{proName},
+			</if>
+			<if test="proType !=null and proType !='' ">
+				#{proType},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				#{remark},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateProject" parameterType="pro">
+		update project
+		<set>
+			<if test="proName !=null and proName !='' ">
+				pro_name=#{proName},
+			</if>
+			<if test="proType !=null and proType !='' ">
+				pro_type=#{proType},
+			</if>
+			<if test="budgetInfoId !=null and budgetInfoId !='' ">
+				budget_info_id=#{budgetInfoId},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark=#{remark},
+			</if>
+		</set>
+		where pro_id=#{proId}
+	</update>
+
+	<select id="getProjectCount" resultType="int">
+		select count(*) from project
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="proId !=null and proId !=''">
+					pro_id like '%${proId}%'
+				</when>
+				<otherwise>
+					<if test="proName !=null and proName !='' ">
+						and pro_name like '%${proName}%'
+					</if>
+					<if test="proType !=null and proType !='' ">
+						and pro_type like '%${proType}%'
+					</if>
+					<if test="budgetInfoId !=null and budgetInfoId !='' ">
+						and url like '%${budgetInfoId}%'
+					</if>
+					<if test="budgetInfoId !=null and budgetInfoId !='' ">
+						and budget_info_id like '%${budgetInfoId}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getProjectByPage" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from project
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.proId !=null and param1.proId !=''">
+					pro_id like '%${param1.proId}%'
+				</when>
+				<otherwise>
+					<if test="param1.proName !=null and param1.proName !='' ">
+						and pro_name like '%${param1.proName}%'
+					</if>
+					<if test="param1.proType !=null and param1.proType !='' ">
+						and pro_type like '%${param1.proType}%'
+					</if>
+					<if test="param1.budgetInfoId !=null and param1.budgetInfoId !='' ">
+						and budget_info_id like '%${param1.budgetInfoId}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by pro_id desc limit #{param2},#{param3}
+	</select>
+</mapper>  

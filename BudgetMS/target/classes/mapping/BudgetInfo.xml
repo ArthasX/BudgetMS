@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IBudgetInfoDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.BudgetInfo">
+		<id column="budget_info_id" property="budgetInfoId" jdbcType="INTEGER" />
+		<result column="budget_type" property="budgetType" jdbcType="VARCHAR" />
+		<result column="budget_amt" property="budgetAmt" jdbcType="DECIMAL" />
+		<result column="year" property="year" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getBudgetTypeByType" parameterType="java.lang.String"
+		resultType="budgetType">
+		select * from budget_type where budgetType=#{budgetType}
+	</select>
+	<select id="getBudgetInfoByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="budgetInfo">
+		select * from budget_info
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="budgetInfoId !=null and budgetInfoId !=''">
+					budget_info_id like '%${budgetInfoId}%'
+				</when>
+				<otherwise>
+					<if test="budgetType !=null and budgetType !='' ">
+						and budget_type like '%${budgetType}%'
+					</if>
+					<if test="budgetAmt !=null and budgetAmt !='' ">
+						and budget_amt like '%${budgetAmt}%'
+					</if>
+					<if test="year !=null and year !='' ">
+						and year like '%${year}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by budget_type asc
+	</select>
+
+	<select id="getBudgetInfoByProId" parameterType="java.lang.String"
+		resultMap="BaseResultMap" resultType="java.util.HashMap">
+		select * from budget_info where budget_type = #{0}
+		<!-- <trim prefix="where" prefixOverrides="AND|OR"> <if test="budgetType 
+			!=null and budgetType !='' "> budget_type like '%${budgetType}%' </if> </trim> -->
+	</select>
+
+	<delete id="deleteBudgetInfo" parameterType="int"> delete from
+		budget_info
+		where
+		budget_info_id=#{0}
+	</delete>
+
+	<insert id="insertBudgetInfo" parameterType="budgetInfo">
+		insert into budget_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="budgetAmt !=null and budgetAmt !='' ">
+				budget_amt,
+			</if>
+			<if test="budgetType !=null and budgetType !='' ">
+				budget_type,
+			</if>
+			<if test="remark !=null and remark != '' ">
+				remark,
+			</if>
+			<if test="year !=null and year != '' ">
+				year,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="budgetAmt !=null and budgetAmt !='' ">
+				#{budgetAmt},
+			</if>
+			<if test="budgetType !=null and budgetType !='' ">
+				#{budgetType},
+			</if>
+			<if test="remark !=null and remark != '' ">
+				#{remark},
+			</if>
+			<if test="year !=null and year != '' ">
+				#{year},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateBudgetInfo" parameterType="budgetInfo">
+		update budget_info
+		<set>
+			<if test="budgetType !=null and budgetType !='' ">
+				budget_type=#{budgetType},
+			</if>
+			<if test="budgetAmt !=null and budgetAmt !='' ">
+				budget_amt=#{budgetAmt},
+			</if>
+			<if test="remark !=null and remark != '' ">
+				remark=#{remark},
+			</if>
+			<if test="year !=null and year!= '' ">
+				year=#{year},
+			</if>
+		</set>
+		where budget_info_id=#{budgetInfoId}
+	</update>
+
+	<select id="getBudgetInfoCount" resultType="int">
+		select count(*) from budget_info
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="budgetInfoId !=null and budgetInfoId !=''">
+					budget_info_id like '%${budgetInfoId}%'
+				</when>
+				<otherwise>
+					<if test="budgetType !=null and budgetType !='' ">
+						and budget_type like '%${budgetType}%'
+					</if>
+					<if test="budgetAmt !=null and budgetAmt !='' ">
+						and budget_amt like '%${budgetAmt}%'
+					</if>
+					<if test="year !=null and year !='' ">
+						and year like '%${year}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- <select id="getBudgetInfoByPage" resultMap="BaseResultMap" resultType="java.util.HashMap"> 
+		select a.budget_info_id,b.budget_name as budget_type,a.budget_amt,a.year,a.remark 
+		from budget_info a,budget_type b <trim prefix="where" prefixOverrides="AND|OR"> 
+		<choose> <when test="param1.budgetInfoId !=null and param1.budgetInfoId !=''"> 
+		a.budget_info_id like '%${param1.budgetInfoId}%' </when> <otherwise> <if 
+		test="param1.budgetType !=null and param1.budgetType !='' "> and a.budget_type 
+		like '%${param1.budgetType}%' </if> <if test="param1.budgetAmt !=null and 
+		param1.budgetAmt !='' "> and a.budget_amt like '%${param1.budgetAmt}%' </if> 
+		<if test="param1.year !=null and param1.year !='' "> and a.year like '%${param1.year}%' 
+		</if> </otherwise> </choose> and a.budget_type=b.budget_type </trim> order 
+		by budget_type asc limit #{param2},#{param3} </select> -->
+
+	<select id="getBudgetInfoByPage" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from budget_info
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.budgetInfoId !=null and param1.budgetInfoId !=''">
+					budget_info_id like '%${param1.budgetInfoId}%'
+				</when>
+				<otherwise>
+					<if test="param1.budgetType !=null and param1.budgetType !='' ">
+						and budget_type like '%${param1.budgetType}%'
+					</if>
+					<if test="param1.budgetAmt !=null and param1.budgetAmt !='' ">
+						and budget_amt like '%${param1.budgetAmt}%'
+					</if>
+					<if test="param1.year !=null and param1.year !='' ">
+						and year like '%${param1.year}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by year desc,budget_type asc limit #{param2},#{param3}
+	</select>
+</mapper>  

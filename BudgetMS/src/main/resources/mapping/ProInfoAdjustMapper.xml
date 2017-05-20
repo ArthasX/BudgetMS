@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IProInfoAdjustDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.ProInfoAdjust">
+		<id column="pro_info_adj_id" property="proInfoAdjId" jdbcType="INTEGER" />
+		<result column="adj_type" property="adjType" jdbcType="INTEGER" />
+		<result column="adj_amt" property="adjAmt" jdbcType="DECIMAL" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="pro_info_id" property="proInfoId" jdbcType="INTEGER" />
+	</resultMap>
+
+
+
+	<select id="getProInfoAdjByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="proInfoAdj">
+		select * from pro_info_adjust
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="proInfoAdjId !=null and proInfoAdjId !=''">
+					pro_info_adj_id like '%${proInfoAdjId}%'
+				</when>
+				<otherwise>
+					<if test="adjType !=null and adjType !='' ">
+						and adj_type like '%${adjType}%'
+					</if>
+					<if test="adjAmt !=null and adjAmt !='' ">
+						and adj_amt like '%${adjAmt}%'
+					</if>
+					<if test="proInfoId !=null and proInfoId !='' ">
+						and pro_info_id like '%${proInfoId}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by pro_info_adj_id desc
+	</select>
+
+	<select id="getProInfoAdjByProInfoId"  
+		resultMap="BaseResultMap" resultType="java.util.HashMap">
+		select * from pro_info_adjust
+		where pro_info_id = #{0}
+	</select>
+
+	<delete id="deleteProInfoAdj" > delete from
+		pro_info_adjust
+		where
+		pro_info_adj_id=#{0}
+	</delete>
+
+	<insert id="insertProInfoAdj" parameterType="proInfoAdj">
+		insert into pro_info_adjust
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="adjType !=null and adjType !='' ">
+				adj_type,
+			</if>
+			<if test="adjAmt !=null and adjAmt !='' ">
+				adj_amt,
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark,
+			</if>
+			<if test="proInfoId !=null and proInfoId !='' ">
+				pro_info_id,
+			</if>
+			opt_date
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="adjType !=null and adjType !='' ">
+				#{adjType},
+			</if>
+			<if test="adjAmt !=null and adjAmt !='' ">
+				#{adjAmt},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				#{remark},
+			</if>
+			<if test="proInfoId !=null and proInfoId !='' ">
+				#{proInfoId},
+			</if>
+			sysdate()
+		</trim>
+	</insert>
+
+
+	<update id="updateProInfoAdj" parameterType="proInfoAdj">
+		update pro_info_adjust
+		<set>
+			<if test="adjType !=null and adjType !='' ">
+				adj_type=#{adjType},
+			</if>
+			<if test="adjAmt !=null and adjAmt !='' ">
+				adj_amt=#{adjAmt},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark=#{remark},
+			</if>
+			<if test="proInfoId !=null and proInfoId !='' ">
+				pro_info_id = #{proInfoId}
+			</if>
+		</set>
+		where pro_info_adj_id=#{proInfoAdjId}
+	</update>
+
+	<select id="getProInfoAdjCount" resultType="int">
+		select count(*) from pro_info_adjust
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="proInfoAdjId !=null and proInfoAdjId !=''">
+					pro_info_adj_id like '%${proInfoAdjId}%'
+				</when>
+				<otherwise>
+					<if test="adjType !=null and adjType !='' ">
+						and adj_type like '%${adjType}%'
+					</if>
+					<if test="adjAmt !=null and adjAmt !='' ">
+						and adj_amt like '%${adjAmt}%'
+					</if>
+					<if test="proInfoId !=null and proInfoId !='' ">
+						and pro_info_id like '%${proInfoId}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getProInfoAdjByPage" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from pro_info_adjust
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.proInfoAdjId !=null and param1.proInfoAdjId !=''">
+					pro_info_adj_id like '%${param1.proInfoAdjId}%'
+				</when>
+				<otherwise>
+					<if test="param1.adjType !=null and param1.adjType !='' ">
+						and adj_type like '%${param1.adjType}%'
+					</if>
+					<if test="param1.adjAmt !=null and param1.adjAmt !='' ">
+						and adj_amt like '%${param1.adjAmt}%'
+					</if>
+					<if test="param1.proInfoId !=null and param1.proInfoId !='' ">
+						and pro_info_id like '%${param1.proInfoId}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by pro_info_adj_id desc limit #{param2},#{param3}
+	</select>
+</mapper>  

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IProInfoDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.ProInfo">
+		<id column="pro_info_id" property="proInfoId" jdbcType="INTEGER" />
+		<result column="pro_id" property="proId" jdbcType="VARCHAR" />
+		<result column="pro_status" property="proStatus" jdbcType="VARCHAR" />
+		<result column="pro_amt" property="proAmt" jdbcType="DECIMAL" />
+		<result column="year" property="year" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getProInfoByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="proInfo">
+		select * from project_info
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="proInfoId !=null and proInfoId !=''">
+					pro_info_id like '%${proInfoId}%'
+				</when>
+				<otherwise>
+					<if test="proId !=null and proId !='' ">
+						and pro_id like '%${proId}%'
+					</if>
+					<if test="proStatus !=null and proStatus !='' ">
+						and pro_status =#{proStatus}
+					</if>
+					<if test="proAmt !=null and proAmt !='' ">
+						and pro_amt like '%${proAmt}%'
+					</if>
+					<if test="year !=null and year !='' ">
+						and year like '%${year}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by pro_info_id desc
+	</select>
+
+	<select id="getProInfoByProId" parameterType="java.lang.String"
+		resultMap="BaseResultMap" resultType="java.util.HashMap">
+		select * from project_info where pro_id = #{0}
+		<!-- <trim prefix="where" prefixOverrides="AND|OR"> <if test="proId !=null 
+			and proId !='' "> pro_id like '%${proId}%' </if> </trim> -->
+	</select>
+
+	<delete id="deleteProInfo" parameterType="java.lang.String"> delete from
+		project_info
+		where
+		pro_info_id=#{0}
+	</delete>
+
+	<insert id="insertProInfo" parameterType="proInfo">
+		insert into project_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="proAmt !=null and proAmt !='' ">
+				pro_amt,
+			</if>
+			<if test="proId !=null and proId !='' ">
+				pro_id,
+			</if>
+			<if test="proStatus !=null and proStatus !='' ">
+				pro_status,
+			</if>
+			<if test="remark !=null and remark != '' ">
+				remark,
+			</if>
+			<if test="year !=null and year != '' ">
+				year,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="proAmt !=null and proAmt !='' ">
+				#{proAmt},
+			</if>
+			<if test="proId !=null and proId !='' ">
+				#{proId},
+			</if>
+			<if test="proStatus !=null and proStatus !='' ">
+				#{proStatus},
+			</if>
+			<if test="remark !=null and remark != '' ">
+				#{remark},
+			</if>
+			<if test="year !=null and year != '' ">
+				#{year},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateProInfo" parameterType="proInfo">
+		update project_info
+		<set>
+			<if test="proId !=null and proId !='' ">
+				pro_id=#{proId},
+			</if>
+			<if test="proStatus !=null and proStatus !='' ">
+				pro_status=#{proStatus},
+			</if>
+			<if test="proAmt !=null and proAmt !='' ">
+				pro_amt=#{proAmt},
+			</if>
+			<if test="remark !=null and remark != '' ">
+				remark=#{remark},
+			</if>
+			<if test="year !=null and year!= '' ">
+				year=#{year},
+			</if>
+		</set>
+		where pro_info_id=#{proInfoId}
+	</update>
+
+	<select id="getProInfoCount" resultType="int">
+		select count(*) from project_info
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="proInfoId !=null and proInfoId !=''">
+					pro_info_id like '%${proInfoId}%'
+				</when>
+				<otherwise>
+					<if test="proId !=null and proId !='' ">
+						and pro_id like '%${proId}%'
+					</if>
+					<if test="proStatus !=null and proStatus !='' ">
+						and pro_status like '%${proStatus}%'
+					</if>
+					<if test="proAmt !=null and proAmt !='' ">
+						and pro_amt like '%${proAmt}%'
+					</if>
+					<if test="year !=null and year !='' ">
+						and year like '%${year}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getProInfoByPage" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from project_info
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.proInfoId !=null and param1.proInfoId !=''">
+					pro_info_id like '%${param1.proInfoId}%'
+				</when>
+				<otherwise>
+					<if test="param1.proId !=null and param1.proId !='' ">
+						and pro_id like '%${param1.proId}%'
+					</if>
+					<if test="param1.proStatus !=null and param1.proStatus !='' ">
+						and pro_status like '%${param1.proStatus}%'
+					</if>
+					<if test="param1.proAmt !=null and param1.proAmt !='' ">
+						and pro_amt like '%${param1.proAmt}%'
+					</if>
+					<if test="param1.year !=null and param1.year !='' ">
+						and year like '%${param1.year}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by pro_info_id desc limit #{param2},#{param3}
+	</select>
+</mapper>  

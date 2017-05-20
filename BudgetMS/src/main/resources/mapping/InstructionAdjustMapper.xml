@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.1//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.budgetms.dao.IInstructionAdjustDao">
+
+	<resultMap id="BaseResultMap" type="com.budgetms.pojo.InstructionAdjust">
+		<id column="inst_adj_id" property="instAdjId" jdbcType="INTEGER" />
+		<result column="inst_id" property="instId" jdbcType="VARCHAR" />
+		<result column="inst_divide_id" property="instDivideId"
+			jdbcType="INTEGER" />
+		<result column="inst_adj_amt" property="instAdjAmt" jdbcType="DECIMAL" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+
+	<select id="getInstAdjByProperty" resultMap="BaseResultMap"
+		resultType="java.util.HashMap" parameterType="instAdj">
+		select * from instruction_adjust
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="instAdjId !=null and instAdjId !=''">
+					inst_adj_id like '%${instAdjId}%'
+				</when>
+				<otherwise>
+					<if test="instId !=null and instId !='' ">
+						and inst_id like '%${instId}%'
+					</if>
+					<if test="instDivideId !=null and instDivideId !='' ">
+						and inst_divide_id =#{instDivideId}
+					</if>
+					<if test="instAdjAmt !=null and instAdjAmt !='' ">
+						and inst_adj_amt like '%${instAdjAmt}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by inst_adj_id desc
+	</select>
+
+	<select id="getInstAdjByInstId" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from instruction_adjust where inst_id like '%${instId}%'
+		<!-- <trim prefix="where" prefixOverrides="AND|OR"> <if test="instId !=null 
+			and instId !='' "> inst_id like '%${instId}%' </if> </trim> -->
+	</select>
+
+	<delete id="deleteInstAdj" parameterType="int"> delete from
+		instruction_adjust
+		where
+		inst_adj_id=#{0}
+	</delete>
+
+	<insert id="insertInstAdj" parameterType="attach">
+		insert into instruction_adjust
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="instAdjAmt !=null and instAdjAmt !='' ">
+				inst_adj_amt,
+			</if>
+			<if test="instId !=null and instId !='' ">
+				inst_id,
+			</if>
+			<if test="instDivideId !=null and instDivideId !='' ">
+				inst_divide_id,
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="instAdjAmt !=null and instAdjAmt !='' ">
+				#{instAdjAmt},
+			</if>
+			<if test="instId !=null and instId !='' ">
+				#{instId},
+			</if>
+			<if test="instDivideId !=null and instDivideId !='' ">
+				#{instDivideId},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				#{remark},
+			</if>
+		</trim>
+	</insert>
+
+
+	<update id="updateInstAdj" parameterType="instAdj">
+		update instruction_adjust
+		<set>
+			<if test="instId !=null and instId !='' ">
+				inst_id=#{instId},
+			</if>
+			<if test="instDivideId !=null and instDivideId !='' ">
+				inst_divide_Id=#{instDivideId},
+			</if>
+			<if test="instAdjAmt !=null and instAdjAmt !='' ">
+				inst_adj_amt=#{instAdjAmt},
+			</if>
+			<if test="remark !=null and remark!= '' ">
+				remark=#{remark},
+			</if>
+		</set>
+		where inst_adj_id=#{instAdjId}
+	</update>
+
+	<select id="getInstAdjCount" resultType="int">
+		select count(*) from instruction_adjust
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="instAdjId !=null and instAdjId !=''">
+					inst_adj_id like '%${instAdjId}%'
+				</when>
+				<otherwise>
+					<if test="instId !=null and instId !='' ">
+						and inst_id like '%${instId}%'
+					</if>
+					<if test="instDivideId !=null and instDivideId !='' ">
+						and inst_divide_id like '%${instDivideId}%'
+					</if>
+					<if test="instAdjAmt !=null and instAdjAmt !='' ">
+						and url like '%${instAdjAmt}%'
+					</if>
+					<if test="instAdjAmt !=null and instAdjAmt !='' ">
+						and inst_adj_amt like '%${instAdjAmt}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getInstAdjByPage" resultMap="BaseResultMap"
+		resultType="java.util.HashMap">
+		select * from instruction_adjust
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<choose>
+				<when test="param1.instAdjId !=null and param1.instAdjId !=''">
+					inst_adj_id like '%${param1.instAdjId}%'
+				</when>
+				<otherwise>
+					<if test="param1.instId !=null and param1.instId !='' ">
+						and inst_id like '%${param1.instId}%'
+					</if>
+					<if test="param1.instDivideId !=null and param1.instDivideId !='' ">
+						and inst_divide_id like '%${param1.instDivideId}%'
+					</if>
+					<if test="param1.instAdjAmt !=null and param1.instAdjAmt !='' ">
+						and inst_adj_amt like '%${param1.instAdjAmt}%'
+					</if>
+				</otherwise>
+			</choose>
+		</trim>
+		order by inst_adj_id desc limit #{param2},#{param3}
+	</select>
+</mapper>  

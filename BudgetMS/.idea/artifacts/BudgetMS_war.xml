@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="BudgetMS:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/BudgetMS_war</output-path>
-    <root id="archive" name="BudgetMS_war.war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="BudgetMS-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="BudgetMS:war exploded" />
     </root>
   </artifact>
